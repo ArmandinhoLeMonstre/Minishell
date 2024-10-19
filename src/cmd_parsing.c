@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/18 21:20:57 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:36:59 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,14 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 	while (j > 0)
 	{
 		cmd_name[x] = checker_node->pipe_string[h];
+		printf("%c char de la cmd\n", cmd_name[x]);
 		h++;
 		j--;
 		x++;
 	}
 	printf(("la cmd %s\n"), cmd_name);
 	printf(("la cmd %d\n"), h);
+	cmd_name[x] = '\0';
 	//cmd_tmp = ft_split(cmd_name, ' ');
 	checker_node->cmd = ft_split(cmd_name, ' ');
 	checker_node->cmd_path = get_paths(checker_node);
@@ -116,8 +118,10 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 		j++;
 		(*i)++;
 	}
+	if (checker_node->next == NULL)
+		j++;
 	(*i)--;
-	//printf("le j : %d\n", j);
+	printf("le j : %d\n", j);
 	stock_cmd(checker_node, h, j);
 	return (1);
 }

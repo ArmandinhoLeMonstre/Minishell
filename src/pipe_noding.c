@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/16 18:09:54 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:42:38 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	append_node(t_pipe_chain **stack, char *rl, int i, char **envp)
 	node->envp = envp;
 	node->infile = 0;
 	node->outfile = 0;
+	node->append = 0;
 	node->pipe_number = i;
 	if (!(*stack))
 	{
