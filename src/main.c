@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
+/*   Updated: 2024/10/16 16:33:45 by armitite         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+int	ft_ispipe(char *str)
+{
+    int i;
+    
+    i = 0;
+    while (str[i])
+    {
+	    if (str[i] == '|')
+	    	return (1);
+        i++;
+    }
+	return (0);
+}
+
+int	main(int ac, char **av, char **envp)
+{
+    char    *rl;
+
+    printf("%s\n", envp[1]);
+    printf("%s\n", av[1]);
+    printf("%d\n", ac);
+
+    rl = readline ("Prompt > ");  // Initialisation correcte de rl avant son utilisation
+    if (quote_checker(rl) == 0)
+		printf("ok quote");
+    else
+        exit(1);
+    // while (ft_strncmp(rl, "exit", 5) != 0)
+    // {
+        if (ft_ispipe(rl) != 0)
+            pipe_noding(rl, envp);
+        printf("%s\n", rl);
+    //     free(rl);  // N'oublie pas de libérer la mémoire allouée par readline
+    //     rl = readline ("Prompt > ");  // Nouvelle saisie utilisateur
+    // }
+    free(rl);  // Libère le dernier rl avant de sortir de la boucle
+    return (0);
+}
