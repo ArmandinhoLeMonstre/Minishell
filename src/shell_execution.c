@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/19 19:38:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:40:32 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	shell_exec2(t_pipe_chain **stack)
 	while (exec_nodes)
 	{	
 		j = get_outfile_number(exec_nodes);
-		printf("ce j d merde %d\n", j);
+		//printf("ce j d merde %d\n", j);
 		if (j > 0)
 		{
 			pid = fork();

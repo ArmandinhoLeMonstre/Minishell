@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/19 19:36:59 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:40:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 		j++;
 		(*i)++;
 	}
+	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
+		j--;
 	if (checker_node->next == NULL)
 		j++;
 	(*i)--;
