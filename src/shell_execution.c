@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/21 16:40:32 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:00:12 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ int	shell_exec2(t_pipe_chain **stack)
 			if (pid == -1)
 				exit(1);
 			x = 0;
-			printf("le hupli \n");
 			if (pid == 0)
 				cmd_loop(exec_nodes);
+			printf("le hupli \n");
 			//waitpid(pid, NULL, 0);
 			while (x < j)
 			{

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:16:14 by armitite          #+#    #+#             */
-/*   Updated: 2024/05/14 14:03:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:07:34 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,21 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strdup(const char *s1);
+void	ft_bzero(void *s, size_t n);
+char	*ft_oneline(char *stash, char *res, int x);
+char	*get_next_line(int fd);
+char	*ft_oneline(char *stash, char *res, int x);
+char	*ft_fin(char *stash, int fd);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);

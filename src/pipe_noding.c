@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/19 19:42:38 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:11:34 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,23 @@ int	pipe_noding(char *rl, char **envp)
 	t_pipe_chain	*stack;
 
 	i = 0;
-	split_rl = ft_split(rl, '|');
-	if (!split_rl)
-		return (ft_free2(split_rl), 2);
-    stack = NULL;
-	while (split_rl[i])
+	stack = NULL;
+	if (ft_ispipe(rl) != 0)
 	{
-		//printf("le i, %s\n", split_rl[i]);
-		append_node(&stack, split_rl[i], i, envp);
-		i++;
+		split_rl = ft_split(rl, '|');
+		if (!split_rl)
+			return (ft_free2(split_rl), 2);
+		//stack = NULL;
+		while (split_rl[i])
+		{
+			//printf("le i, %s\n", split_rl[i]);
+			append_node(&stack, split_rl[i], i, envp);
+			i++;
+		}
+		ft_free2(split_rl);
 	}
-	ft_free2(split_rl);
+	else
+		append_node(&stack, rl, i, envp);
 	if (token_checker(&stack) == 1)
 		panic_parsing(stack, -1);
 	pipe_parsing(&stack);

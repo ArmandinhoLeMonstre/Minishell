@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/16 16:25:10 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:13:01 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_pipe_chain
 	char				*last_infile;
 	char				*last_outfile;
 	char				*last_append;
+	//char				*heredoc_chars;
 	int					checker;
 	int					infile;
 	int					outfile;

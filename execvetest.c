@@ -1,10 +1,12 @@
-#include "minishell.h"
+#include "include/minishell.h"
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **envp)
 {
+	int	pid;
+	(void)ac;
 
-	if (execve(filename1, av1, envp) == -1)
-	{
-		printf("error\n");
-	}
+	pid = fork();
+	if (pid == 0)
+		execve("/bin/cat", &av[1], envp);
+	wait(0);
 }
