@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 18:11:34 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:57:01 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	append_node(t_pipe_chain **stack, char *rl, int i, char **envp)
 	node->infile = 0;
 	node->outfile = 0;
 	node->append = 0;
+	node->heredoc_chars = ft_strdup("");
 	node->pipe_number = i;
 	if (!(*stack))
 	{
@@ -95,7 +96,7 @@ int	pipe_noding(char *rl, char **envp)
 	pipe_parsing(&stack);
 	//get_outfile_number(stack);
 	printf("le i, %d\n", get_outfile_number(stack));
-	shell_exec2(&stack);
+	shell_exec2(stack);
 	// if (i > 0)
 	// {
 	// 	while (stack->next != NULL)

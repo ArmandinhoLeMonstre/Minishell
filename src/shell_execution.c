@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 15:00:12 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:51:07 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,15 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 		}
 		exec_nodes = exec_nodes->next;
 		x++;
-		waitpid(pid, NULL, 0);
+		//waitpid(pid, NULL, 0);
+		write(1, "je test\n", 7);
 	}
+	//execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
 	pid_exec_output(exec_nodes, fd);
 	return (x);
 }
 
-int	shell_exec2(t_pipe_chain **stack)
+int	shell_exec2(t_pipe_chain *exec_nodes)
 {
 	int	x;
 	int	j;
@@ -107,10 +109,10 @@ int	shell_exec2(t_pipe_chain **stack)
 	int	pid;
 	//int	std_out = dup(1);
 	//int	stdt_in = dup(0);
-	t_pipe_chain	*exec_nodes;
+	//t_pipe_chain	*exec_nodes;
 	
 	j = 0;
-	exec_nodes = *stack;
+	//exec_nodes = *stack;
 	while (exec_nodes)
 	{	
 		j = get_outfile_number(exec_nodes);

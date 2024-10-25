@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:53:04 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 18:13:59 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:18:26 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect)
 		checker_node->last_outfile = ft_strdup(file_name);
 	if (redirect == 3)
 		checker_node->last_append = ft_strdup(file_name);
-	// if (redirect == 4)
-	// 	checker_node->heredoc_chars = ft_strdup(file_name);
-	// printf("le heredoc : %s\n", checker_node->heredoc_chars);
+	if (redirect == 4)
+		checker_node->heredoc_chars = ft_strdup(file_name);
+	//printf("le heredoc : %s\n", checker_node->heredoc_chars);
 	if (redirect == 1 || redirect == 2 || redirect == 3)
 		outfiles_function(checker_node, redirect);
-	// if (redirect == 4)
-	// 	printf("heredoc a faire");
+	if (redirect == 4)
+		display_line(checker_node);
 }

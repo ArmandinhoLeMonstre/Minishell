@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 18:13:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:32:54 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pipe_chain
 	char				*last_infile;
 	char				*last_outfile;
 	char				*last_append;
-	//char				*heredoc_chars;
+	char				*heredoc_chars;
 	int					checker;
 	int					infile;
 	int					outfile;
@@ -68,11 +68,14 @@ int		stack_len(t_pipe_chain *stack);
 void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect);
 int		ft_is_bash_char(int c);
 
+//Heredoc
+void	display_line(t_pipe_chain *checker_node);
+
 //cmd_parsing fonctions
 int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
 
 //execution
-int		shell_exec2(t_pipe_chain **stack);
+int		shell_exec2(t_pipe_chain *exec_nodes);
 int		get_outfile_number(t_pipe_chain *exec_nodes);
 void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2]);
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2]);

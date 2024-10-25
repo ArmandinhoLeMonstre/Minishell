@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 18:14:13 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:24:46 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int	pipe_check(t_pipe_chain *checker_node)
 		{
 			if (checker_node->pipe_string[i] == '<')
 			{
-				// if (checker_node->pipe_string[i + 1] == '<')
-				// {
-				// 	i++;
-				// 	if (file_check(checker_node, &i, i, 4) > 0)
-				// 		printf("le heredoc2 : %s\n", checker_node->heredoc_chars);
-				// }
-				if (file_check(checker_node, &i, i, 1) > 0)
+				if (checker_node->pipe_string[i + 1] == '<')
+				{
+					i++;
+					if (file_check(checker_node, &i, i, 4) > 0)
+						printf("le heredoc2 : %s\n", checker_node->heredoc_chars);
+				}
+				else if (file_check(checker_node, &i, i, 1) > 0)
 				{
 					printf("ok infile name\n");
 				}
