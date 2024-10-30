@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/23 19:32:54 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:58:27 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,19 @@ typedef struct s_pipe_chain
 //quote_checking
 int		quote_checker(char *rl);
 
+//Pipe in "" and ''
+char	*reput_pipe(t_pipe_chain *checker_node, int *tab);
+int		*get_tab(const char *rl, int *tab);
+int		pipe_numbers(const char *rl);
+char	*change_pipe(char *rl, int *tab);
+char	*ft_strdup2(t_pipe_chain *checker_node, int *tab);
+
 //pipe_parsing fonctions
 int		pipe_noding(char *rl, char **envp);
+int		pipe_split(t_pipe_chain *stack, char *rl, char **envp, int *tab);
+void	append_node(t_pipe_chain **stack, char *rl, char **envp);
 int		ft_ispipe(char *str);
-void	pipe_parsing(t_pipe_chain **stack);
+void	pipe_parsing(t_pipe_chain **stack, int *tab);
 int		token_checker(t_pipe_chain **stack);
 int		stack_len(t_pipe_chain *stack);
 

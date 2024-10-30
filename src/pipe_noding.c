@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/24 14:57:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/30 21:13:37 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_pipe_chain	*find_last(t_pipe_chain *stack)
 	return (stack);
 }
 
-void	append_node(t_pipe_chain **stack, char *rl, int i, char **envp)
+void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 {
 	t_pipe_chain	*node;
 	t_pipe_chain	*last_node;
@@ -53,7 +53,7 @@ void	append_node(t_pipe_chain **stack, char *rl, int i, char **envp)
 	node->outfile = 0;
 	node->append = 0;
 	node->heredoc_chars = ft_strdup("");
-	node->pipe_number = i;
+	//node->pipe_number = i;
 	if (!(*stack))
 	{
 		*stack = node;
@@ -65,18 +65,24 @@ void	append_node(t_pipe_chain **stack, char *rl, int i, char **envp)
 		last_node->next = node;
 		node->prev = last_node;
 	}
+	//node->pipe_string = ft_strdup2(*stack, rl, tab);
 }
 
 int	pipe_noding(char *rl, char **envp)
 {	
 	int				i;
+	int				*tab;
 	char			**split_rl;
 	t_pipe_chain	*stack;
 
 	i = 0;
 	stack = NULL;
+	tab = (malloc(pipe_numbers(rl) * sizeof(int)));
+	tab = get_tab(rl, tab);
 	if (ft_ispipe(rl) != 0)
 	{
+		i = 0;
+		rl = change_pipe(rl, tab);
 		split_rl = ft_split(rl, '|');
 		if (!split_rl)
 			return (ft_free2(split_rl), 2);
@@ -84,16 +90,22 @@ int	pipe_noding(char *rl, char **envp)
 		while (split_rl[i])
 		{
 			//printf("le i, %s\n", split_rl[i]);
-			append_node(&stack, split_rl[i], i, envp);
+			//printf("la string ds pipe_n %s\n", rl);
+			append_node(&stack, split_rl[i], envp);
+			//printf("la string avt append :  %s\n", stack->pipe_string);
+			// stack->pipe_string = ft_strdup2(&stack, split_rl[i], tab);
+			// printf("la string ds append :  %s\n", stack->pipe_string);
+			// stack = stack->next;
 			i++;
 		}
 		ft_free2(split_rl);
 	}
 	else
-		append_node(&stack, rl, i, envp);
+		append_node(&stack, rl, envp);
 	if (token_checker(&stack) == 1)
 		panic_parsing(stack, -1);
-	pipe_parsing(&stack);
+	//printf("la stri");
+	pipe_parsing(&stack, tab);
 	//get_outfile_number(stack);
 	printf("le i, %d\n", get_outfile_number(stack));
 	shell_exec2(stack);
