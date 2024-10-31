@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/30 21:08:51 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:01:42 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,6 @@ char *change_pipe(char *rl, int *tab)
 	rl2 = malloc(sizeof(char) * (ft_strlen(rl) + 1));
 	while (rl[i])
 	{
-		if (rl[i] == 39)
-		{
-			rl2[i] = rl[i];
-			i++;
-			while (rl[i] != 39)
-			{
-				if (rl[i] == '|')
-				{
-					rl2[i] = 'a';
-					tab[index] = i;
-					index++;
-				}
-				else
-					rl2[i] = rl[i];
-				i++;
-			}
-		}
 		if (rl[i] == 34)
 		{
 			rl2[i] = rl[i];
@@ -91,16 +74,32 @@ char *change_pipe(char *rl, int *tab)
 				i++;
 			}
 		}
-		else
+		if (rl[i] == 39)
+		{
+			rl2[i] = rl[i];
+			i++;
+			while (rl[i] != 39)
+			{
+				if (rl[i] == '|')
+				{
+					rl2[i] = 'a';
+					tab[index] = i;
+					index++;
+				}
+				else
+					rl2[i] = rl[i];
+				i++;
+			}
+		}
 			rl2[i] = rl[i];
 		i++;
 	}
 	rl2[i] = '\0';
-	// printf("la string %s\n", rl2);
+	printf("la string ds change pipe %s\n", rl2);
 	i = 0;
 	while (i < index)
 	{
-		printf("%d\n", tab[i]);
+		printf("le tab%d\n", tab[i]);
 		i++;
 	}
 	return (rl2);

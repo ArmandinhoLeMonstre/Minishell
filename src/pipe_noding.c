@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/30 21:13:37 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/31 13:53:35 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,16 @@ int	pipe_noding(char *rl, char **envp)
 
 	i = 0;
 	stack = NULL;
-	tab = (malloc(pipe_numbers(rl) * sizeof(int)));
-	tab = get_tab(rl, tab);
+	tab = NULL;
+	if (pipe_numbers(rl) > 0)
+	{
+		tab = (malloc(pipe_numbers(rl) * sizeof(int)));
+		tab = get_tab(rl, tab);
+		rl = change_pipe(rl, tab);
+	}
 	if (ft_ispipe(rl) != 0)
 	{
 		i = 0;
-		rl = change_pipe(rl, tab);
 		split_rl = ft_split(rl, '|');
 		if (!split_rl)
 			return (ft_free2(split_rl), 2);
