@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/31 15:01:42 by armitite         ###   ########.fr       */
+/*   Updated: 2024/10/31 16:57:32 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,24 @@ char	*ft_strdup2(t_pipe_chain *checker_node, int *tab)
 		printf("la string ds append :  %s\n", checker_node->pipe_string);
 		checker_node = checker_node->next;
 	}
+		i = 0;
+		if (checker_node->prev != NULL)
+			total = total + ft_strlen(checker_node->prev->pipe_string) + 1;
+		printf("total : %d\n", total);
+		printf("la string avt append :  %s\n", checker_node->pipe_string);
+		while (checker_node->pipe_string[i])
+		{
+			if (i + total == tab[index])
+			{
+				checker_node->pipe_string[i] = '|';
+				index++;
+			}
+			else
+				checker_node->pipe_string[i] = checker_node->pipe_string[i];
+			i++;
+		}
+		printf("la string ds append :  %s\n", checker_node->pipe_string);
+		checker_node = checker_node->next;
 	// i = 0;
 	// total = total + ft_strlen(checker_node->pipe_string);
 	// printf("total : %d\n", total);
