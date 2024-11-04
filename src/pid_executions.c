@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:27:17 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/24 18:34:20 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:26:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,26 @@ void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2])
 	
 	dup2(std_out, 1);
 	//fd[0] = 0;
-	if (exec_nodes->infile != 0 && exec_nodes->cmd[1] == NULL)
+	if (exec_nodes->infile != 0)
 	{
-		//write(1, "je test\n", 7);
-		if (exec_nodes->infile == -1)
-			panic_parsing(exec_nodes, 0);
-		dup2(exec_nodes->infile, 0);
-		// close(fd[0]);
-	 	// close(fd[1]);
-		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+		if (exec_nodes->cmd[1] != NULL) //&& exec_nodes->cmd[1][0] == '-')
+		{//write(1, "je test\n", 7);
+			if (exec_nodes->infile == -1)
+				panic_parsing(exec_nodes, 0);
+			dup2(exec_nodes->infile, 0);
+			// close(fd[0]);
+			// close(fd[1]);
+			execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+		}
+		if (exec_nodes->cmd[1] == NULL)
+		{
+			if (exec_nodes->infile == -1)
+				panic_parsing(exec_nodes, 0);
+			dup2(exec_nodes->infile, 0);
+			// close(fd[0]);
+			// close(fd[1]);
+			execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+		}
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/31 13:53:35 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:05:51 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	node->outfile = 0;
 	node->append = 0;
 	node->heredoc_chars = ft_strdup("");
+	node->cmd_string = NULL;
 	//node->pipe_number = i;
 	if (!(*stack))
 	{

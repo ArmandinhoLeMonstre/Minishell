@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 13:42:30 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:11:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_pipe_chain
 	char				*last_outfile;
 	char				*last_append;
 	char				*heredoc_chars;
+	char				*cmd_string;
 	int					checker;
 	int					infile;
 	int					outfile;
@@ -78,6 +79,7 @@ int		ft_ispipe(char *str);
 void	pipe_parsing(t_pipe_chain **stack, int *tab);
 int		token_checker(t_pipe_chain **stack);
 int		stack_len(t_pipe_chain *stack);
+char	*get_paths(t_pipe_chain *checker_node);
 
 //file_parsing fonctions
 void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect);

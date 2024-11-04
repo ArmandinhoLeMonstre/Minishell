@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/23 19:38:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:13:45 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,17 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 	printf(("la cmd %s\n"), cmd_name);
 	printf(("la cmd %d\n"), h);
 	cmd_name[x] = '\0';
+	if (checker_node->cmd_string == NULL)
+	{
+		checker_node->cmd_string = ft_strdup(cmd_name);
+	}
+	else
+		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, cmd_name);
 	//cmd_tmp = ft_split(cmd_name, ' ');
-	checker_node->cmd = ft_split(cmd_name, ' ');
-	checker_node->cmd_path = get_paths(checker_node);
-	printf("le path :%s\n", checker_node->cmd_path);
-	printf("la cmd :%s\n", checker_node->cmd[0]);
+	// checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
+	// checker_node->cmd_path = get_paths(checker_node);
+	// printf("le path :%s\n", checker_node->cmd_path);
+	// printf("la cmd :%s\n", checker_node->cmd[0]);
 	x = 0;
 	// while (cmd_name[x])
 	// {
@@ -117,6 +123,8 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 	{
 		j++;
 		(*i)++;
+		if (checker_node->pipe_string[*i] == ' ')
+			break ;
 	}
 	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1 && checker_node->pipe_string[*i - 1] == ' ')
 		j--;

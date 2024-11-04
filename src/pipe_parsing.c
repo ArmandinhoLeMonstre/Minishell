@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/03 14:41:38 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 19:34:15 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	pipe_check(t_pipe_chain *checker_node)
 					printf("ok outfile name\n");
 				}
 			}
-			else if (ft_isalnum((int)checker_node->pipe_string[i]) == 1)
+			else if (ft_isalnum((int)checker_node->pipe_string[i]) == 1 || checker_node->pipe_string[i] == '-')
 			{
 				cmd_check(checker_node, &i, i);
 			}
@@ -113,6 +113,11 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 	j = stack_len(checker_node);
 	if (tab != NULL)
 		ft_strdup2(checker_node, tab);
-	expander(checker_node);
+	//expander(checker_node);
 	printf("%d\n", pipe_check (checker_node));
+	printf("la cmd string : %s\n", checker_node->cmd_string);
+	checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
+	checker_node->cmd_path = get_paths(checker_node);
+	printf("le path :%s\n", checker_node->cmd_path);
+	printf("la cmd :%s\n", checker_node->cmd[0]);
 }
