@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 13:51:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:14:14 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 {
 	char *string2;
 	int	i;
-	//int	total;
+	int	h;
 	int	verif;
 	
 	string2 = malloc (sizeof(char) * total + 1);
@@ -25,7 +25,9 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 	verif = 0;
 	while (checker_node->pipe_string[i])
 	{
-		if (verif == 0)
+		if (checker_node->pipe_string[i] == 39)
+			verif++;
+		if (verif % 2 == 0)
 		{
 			if (checker_node->pipe_string[i] == 34)
 			{
@@ -36,7 +38,7 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 					{
 						if (check_dollars(checker_node, i) == 1)
 						{
-							int	h = 0;
+							h = 0;
 							while (user[h])
 							{
 								string2[total] = user[h];
@@ -65,6 +67,12 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 				string2[total] = checker_node->pipe_string[i];
 				total++;
 			}
+			i++;
+		}
+		else
+		{
+			string2[total] = checker_node->pipe_string[i];
+			total++;
 			i++;
 		}
 	}
