@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/30 20:58:27 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:42:30 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ int		*get_tab(const char *rl, int *tab);
 int		pipe_numbers(const char *rl);
 char	*change_pipe(char *rl, int *tab);
 char	*ft_strdup2(t_pipe_chain *checker_node, int *tab);
+
+//Expander
+void	expander(t_pipe_chain *checker_node);
+char	*get_user(t_pipe_chain *checker_node);
+char	*clean_string(t_pipe_chain *checker_node, int total, char *user);
+int	check_dollars(t_pipe_chain *checker_node, int i);
 
 //pipe_parsing fonctions
 int		pipe_noding(char *rl, char **envp);

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/31 14:02:48 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:41:38 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,13 @@ int	pipe_check(t_pipe_chain *checker_node)
 
 void	pipe_parsing(t_pipe_chain **stack, int *tab)
 {
-	t_pipe_chain *checker_node;
+	t_pipe_chain	*checker_node;
+	int				j;
 	
 	checker_node = *stack;
+	j = stack_len(checker_node);
 	if (tab != NULL)
 		ft_strdup2(checker_node, tab);
+	expander(checker_node);
 	printf("%d\n", pipe_check (checker_node));
 }
