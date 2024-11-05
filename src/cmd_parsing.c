@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 19:13:45 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:19:28 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 		printf("%c char de la cmd\n", cmd_name[x]);
 		h++;
 		j--;
+		x++;
+	}
+	if (cmd_name[x] != ' ')
+	{
+		cmd_name[x] = ' ';
 		x++;
 	}
 	printf(("la cmd %s\n"), cmd_name);

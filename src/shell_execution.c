@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/24 17:51:07 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:03:18 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 			exit(1);
 		if (pid == 0)
 		{
+			if (exec_nodes->cmd_path == NULL)
+				return (ft_putendl_fd("error", 2), exit(1), 2);
 			pid_exec(exec_nodes, fd);
 		}
 		else
@@ -96,6 +98,8 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 		//waitpid(pid, NULL, 0);
 		write(1, "je test\n", 7);
 	}
+	if (exec_nodes->cmd_path == NULL)
+		return (ft_putendl_fd("error", 2), exit(1), 2);
 	//execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
 	pid_exec_output(exec_nodes, fd);
 	return (x);

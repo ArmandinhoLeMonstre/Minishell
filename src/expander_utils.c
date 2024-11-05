@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 14:14:14 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:02:26 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 	while (checker_node->pipe_string[i])
 	{
 		if (checker_node->pipe_string[i] == 39)
+		{
 			verif++;
+			//i++;
+		}
 		if (verif % 2 == 0)
 		{
 			if (checker_node->pipe_string[i] == 34)
 			{
+				string2[total] = checker_node->pipe_string[i];
+				total++;
 				i++;
 				while (checker_node->pipe_string[i] != 34)
 				{
@@ -62,7 +67,7 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 					}
 				}
 			}
-			if (checker_node->pipe_string[i] != '\0' && checker_node->pipe_string[i] != 34)
+			if (checker_node->pipe_string[i] != '\0') //&& checker_node->pipe_string[i] != 34)
 			{
 				string2[total] = checker_node->pipe_string[i];
 				total++;

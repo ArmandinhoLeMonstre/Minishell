@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:27:17 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 19:26:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:16:00 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,20 @@ void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2])
 			close(exec_nodes->fd[0]);
 			close(exec_nodes->fd[1]);
 		}
-		write(2, "je test8\n", 9);
+		if (exec_nodes->prev != NULL)
+		{
+			if (exec_nodes->prev->outfile != 0)
+			{
+				ft_putendl_fd("outfile roor ?", 2);
+				//ft_putendl_fd("\0", fd[1]);
+				if (pipe(fd) == -1)
+					exit(1);
+				dup2(fd[0], 0);
+				close(fd[0]);
+				close(fd[1]);
+			}
+		}
+		//write(2, "je test8\n", 9);
 		//printf("le fd : %d\n", exec_nodes->fd[0]);
 		// if (exec_nodes->prev != NULL)
 		// 	dup2(fd[0], 0);

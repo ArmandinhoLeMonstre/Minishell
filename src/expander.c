@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 13:56:16 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:55:43 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,41 +47,6 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 	}
 	return (i);
 }
-
-// int	string34(t_pipe_chain *checker_node, int i, int *total, char *user)
-// {	
-// 	i++;
-// 	while (checker_node->pipe_string[i] != 34)
-// 	{
-// 		if (checker_node->pipe_string[i] == '$')
-// 		{
-// 			if (check_dollars(checker_node, i) == 1)
-// 			{
-// 				int	h = 0;
-// 				while (user[h])
-// 				{
-// 					string2[total] = user[h];
-// 					h++;
-// 					total++;
-// 				}
-// 				i = i + 5;
-// 			}
-// 			else
-// 			{
-// 				while (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != 34)
-// 					i++;
-// 				i--;
-// 			}
-// 		}
-// 		if (checker_node->pipe_string[i] != 34)
-// 		{
-// 			string2[total] = checker_node->pipe_string[i];
-// 			total++;
-// 			i++;
-// 		}
-// 	}
-	
-// }
 
 void	expander(t_pipe_chain *checker_node)
 {
