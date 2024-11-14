@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/10 17:18:23 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:34:48 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,21 +119,31 @@ int	pipe_check(t_pipe_chain *checker_node)
 void	pipe_parsing(t_pipe_chain **stack, int *tab)
 {
 	t_pipe_chain	*checker_node;
+	int				*tab_space;
 	int				j;
 	int				x;
 	
+	tab_space = NULL;
 	checker_node = *stack;
 	j = stack_len(checker_node);
 	x = 0;
 	if (tab != NULL)
 		ft_strdup2(checker_node, tab);
 	expander(checker_node);
+	if (space_numbers(checker_node->pipe_string) > 0)
+	{
+		tab_space = (malloc(space_numbers(checker_node->pipe_string) * sizeof(int)));
+		tab_space = get_tab(checker_node->pipe_string, tab_space);
+		checker_node->pipe_string = change_space(checker_node->pipe_string, tab_space);
+	}
 	printf("%d\n", pipe_check (checker_node));
 	printf("la cmd string : %s\n", checker_node->cmd_string);
 	while (x < j)
 	{
 		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 		checker_node->cmd_path = get_paths(checker_node);
+		if (tab_space != NULL)
+			checker_node->cmd = ft_strdup3(checker_node->cmd, tab_space);
 		printf("le path :%s\n", checker_node->cmd_path);
 		printf("la cmd :%s\n", checker_node->cmd[0]);
 		checker_node = checker_node->next;

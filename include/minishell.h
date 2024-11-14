@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/05 18:26:58 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:35:17 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ void	expander(t_pipe_chain *checker_node);
 char	*get_user(t_pipe_chain *checker_node);
 char	*clean_string(t_pipe_chain *checker_node, int total, char *user);
 int	check_dollars(t_pipe_chain *checker_node, int i);
+
+//Clean_space
+int	space_numbers(const char *rl);
+char *change_space(char *rl, int *tab);
+int *get_tab_space(const char *rl, int *tab);
+char	**ft_strdup3(char **cmd, int *tab);
 
 //pipe_parsing fonctions
 int		pipe_noding(char *rl, char **envp);
