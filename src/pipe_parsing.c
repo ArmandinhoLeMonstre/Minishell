@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/05 18:28:34 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:18:23 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	pipe_check(t_pipe_chain *checker_node)
 					printf("ok outfile name\n");
 				}
 			}
-			else if (ft_isalnum((int)checker_node->pipe_string[i]) == 1 || checker_node->pipe_string[i] == '-')
+			else if (ft_isalnum((int)checker_node->pipe_string[i]) == 1 || checker_node->pipe_string[i] == '-' || checker_node->pipe_string[i] == '/')
 			{
 				cmd_check(checker_node, &i, i);
 			}

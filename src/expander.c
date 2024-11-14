@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/05 17:55:43 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:48:09 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	check_dollars(t_pipe_chain *checker_node, int i)
 int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 {
 	i++;
+	(*total)++;
 	while (checker_node->pipe_string[i] != 34)	
 	{
 		if (checker_node->pipe_string[i] == '$')

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 13:00:35 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:01:25 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int	main(int ac, char **av, char **envp)
 			exit(1);
 		if (pid == 0)
 		{
+            if (quote_checker(rl) == 0)
+                printf("ok quote\n");
+            else
+                exit(1);
             pipe_noding(rl, envp);
             printf("%s\n", rl);
         }
