@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/05 15:19:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:18:53 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 	j = 0;
 	while (checker_node->pipe_string[*i] && (ft_is_bash_char(checker_node->pipe_string[*i]) != 1))
 	{
+		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
+			break ;
 		j++;
 		(*i)++;
 		if (checker_node->pipe_string[*i] == ' ')
@@ -133,7 +135,7 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 	}
 	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1 && checker_node->pipe_string[*i - 1] == ' ')
 		j--;
-	if (checker_node->next == NULL)
+	if (checker_node->next == NULL && ft_is_bash_char(checker_node->pipe_string[*i]) != 1)
 		j++;
 	(*i)--;
 	printf("le j : %d\n", j);

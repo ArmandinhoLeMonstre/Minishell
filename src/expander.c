@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 16:07:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:29:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 			{
 				//printf("le total avt : %d\n", (int)total);
 				(*total) = (*total) + ft_strlen(user);							
-				//printf("le total apres : %d\n", (int)total);
+				printf("le total apres : %d\n", (int)total);
 				i = i + 4;
 			}
 			else
@@ -76,7 +76,7 @@ void	expander(t_pipe_chain *checker_node)
 				i = commas34(checker_node, i, &total, user);
 			}
 			i++;
-			if (checker_node->pipe_string[i] != '\0')
+			//if (checker_node->pipe_string[i] != '\0')
 				total++;
 		}
 		checker_node->pipe_string = ft_strdup(clean_string(checker_node, total, user));

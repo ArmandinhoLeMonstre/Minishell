@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 16:26:27 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:15:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,11 @@ int	pipe_check(t_pipe_chain *checker_node)
 			{
 				i++;
 				cmd_check_commas(checker_node, &i, i, 1);
-				//i++;
 			}
 			if (checker_node->pipe_string[i] == 39)
 			{
 				i++;
 				cmd_check_commas(checker_node, &i, i, 2);
-				//i++;
 			}
 			else if (checker_node->pipe_string[i] == '<')
 			{
