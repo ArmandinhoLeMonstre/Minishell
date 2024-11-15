@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:01:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 14:34:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:12:29 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char *change_space(char *rl, int *tab)
 
 	i = 0;
 	index = 0;
+	tab = NULL;
 	rl2 = malloc(sizeof(char) * (ft_strlen(rl) + 1));
 	while (rl[i])
 	{
@@ -66,7 +67,7 @@ char *change_space(char *rl, int *tab)
 				if (rl[i] == ' ')
 				{
 					rl2[i] = '\t';
-					tab[index] = i;
+					//tab[index] = i;
 					index++;
 				}
 				else
@@ -83,7 +84,7 @@ char *change_space(char *rl, int *tab)
 				if (rl[i] == ' ')
 				{
 					rl2[i] = '\t';
-					tab[index] = i;
+					//tab[index] = i;
 					index++;
 				}
 				else
@@ -97,11 +98,11 @@ char *change_space(char *rl, int *tab)
 	rl2[i] = '\0';
 	printf("la string ds change space %s\n", rl2);
 	i = 0;
-	while (i < index)
-	{
-		printf("le tab%d\n", tab[i]);
-		i++;
-	}
+	// while (i < index)
+	// {
+	// 	printf("le tab%d\n", tab[i]);
+	// 	i++;
+	// }
 	return (rl2);
 }
 

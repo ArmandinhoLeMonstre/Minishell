@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:27:17 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/05 17:16:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:39:56 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 	if (exec_nodes->infile == 0)
 	{
 		dup2(fd[1], 1);
-		write(2, "ca rentre ici ?\n", 16);
+		close(fd[1]);
+		close(fd[0]);
 		if (ft_strlen(exec_nodes->heredoc_chars) > 0)
 		{
 			//close(fd[0]);
@@ -160,7 +161,6 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 		// close(exec_nodes->infile);
 		// close(fd[0]);
 		// close(fd[1]);
-		write(2, "salam\n", 6);
 		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
 	}
 }

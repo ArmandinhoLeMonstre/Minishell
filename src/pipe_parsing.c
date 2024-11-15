@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 14:34:48 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:26:27 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_bash_char(int c)
 {
-	if (c == '<' || c == '>')
+	if (c == '<' || c == '>' || c == '|')
 		return (1);
 	else
 		return (0);
@@ -128,7 +128,10 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 	j = stack_len(checker_node);
 	x = 0;
 	if (tab != NULL)
+	{
 		ft_strdup2(checker_node, tab);
+		free(tab);
+	}
 	expander(checker_node);
 	if (space_numbers(checker_node->pipe_string) > 0)
 	{

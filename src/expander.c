@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 13:47:50 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:07:11 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	expander(t_pipe_chain *checker_node)
 	total = 0;
 	j = stack_len(checker_node);
 	user = get_user(checker_node);
-	printf("l'utilisateur : %s\n", user);
+	//printf("l'utilisateur : %s\n", user);
 	while (x < j)
 	{
 		i = 0;
@@ -79,10 +79,7 @@ void	expander(t_pipe_chain *checker_node)
 			if (checker_node->pipe_string[i] != '\0')
 				total++;
 		}
-		printf("le total : %d\n", total);
-		printf("la string2 : %s\n", clean_string(checker_node, total, user));
 		checker_node->pipe_string = ft_strdup(clean_string(checker_node, total, user));
-		printf("la pipe_string finale : %s\n", checker_node->pipe_string);
 		checker_node = checker_node->next;
 		x++;
 	}

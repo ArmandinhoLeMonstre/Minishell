@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 14:35:17 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:32:52 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		pipe_split(t_pipe_chain *stack, char *rl, char **envp, int *tab);
 void	append_node(t_pipe_chain **stack, char *rl, char **envp);
 int		ft_ispipe(char *str);
 void	pipe_parsing(t_pipe_chain **stack, int *tab);
-int		token_checker(t_pipe_chain **stack);
+int	token_checker(char *rl);
 int		stack_len(t_pipe_chain *stack);
 char	*get_paths(t_pipe_chain *checker_node);
 int		cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int	keycode);
