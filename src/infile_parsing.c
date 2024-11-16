@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:53:04 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/24 18:18:26 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:30:35 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect)
 	x = 0;
 	file_name = malloc(sizeof(char) * (j + 1));
 	while (checker_node->pipe_string[h] == ' ')
+		h++;
+	if (checker_node->pipe_string[h] == 34 || checker_node->pipe_string[h] == 39)
 		h++;
 	while (j > 0)
 	{

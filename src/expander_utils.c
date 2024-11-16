@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/14 16:06:53 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/16 19:20:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 	while (checker_node->pipe_string[i])
 	{
 		if (checker_node->pipe_string[i] == 39)
-		{
 			verif++;
-			//i++;
-		}
 		if (verif % 2 == 0)
 		{
 			if (checker_node->pipe_string[i] == 34)

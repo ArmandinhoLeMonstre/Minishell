@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:07:05 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 16:33:54 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/16 18:17:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	after_token(char *rl, int *i)
 		(*i)++;
 	while (rl[*i])
 	{
+		if (rl[*i] == 34 || rl[*i] == 39)
+			return(0);
 		if (ft_is_bash_char(rl[*i]))
 		{
 			ft_putstr_fd("syntax error near unexpected token `", 2);
@@ -42,16 +44,24 @@ int	after_token(char *rl, int *i)
 int	token_checker(char *rl)
 {
 	int	i;
-	//int	j;
 	int	x;
-	//t_pipe_chain *checker_node;
 	
 	x = 0;
 	i = 0;
-	//checker_node = *stack;
-	//j = stack_len(checker_node);
 	while (rl[i])
 	{
+		if (rl[i] == 34)
+		{
+			i++;
+			while(rl[i] != 34)
+				i++;
+		}
+		if (rl[i] == 39)
+		{
+			i++;
+			while(rl[i] != 39)
+				i++;
+		}
 		if (ft_is_bash_char(rl[i]))
 			if (after_token(rl, &i) == 1)
 			{

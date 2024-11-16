@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/24 18:44:14 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/16 14:19:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,4 @@ void	display_line(t_pipe_chain *checker_node)
 		ft_putstr_fd2(line, checker_node->fd[1]);
 		ft_putstr_fd2("\n", checker_node->fd[1]);
 	}
-	// dup2(checker_node->fd[0], 0);
-	//execve(checker_node->cmd_path, checker_node->cmd, checker_node->envp);
 }

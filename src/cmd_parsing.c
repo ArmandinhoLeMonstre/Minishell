@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 18:18:53 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:31:56 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 		j--;
 		x++;
 	}
-	if (cmd_name[x] != ' ')
-	{
-		cmd_name[x] = ' ';
-		x++;
-	}
+	// if (cmd_name[x] != ' ')
+	// {
+	// 	cmd_name[x] = ' ';
+	// 	x++;
+	// }
 	printf(("la cmd %s\n"), cmd_name);
 	printf(("la cmd %d\n"), h);
 	cmd_name[x] = '\0';
@@ -103,7 +103,10 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 		checker_node->cmd_string = ft_strdup(cmd_name);
 	}
 	else
+	{
+		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
 		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, cmd_name);
+	}
 	//cmd_tmp = ft_split(cmd_name, ' ');
 	// checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 	// checker_node->cmd_path = get_paths(checker_node);
