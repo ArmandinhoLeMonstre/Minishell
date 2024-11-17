@@ -6,11 +6,13 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 19:01:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/17 17:54:01 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
 
 int	get_outfile_number(t_pipe_chain *exec_nodes)
 {
