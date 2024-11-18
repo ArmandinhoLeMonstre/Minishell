@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/16 19:30:24 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:15:21 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,12 +141,28 @@ int	add_path(t_pipe_chain *checker_node, int *tab_space, int j)
 	{
 		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 		checker_node->cmd_path = get_paths(checker_node);
-		if (tab_space != NULL)
-			checker_node->cmd = ft_strdup3(checker_node->cmd, tab_space);
+		//if (tab_space != NULL)
+		checker_node->cmd = ft_strdup3(checker_node->cmd, tab_space);
 		checker_node = checker_node->next;
 		x++;
 	}
 	return (0);
+}
+
+void	while_space(t_pipe_chain *checker_node, int *tab_space, int j)
+{
+	int x;
+
+	x = 0;
+	while (x < j)
+	{
+		if (space_numbers(checker_node->pipe_string) > 0)
+		{
+			checker_node->pipe_string = change_space(checker_node->pipe_string, tab_space);
+		}
+		checker_node = checker_node->next;
+		x++;
+	}
 }
 
 void	pipe_parsing(t_pipe_chain **stack, int *tab)
@@ -162,16 +178,11 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 	x = 0;
 	if (tab != NULL)
 	{
-		ft_strdup2(checker_node, tab);
+		ft_strdup2(checker_node, tab, j);
 		free(tab);
 	}
 	expander(checker_node);
-	if (space_numbers(checker_node->pipe_string) > 0)
-	{
-		tab_space = (malloc(space_numbers(checker_node->pipe_string) * sizeof(int)));
-		tab_space = get_tab(checker_node->pipe_string, tab_space);
-		checker_node->pipe_string = change_space(checker_node->pipe_string, tab_space);
-	}
+	while_space(checker_node, tab_space, j);
 	pipe_check(checker_node);
 	add_path(checker_node, tab_space, j);
 }

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:07:05 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/16 18:17:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:03:16 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ int	token_checker(char *rl)
 		}
 		if (ft_is_bash_char(rl[i]))
 			if (after_token(rl, &i) == 1)
-			{
 				return (1);
-			}
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 18:29:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:40:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 		{
 			if (check_dollars(checker_node, i) == 1)
 			{
-				//printf("le total avt : %d\n", (int)total);
 				(*total) = (*total) + ft_strlen(user);							
-				printf("le total apres : %d\n", (int)total);
 				i = i + 4;
 			}
 			else
@@ -43,44 +41,32 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 			}					
 		}
 		i++;
-		//if (checker_node->pipe_string[i] != 34)
-			(*total)++;
+		(*total)++;
 	}
 	return (i);
 }
 
 void	expander(t_pipe_chain *checker_node)
 {
-	int	i;
-	int	x;
-	int	j;
-	int	total;
-	int	verif;
-	char *user;
-	//char *string2;
+	t_expander_data data;
 
-	i = 0;
-	x = 0;
-	total = 0;
-	j = stack_len(checker_node);
-	user = get_user(checker_node);
-	//printf("l'utilisateur : %s\n", user);
-	while (x < j)
+	data.x = 0;
+	data.total = 0;
+	data.j = stack_len(checker_node);
+	data.user = get_user(checker_node);
+	while (data.x < data.j)
 	{
-		i = 0;
-		verif = 0;
-		while (checker_node->pipe_string[i])
+		data.i = 0;
+		data.verif = 0;
+		while (checker_node->pipe_string[data.i])
 		{
-			if (checker_node->pipe_string[i] == 34)
-			{
-				i = commas34(checker_node, i, &total, user);
-			}
-			i++;
-			//if (checker_node->pipe_string[i] != '\0')
-				total++;
+			if (checker_node->pipe_string[data.i] == 34)
+				data.i = commas34(checker_node, data.i, &data.total, data.user);
+			data.i++;
+			data.total++;
 		}
-		checker_node->pipe_string = ft_strdup(clean_string(checker_node, total, user));
+		checker_node->pipe_string = ft_strdup(clean_string(checker_node, data.total, data.user));
 		checker_node = checker_node->next;
-		x++;
+		data.x++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 16:32:52 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:43:11 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,37 @@
 # include <unistd.h>
 # include "../Libft/libft.h"
 
-typedef struct s_outfiles
+typedef struct s_get_tab_data
 {
-	int					checker;
-	char				*last_append;
-	char				*last_outfile;
-	int					append;
-	int					outfile;
-}	t_outfiles;
+	int	i;
+	int	index;
+}	t_get_tab_data;
+
+typedef struct s_change_pipe_data
+{
+	int	i;
+	int	index;
+	char *rl2;
+}	t_change_pipe_data;
+
+
+typedef struct s_expander_data
+{
+	int	i;
+	int	x;
+	int	j;
+	int	total;
+	int	verif;
+	char *user;
+}	t_expander_data;
+
+typedef struct s_strdup2_data
+{
+	int		total;
+	int		index;
+	int	i;
+	int	x;
+}	t_strdup2_data;
 
 typedef struct s_pipe_chain
 {
@@ -63,7 +86,7 @@ char	*reput_pipe(t_pipe_chain *checker_node, int *tab);
 int		*get_tab(const char *rl, int *tab);
 int		pipe_numbers(const char *rl);
 char	*change_pipe(char *rl, int *tab);
-char	*ft_strdup2(t_pipe_chain *checker_node, int *tab);
+char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j);
 
 //Expander
 void	expander(t_pipe_chain *checker_node);

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/15 15:52:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:02:24 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int	main(int ac, char **av, char **envp)
     char    *rl;
     int     pid;
 
-    printf("%s\n", av[1]);
-    printf("%d\n", ac);
-
+    if (av || ac)
+        printf("");
     while (1)
     {
         rl = readline ("Prompt > ");  // Initialisation correcte de rl avant son utilisation
