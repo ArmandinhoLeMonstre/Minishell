@@ -12,6 +12,30 @@
 
 #include "minishell.h"
 
+void	get_space_number(const char *rl, int *i, int *nbr)
+{
+		if (rl[*i] == 39)
+		{
+			(*i)++;
+			while (rl[*i] != 39)
+			{
+				if (rl[*i] == ' ')
+					(*nbr)++;
+				(*i)++;
+			}
+		}
+		if (rl[*i] == 34)
+		{
+			(*i)++;
+			while (rl[*i] != 34)
+			{
+				if (rl[*i] == ' ')
+					(*nbr)++;
+				(*i)++;
+			}
+		}
+}
+
 int	space_numbers(const char *rl)
 {
 	int	i;
@@ -21,88 +45,67 @@ int	space_numbers(const char *rl)
 	nbr = 0;
 	while (rl[i])
 	{
-		if (rl[i] == 39)
-		{
-			i++;
-			while (rl[i] != 39)
-			{
-				if (rl[i] == ' ')
-					nbr++;
-				i++;
-			}
-		}
-		if (rl[i] == 34)
-		{
-			i++;
-			while (rl[i] != 34)
-			{
-				if (rl[i] == ' ')
-					nbr++;
-				i++;
-			}
-		}
+		if (rl[i] == 39 || rl[i] == 34)
+			get_space_number(rl, &i, &nbr);
 		i++;
 	}
 	return (nbr);
 }
 
+int change_space34(char *rl, t_change_space_data *data)
+{
+	data->rl2[data->i] = rl[data->i];
+	data->i++;
+	while (rl[data->i] != 34)
+	{
+		if (rl[data->i] == ' ')
+		{
+			data->rl2[data->i] = '\t';
+			data->index++;
+		}
+		else
+			data->rl2[data->i] = rl[data->i];
+		data->i++;
+	}
+	return (data->i);
+}
+
+int change_space39(char *rl, t_change_space_data *data)
+{
+	data->rl2[data->i] = rl[data->i];
+	data->i++;
+	while (rl[data->i] != 39)
+	{
+		if (rl[data->i] == ' ')
+		{
+			data->rl2[data->i] = '\t';
+			data->index++;
+		}
+		else
+			data->rl2[data->i] = rl[data->i];
+		data->i++;
+	}
+	return (data->i);
+}
+
 char *change_space(char *rl)
 {
-	int	i;
-	int	index;
-	char *rl2;
+	t_change_space_data data;
 
-	i = 0;
-	index = 0;
-	rl2 = malloc(sizeof(char) * (ft_strlen(rl) + 1));
-	while (rl[i])
+	data.i = 0;
+	data.index = 0;
+	data.rl2 = malloc(sizeof(char) * (ft_strlen(rl) + 1));
+	while (rl[data.i])
 	{
-		if (rl[i] == 34)
-		{
-			rl2[i] = rl[i];
-			i++;
-			while (rl[i] != 34)
-			{
-				if (rl[i] == ' ')
-				{
-					rl2[i] = '\t';
-					//tab[index] = i;
-					index++;
-				}
-				else
-					rl2[i] = rl[i];
-				i++;
-			}
-		}
-		if (rl[i] == 39)
-		{
-			rl2[i] = rl[i];
-			i++;
-			while (rl[i] != 39)
-			{
-				if (rl[i] == ' ')
-				{
-					rl2[i] = '\t';
-					//tab[index] = i;
-					index++;
-				}
-				else
-					rl2[i] = rl[i];
-				i++;
-			}
-		}
-			rl2[i] = rl[i];
-		i++;
+		if (rl[data.i] == 34)
+				change_space34(rl, &data);
+		if (rl[data.i] == 39)
+			change_space39(rl, &data);
+		data.rl2[data.i] = rl[data.i];
+		data.i++;
 	}
-	rl2[i] = '\0';
-	printf("la string ds change space %s\n", rl2);
-	i = 0;
-	// while (i < index)
-	// {
-	// 	printf("le tab%d\n", tab[i]);
-	// 	i++;
-	// }
-	return (rl2);
+	data.rl2[data.i] = '\0';
+	return (data.rl2);
 }
 
 char	**ft_strdup3(char **cmd)

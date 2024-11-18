@@ -185,22 +185,3 @@ char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j)
 	}
 	return (NULL);
 }
-
-// int	pipe_split(t_pipe_chain *stack, char *rl, char **envp, int *tab)
-// {
-// 	char	**split_rl;
-// 	int	i;
-
-// 	i = 0;
-// 	rl = change_pipe(rl, tab);
-// 	split_rl = ft_split(rl, '|');
-// 	if (!split_rl)
-// 		return (ft_free2(split_rl), 2);
-// 	while (split_rl[i])
-// 	{
-// 		append_node(&stack, split_rl[i], envp);
-// 		i++;
-// 	}
-// 	ft_free2(split_rl);
-// 	return (0);
-// }

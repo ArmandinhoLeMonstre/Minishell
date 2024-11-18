@@ -43,6 +43,13 @@ typedef struct s_change_pipe_data
 	char *rl2;
 }	t_change_pipe_data;
 
+typedef struct s_change_space_data
+{
+	int	i;
+	int	index;
+	char *rl2;
+}	t_change_space_data;
+
 
 typedef struct s_expander_data
 {
