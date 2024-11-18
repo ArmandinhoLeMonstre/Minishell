@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 12:43:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:17:21 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "../Libft/libft.h"
+
+typedef struct s_clean_string_data
+{
+	char *string2;
+	int	i;
+	int	h;
+	int	verif;
+}	t_clean_string_data;
 
 typedef struct s_get_tab_data
 {

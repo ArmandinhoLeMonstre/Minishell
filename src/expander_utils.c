@@ -6,78 +6,70 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/16 19:20:08 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:34:25 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
+int		clean_string34(t_pipe_chain *checker_node, t_clean_string_data *data, int *total, char *user)
 {
-	char *string2;
-	int	i;
-	int	h;
-	int	verif;
-	
-	string2 = malloc (sizeof(char) * total + 1);
-	i = 0;
-	total = 0;
-	verif = 0;
-	while (checker_node->pipe_string[i])
-	{
-		if (checker_node->pipe_string[i] == 39)
-			verif++;
-		if (verif % 2 == 0)
+		data->string2[(*total)] = checker_node->pipe_string[data->i];
+		(*total)++;
+		data->i++;
+		while (checker_node->pipe_string[data->i] != 34)
 		{
-			if (checker_node->pipe_string[i] == 34)
+			if (checker_node->pipe_string[data->i] == '$')
 			{
-				string2[total] = checker_node->pipe_string[i];
-				total++;
-				i++;
-				while (checker_node->pipe_string[i] != 34)
+				if (check_dollars(checker_node, data->i) == 1)
 				{
-					if (checker_node->pipe_string[i] == '$')
-					{
-						if (check_dollars(checker_node, i) == 1)
-						{
-							h = 0;
-							while (user[h])
-							{
-								string2[total] = user[h];
-								h++;
-								total++;
-							}
-							i = i + 5;
-						}
-						else
-						{
-							while (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != 34)
-								i++;
-							//i--;
-						}
-					}
-					if (checker_node->pipe_string[i] != 34)
-					{
-						string2[total] = checker_node->pipe_string[i];
-						total++;
-						i++;
-					}
+					data->h = 0;
+					while (user[data->h])
+						data->string2[(*total)++] = user[data->h++];
+					data->i = data->i + 5;
+				}
+				else
+				{
+					while (checker_node->pipe_string[data->i] != ' ' && checker_node->pipe_string[data->i] != 34)
+						data->i++;
 				}
 			}
-			if (checker_node->pipe_string[i] != '\0') //&& checker_node->pipe_string[i] != 34)
+			if (checker_node->pipe_string[data->i] != 34)
 			{
-				string2[total] = checker_node->pipe_string[i];
-				total++;
+				data->string2[*total] = checker_node->pipe_string[data->i];
+				(*total)++;
+				data->i++;
 			}
-			i++;
+		}
+		return (0);
+}
+
+char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
+{
+	t_clean_string_data data;
+	
+	data.string2 = malloc (sizeof(char) * total + 1);
+	data.i = 0;
+	total = 0;
+	data.verif = 0;
+	while (checker_node->pipe_string[data.i])
+	{
+		if (checker_node->pipe_string[data.i] == 39)
+			data.verif++;
+		if (data.verif % 2 == 0)
+		{
+			if (checker_node->pipe_string[data.i] == 34)
+				clean_string34(checker_node, &data, &total, user);
+			if (checker_node->pipe_string[data.i] != '\0')
+			{
+				data.string2[total++] = checker_node->pipe_string[data.i];
+				//total++;
+			}
+			data.i++;
 		}
 		else
-		{
-			string2[total] = checker_node->pipe_string[i];
-			total++;
-			i++;
-		}
+			data.string2[total++] = checker_node->pipe_string[data.i++];
 	}
-	string2[total] = '\0';
-	return (string2);
+	data.string2[total] = '\0';
+	return (data.string2);
 }
