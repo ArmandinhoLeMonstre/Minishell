@@ -132,7 +132,7 @@ int	pipe_check(t_pipe_chain *checker_node)
 	return (i);
 }
 
-int	add_path(t_pipe_chain *checker_node, int *tab_space, int j)
+int	add_path(t_pipe_chain *checker_node, int j)
 {
 	int x;
 	
@@ -141,15 +141,14 @@ int	add_path(t_pipe_chain *checker_node, int *tab_space, int j)
 	{
 		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 		checker_node->cmd_path = get_paths(checker_node);
-		//if (tab_space != NULL)
-		checker_node->cmd = ft_strdup3(checker_node->cmd, tab_space);
+		checker_node->cmd = ft_strdup3(checker_node->cmd);
 		checker_node = checker_node->next;
 		x++;
 	}
 	return (0);
 }
 
-void	while_space(t_pipe_chain *checker_node, int *tab_space, int j)
+void	while_space(t_pipe_chain *checker_node, int j)
 {
 	int x;
 
@@ -158,7 +157,7 @@ void	while_space(t_pipe_chain *checker_node, int *tab_space, int j)
 	{
 		if (space_numbers(checker_node->pipe_string) > 0)
 		{
-			checker_node->pipe_string = change_space(checker_node->pipe_string, tab_space);
+			checker_node->pipe_string = change_space(checker_node->pipe_string);
 		}
 		checker_node = checker_node->next;
 		x++;
@@ -168,21 +167,19 @@ void	while_space(t_pipe_chain *checker_node, int *tab_space, int j)
 void	pipe_parsing(t_pipe_chain **stack, int *tab)
 {
 	t_pipe_chain	*checker_node;
-	int				*tab_space;
 	int				j;
-	int				x;
+	//int				x;
 	
-	tab_space = NULL;
 	checker_node = *stack;
 	j = stack_len(checker_node);
-	x = 0;
+	//x = 0;
 	if (tab != NULL)
 	{
 		ft_strdup2(checker_node, tab, j);
 		free(tab);
 	}
 	expander(checker_node);
-	while_space(checker_node, tab_space, j);
+	while_space(checker_node, j);
 	pipe_check(checker_node);
-	add_path(checker_node, tab_space, j);
+	add_path(checker_node, j);
 }

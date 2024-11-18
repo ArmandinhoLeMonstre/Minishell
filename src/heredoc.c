@@ -43,10 +43,10 @@ int	ft_strcmp(const char *s1, const char *s2)
 void	display_line(t_pipe_chain *checker_node)
 {
 	char	*line;
-	int		len;
+	//int		len;
 
 	line = ft_strdup("");
-	len = ft_strlen(checker_node->heredoc_chars);
+	//len = ft_strlen(checker_node->heredoc_chars);
 	if (pipe(checker_node->fd) == -1)
 		exit(1);
 	while(1)

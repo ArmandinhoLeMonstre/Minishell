@@ -4,7 +4,8 @@ LIBFT = ./libft/libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
-MFLAGS = -lreadline -Wall -Wextra -Werror -g3
+MFLAGS = -Wall -Wextra -Werror -g3
+LINK = -L/home/armitite/.brew/Cellar/readline/8.2.13/lib -I/home/armitite/.brew/Cellar/readline/8.2.13/include -lreadline
 
 RM = rm -rf
 
@@ -24,7 +25,7 @@ all : $(LIBFT) $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo "\033[0;33m\nCOMPILING MINISHELL...\n"
-	@$(CC) $(MFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(MFLAGS) $(OBJ) $(LIBFT) $(LINK) -o $(NAME)
 	@echo "\033[1;32m./minishell created\n"
 
 $(LIBFT)	:

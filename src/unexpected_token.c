@@ -44,9 +44,7 @@ int	after_token(char *rl, int *i)
 int	token_checker(char *rl)
 {
 	int	i;
-	int	x;
 	
-	x = 0;
 	i = 0;
 	while (rl[i])
 	{

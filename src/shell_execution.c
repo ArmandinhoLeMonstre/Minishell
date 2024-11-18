@@ -70,10 +70,10 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 	int	pid;
 	int	fd[2];
 	int	x;
-	int	j;
+	//int	j;
 
 	x = 0;
-	j = get_outfile_number(exec_nodes);
+	//j = get_outfile_number(exec_nodes);
 	while (exec_nodes->next != NULL)
 	{
 		if (pipe(fd) == -1)
@@ -109,7 +109,7 @@ int	shell_exec2(t_pipe_chain *exec_nodes)
 {
 	int	x;
 	int	j;
-	int	h;
+	//int	h;
 	int	pid;
 	//int	std_out = dup(1);
 	//int	stdt_in = dup(0);
@@ -140,7 +140,7 @@ int	shell_exec2(t_pipe_chain *exec_nodes)
 		else
 		{
 			x = 0;
-			h = cmd_loop2(exec_nodes);
+			cmd_loop2(exec_nodes);
 			//printf("le h %d\n", h);
 		}
 		j = 0;

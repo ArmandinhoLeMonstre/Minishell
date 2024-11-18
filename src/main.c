@@ -32,10 +32,10 @@ int	main(int ac, char **av, char **envp)
     int     pid;
 
     if (av || ac)
-        printf("");
+        printf("a");
     while (1)
     {
-        rl = readline ("Prompt > ");  // Initialisation correcte de rl avant son utilisation
+        rl = readline("Prompt > ");  // Initialisation correcte de rl avant son utilisation
         pid = fork();
 		if (pid == -1)
 			exit(1);

@@ -19,7 +19,8 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "../Libft/libft.h"
+# include "../libft/include/libft.h"
+#include <sys/wait.h>
 
 typedef struct s_clean_string_data
 {
@@ -104,9 +105,9 @@ int	check_dollars(t_pipe_chain *checker_node, int i);
 
 //Clean_space
 int	space_numbers(const char *rl);
-char *change_space(char *rl, int *tab);
+char *change_space(char *rl);
 int *get_tab_space(const char *rl, int *tab);
-char	**ft_strdup3(char **cmd, int *tab);
+char	**ft_strdup3(char **cmd);
 
 //pipe_parsing fonctions
 int		pipe_noding(char *rl, char **envp);
@@ -144,4 +145,6 @@ void	free_nodes(t_pipe_chain **a);
 int		panic_parsing(t_pipe_chain *checker_node, int error_code);
 void	files_error(t_pipe_chain *checker_node, int c);
 
+
+extern char *readline PARAMS((const char *));
 #endif
