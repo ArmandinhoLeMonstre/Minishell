@@ -12,61 +12,89 @@
 
 #include "minishell.h"
 
-void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2])
+void	else_exec_output(t_pipe_chain *exec_nodes, int fd[2])
 {
-	int	std_out = dup(1);
-	
-	dup2(std_out, 1);
-	//fd[0] = 0;
-	if (exec_nodes->infile != 0)
+	if (exec_nodes->prev != NULL)
 	{
-		if (exec_nodes->cmd[1] != NULL) //&& exec_nodes->cmd[1][0] == '-')
-		{//write(1, "je test\n", 7);
-			if (exec_nodes->infile == -1)
-				panic_parsing(exec_nodes, 0);
-			dup2(exec_nodes->infile, 0);
-			// close(fd[0]);
-			// close(fd[1]);
-			execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
-		}
-		if (exec_nodes->cmd[1] == NULL)
+		if (exec_nodes->prev->outfile != 0 || exec_nodes->prev->append != 0)
 		{
-			if (exec_nodes->infile == -1)
-				panic_parsing(exec_nodes, 0);
-			dup2(exec_nodes->infile, 0);
-			// close(fd[0]);
-			// close(fd[1]);
-			execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+			if (pipe(fd) == -1)
+				exit(1);
+			dup2(fd[0], 0);
+			close(fd[0]);
+			close(fd[1]);
 		}
 	}
-	else
+	if (ft_strlen(exec_nodes->heredoc_chars) > 0)
 	{
-		if (exec_nodes->prev != NULL)
-		{
-			if (exec_nodes->prev->outfile != 0)
+		dup2(exec_nodes->fd[0], 0);
+		close(exec_nodes->fd[0]);
+		close(exec_nodes->fd[1]);
+	}
+	if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+	{
+		free_nodes(&exec_nodes);
+		exit(1);
+	}
+}
+
+void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2])
+{
+	int	std_out;
+	
+	std_out = dup(1);
+	dup2(std_out, 1);
+	if (exec_nodes->infile != 0)
+	{
+			if (exec_nodes->infile == -1)
+				panic_parsing(exec_nodes, 0);
+			dup2(exec_nodes->infile, 0);
+			if (exec_nodes->prev && (exec_nodes->outfile == 0 && exec_nodes->append == 0))
 			{
-				if (pipe(fd) == -1)
-					exit(1);
-				dup2(fd[0], 0);
 				close(fd[0]);
 				close(fd[1]);
 			}
-		}
-		if (ft_strlen(exec_nodes->heredoc_chars) > 0)
-		{
-			dup2(exec_nodes->fd[0], 0);
-			close(exec_nodes->fd[0]);
-			close(exec_nodes->fd[1]);
-		}
-		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+			if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+			{
+				free_nodes(&exec_nodes);
+				exit(1);
+			}
 	}
-	close(fd[0]); // a supp
+	else
+		else_exec_output(exec_nodes, fd);
+}
+
+void	else_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
+{
+	if (exec_nodes->checker == 2)
+	{
+		dup2(exec_nodes->outfile, 1);
+		close(exec_nodes->outfile);
+	}
+	if (exec_nodes->checker == 3)
+	{
+		dup2(exec_nodes->append, 1);
+		close(exec_nodes->append);
+	}
+	if (ft_strlen(exec_nodes->heredoc_chars) > 0)
+	{
+		dup2(exec_nodes->fd[0], 0);
+		close(exec_nodes->fd[0]);
+		close(exec_nodes->fd[1]);
+	}
+	close(fd[0]);
+	close(fd[1]);
+	if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+	{
+		free_nodes(&exec_nodes);
+		exit(1);
+	}
 }
 
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 {
 	
-	if (exec_nodes->infile != 0 && exec_nodes->cmd[1] == NULL)
+	if (exec_nodes->infile != 0)
 	{
 		if (exec_nodes->infile == -1)
 			panic_parsing(exec_nodes, 0);
@@ -82,34 +110,16 @@ void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 			dup2(exec_nodes->append, 1);
 			close(exec_nodes->append);
 		}
-		// close(fd[0]);
-	 	// close(fd[1]);
-		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
-	}
-	if (exec_nodes->infile == 0)
-	{	
-		if (exec_nodes->checker == 2)
-		{
-			dup2(exec_nodes->outfile, 1);
-			close(exec_nodes->outfile);
-		}
-		if (exec_nodes->checker == 3)
-		{
-			dup2(exec_nodes->append, 1);
-			close(exec_nodes->append);
-		}
-		if (ft_strlen(exec_nodes->heredoc_chars) > 0)
-		{
-			dup2(exec_nodes->fd[0], 0);
-			close(exec_nodes->fd[0]);
-			close(exec_nodes->fd[1]);
-		}
+		close(fd[0]);
+	 	close(fd[1]);
 		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
 		{
-			close(fd[0]);
-			close(fd[1]);
+			free_nodes(&exec_nodes);
+			exit(1);
 		}
 	}
+	if (exec_nodes->infile == 0)
+		else_exec_outfile(exec_nodes, fd);
 }
 
 void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
@@ -119,8 +129,15 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 		if (exec_nodes->infile == -1)
 			panic_parsing(exec_nodes, 0);
 		dup2(exec_nodes->infile, 0);
+		close(exec_nodes->infile);
 		dup2(fd[1], 1);
-		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+		close(fd[1]);
+		close(fd[0]);
+		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+		{
+			free_nodes(&exec_nodes);
+			exit(1);
+		}
 	}
 	if (exec_nodes->infile == 0)
 	{
@@ -133,6 +150,10 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 			close(exec_nodes->fd[1]);
 			close(exec_nodes->fd[0]);
 		}
-		execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp);
+		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+		{
+			free_nodes(&exec_nodes);
+			exit(1);
+		}
 	}
 }
