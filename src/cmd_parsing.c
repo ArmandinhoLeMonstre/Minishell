@@ -96,6 +96,7 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
 		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, cmd_name);
 	}
+	free(cmd_name);
 }
 
 int	cmd_check(t_pipe_chain *checker_node, int *i, int h)

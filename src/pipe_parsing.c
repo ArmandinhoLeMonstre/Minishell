@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 11:15:21 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:12:15 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,10 @@ int	add_path(t_pipe_chain *checker_node, int j)
 	while (x < j)
 	{
 		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
+		if (ft_builtins(checker_node->cmd) == 0)
+		{
+			exit(1);
+		}
 		checker_node->cmd_path = get_paths(checker_node);
 		checker_node->cmd = ft_strdup3(checker_node->cmd);
 		checker_node = checker_node->next;
@@ -168,11 +172,9 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 {
 	t_pipe_chain	*checker_node;
 	int				j;
-	//int				x;
 	
 	checker_node = *stack;
 	j = stack_len(checker_node);
-	//x = 0;
 	if (tab != NULL)
 	{
 		ft_strdup2(checker_node, tab, j);

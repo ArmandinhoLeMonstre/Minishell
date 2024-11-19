@@ -1,0 +1,14 @@
+a.out.dSYM
+bouge
+builtins
+include
+libft
+Makefile
+minishell
+obj
+out.txt
+src
+test
+test2
+test3
+test4

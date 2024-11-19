@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 16:17:21 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:17:38 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include <unistd.h>
 # include "../libft/include/libft.h"
 #include <sys/wait.h>
+# include <dirent.h>
+# include <errno.h>
+
+//extern int //g_exitcode;
 
 typedef struct s_clean_string_data
 {
@@ -92,6 +96,13 @@ typedef struct s_pipe_chain
 	struct s_pipe_chain	*prev;
 }	t_pipe_chain;
 
+// Builtins part :
+
+//cd
+int	ft_builtins(char **token);
+void	cd(char **token);
+int	ft_isbuiltin(char *str);
+
 // Parsing part :
 
 //quote_checking
@@ -133,6 +144,7 @@ int		ft_is_bash_char(int c);
 
 //Heredoc
 void	display_line(t_pipe_chain *checker_node);
+int	ft_strcmp(const char *s1, const char *s2);
 
 //cmd_parsing fonctions
 int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
