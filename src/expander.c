@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 11:40:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:40:18 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,17 @@ void	expander(t_pipe_chain *checker_node)
 	data.total = 0;
 	data.j = stack_len(checker_node);
 	data.user = get_user(checker_node);
+	printf("la taille : %ld\n", ft_strlen(checker_node->pipe_string));
 	while (data.x < data.j)
 	{
 		data.i = 0;
 		data.verif = 0;
 		parse_string_expander(checker_node, &data);
-		checker_node->pipe_string = ft_strdup(clean_string(checker_node, data.total, data.user));
+		//checker_node->pipe_string = ft_strdup(clean_string(checker_node, data.total, data.user));
+		printf("la taille total : %d\n", data.total);
+		clean_string(checker_node, data.total, data.user);
 		checker_node = checker_node->next;
 		data.x++;
 	}
+	free(data.user);
 }

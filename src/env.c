@@ -6,11 +6,11 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 21:04:10 by rafnasci          #+#    #+#             */
-/*   Updated: 2024/11/19 16:45:14 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:52:25 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 static t_env	*ft_last_node(t_env *list)
 {

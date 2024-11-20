@@ -6,11 +6,11 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:05:23 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/19 16:45:29 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:52:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 int	listlen(t_env *list)
 {

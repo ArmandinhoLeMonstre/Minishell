@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:44:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/19 18:43:10 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:06:30 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_isbuiltin(char *str)
 // 	return (0);
 // }
 
-int	ft_builtins(char **token)
+int	ft_builtins(char **token, t_env **env)
 {
 	if (!token[0])
 		return (1);
@@ -48,10 +48,10 @@ int	ft_builtins(char **token)
 		return (cd(token), 0);
 	// else if (ft_strncmp(token[0], "pwd", INT_MAX) == 0)
 	// 	return (pwd(env), 0);
-	// else if (ft_strncmp(token[0], "export", INT_MAX) == 0)
-	// 	return (export(token, env), 0);
-	// else if (ft_strncmp(token[0], "unset", INT_MAX) == 0)
-	// 	return (unset(token, env), 0);
+	else if (ft_strncmp(token[0], "export", INT_MAX) == 0)
+		return (export(token, env), 0);
+	else if (ft_strncmp(token[0], "unset", INT_MAX) == 0)
+		return (unset(token, env), 0);
 	// else if (ft_strncmp(token[0], "env", INT_MAX) == 0)
 	// {
 	// 	if (!ft_env(node))

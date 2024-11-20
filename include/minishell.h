@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/19 18:17:38 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:16:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,19 @@
 #include <sys/wait.h>
 # include <dirent.h>
 # include <errno.h>
+#include <stdbool.h>
+#include <stdarg.h>
+#include <signal.h>
 
 //extern int //g_exitcode;
+
+typedef struct s_env
+{
+	struct s_env	*next;
+	char			*name;
+	char			*value;
+	bool			equal;
+}	t_env;
 
 typedef struct s_clean_string_data
 {
@@ -97,9 +108,20 @@ typedef struct s_pipe_chain
 }	t_pipe_chain;
 
 // Builtins part :
+void	unset(char **token, t_env **env);
+int	ft_builtins(char **token, t_env **env);
+
+//export 
+t_env	*make_envlist(char **env);
+int	listlen(t_env *list);
+void	free_list(t_env *list);
+int	ft_printf_fd(int fd, const char *format, ...);
+void	sort_env(t_env *top);
+void	append_list(t_env **env_list, char *str);
+void	export(char **token, t_env **env);
+void	free_node(t_env *node);
 
 //cd
-int	ft_builtins(char **token);
 void	cd(char **token);
 int	ft_isbuiltin(char *str);
 

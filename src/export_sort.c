@@ -6,11 +6,36 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 18:00:06 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/19 16:45:24 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:52:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
+
+int	ft_printf_fd(int fd, const char *format, ...)
+{
+	va_list	args;
+	int		i;
+
+	i = 0;
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == 's')
+				ft_putstr_fd(va_arg(args, char *), fd);
+			else if (format[i] == 'd')
+				ft_putnbr_fd(va_arg(args, int), fd);
+		}
+		else
+			ft_putchar_fd(format[i], fd);
+		i++;
+	}
+	va_end(args);
+	return (1);
+}
 
 static void	swap_list(t_env *a, t_env *b)
 {

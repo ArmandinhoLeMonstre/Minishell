@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/17 17:54:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:16:55 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,18 @@ int cmd_loop(t_pipe_chain *exec_nodes)
 		x++;
 	}
 	if (exec_nodes->cmd_path == NULL)
-			return (free_nodes(&exec_nodes), exit(1), 2);
+	{
+		if (exec_nodes->infile != 0)
+			close(exec_nodes->infile);
+		if (exec_nodes->outfile != 0)
+		{
+			close(exec_nodes->outfile);
+			free(exec_nodes->last_outfile);
+		}
+		return (free(exec_nodes->cmd_string), ft_free2(exec_nodes->cmd), 
+					free(exec_nodes->heredoc_chars), free(exec_nodes->pipe_string), 
+						free_nodes(&exec_nodes), exit(1), 2);
+	}
 	pid_exec_outfile(exec_nodes, fd);
 	return (x);
 }
@@ -89,7 +100,16 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 		if (pid == 0)
 		{
 			if (exec_nodes->cmd_path == NULL)
-				return (free_nodes(&exec_nodes), exit(1), 2);
+			{
+				if (exec_nodes->infile != 0)
+				{
+					close(exec_nodes->infile);
+					free(exec_nodes->last_infile);
+				}
+				return (free(exec_nodes->cmd_string), ft_free2(exec_nodes->cmd), 
+							free(exec_nodes->heredoc_chars), free(exec_nodes->pipe_string), 
+								free_nodes(&exec_nodes), exit(1), 2);
+			}
 			pid_exec(exec_nodes, fd);
 			exit(1);
 		}
@@ -102,8 +122,13 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 	if (exec_nodes->cmd_path == NULL)
 	{
 		if (exec_nodes->infile != 0)
+		{
 			close(exec_nodes->infile);
-		return (free_nodes(&exec_nodes), exit(1), 2);
+			free(exec_nodes->last_infile);
+		}
+		return (free(exec_nodes->cmd_string), ft_free2(exec_nodes->cmd), 
+					free(exec_nodes->heredoc_chars), free(exec_nodes->pipe_string), 
+						free_nodes(&exec_nodes), exit(1), 2);
 	}
 	pid_exec_output(exec_nodes, fd);
 	return (x);

@@ -6,27 +6,27 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 21:34:54 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/19 17:17:48 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:07:04 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
-int	check_identifier(char *str)
-{
-	int	i;
+// int	check_identifier(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	if (!str[0] || (str[0] != '_' && !ft_isalpha(str[0])))
-		return (0);
-	while (str[i] && str[i] != '=')
-	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	if (!str[0] || (str[0] != '_' && !ft_isalpha(str[0])))
+// 		return (0);
+// 	while (str[i] && str[i] != '=')
+// 	{
+// 		if (!ft_isalnum(str[i]) && str[i] != '_')
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
 static void	unset_var(char *str, t_env **env)
 {
@@ -64,13 +64,13 @@ void	unset(char **token, t_env **env)
 	i = 1;
 	while (token[i])
 	{
-		if (!check_identifier(token[i]))
-		{
-			ft_printf_fd(2, "bash: export: %s: not a valid identifier\n",
-				token[i]);
-			//g_exitcode = 1;
-		}
-		else
+		// if (!check_identifier(token[i]))
+		// {
+		// 	ft_printf_fd(2, "bash: export: %s: not a valid identifier\n",
+		// 		token[i]);
+		// 	//g_exitcode = 1;
+		// }
+		// else
 			unset_var(token[i], env);
 		i++;
 	}

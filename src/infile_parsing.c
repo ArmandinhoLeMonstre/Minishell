@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   infile_parsing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:53:04 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 11:29:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:09:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect)
 	}
 	file_name[x] = '\0';
 	redirect_check_dup(checker_node, file_name, redirect);
+	free(file_name);
 	if (redirect == 1 || redirect == 2 || redirect == 3)
 		outfiles_function(checker_node, redirect);
 	if (redirect == 4)
