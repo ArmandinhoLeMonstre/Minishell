@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 16:48:52 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:01:38 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*clean_string(t_pipe_chain *checker_node, int total, char *user)
 			data.string2[total++] = checker_node->pipe_string[data.i++];
 	}
 	data.string2[total] = '\0';
-	free(checker_node->pipe_string);
+	//free(checker_node->pipe_string);
 	checker_node->pipe_string = ft_strdup(data.string2);
 	free(data.string2);
 	return (NULL);

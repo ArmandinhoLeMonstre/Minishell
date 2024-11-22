@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 17:08:13 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 19:54:34 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	pipe_check(t_pipe_chain *checker_node)
 				pipe_check_commas(checker_node, &i, i);
 			else if (checker_node->pipe_string[i] == '>' || checker_node->pipe_string[i] == '<')
 				pipe_check_redirect(checker_node, &i, i);
-			else if (ft_isalnum((int)checker_node->pipe_string[i]) == 1 || checker_node->pipe_string[i] == '-' || checker_node->pipe_string[i] == '/')
+			else if (checker_node->pipe_string[i] != 32 && ft_is_bash_char(checker_node->pipe_string[i]) == 0)
 			{
 				cmd_check(checker_node, &i, i);
 			}
@@ -135,15 +135,16 @@ int	pipe_check(t_pipe_chain *checker_node)
 int	add_path(t_pipe_chain *checker_node, int j)
 {
 	int x;
+	//t_env	*env;
 	
 	x = 0;
 	while (x < j)
 	{
 		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
-		if (ft_builtins(checker_node->cmd) == 0)
-		{
-			exit(1);
-		}
+		// if (ft_builtins(checker_node->cmd, &env) == 0)
+		// {
+		// 	exit(1);
+		// }
 		checker_node->cmd_path = get_paths(checker_node);
 		checker_node->cmd = ft_strdup3(checker_node->cmd);
 		checker_node = checker_node->next;

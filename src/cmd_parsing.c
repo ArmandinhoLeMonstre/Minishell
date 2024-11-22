@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 17:00:58 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:04:16 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ char	*get_paths(t_pipe_chain *checker_node)
 	path1 = access_check(checker_node->cmd[0], allpaths);
 	if (path1 == NULL)
 	{
-		return (ft_putstr_fd(checker_node->cmd[0], 2),
-			ft_putendl_fd(": command not found", 2), ft_free2(allpaths), NULL);
+		return  (ft_free2(allpaths), NULL);
 	}
 	ft_free2(allpaths);
 	return (path1);
@@ -104,14 +103,15 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 	int	j;
 	
 	j = 0;
-	while (checker_node->pipe_string[*i] && (ft_is_bash_char(checker_node->pipe_string[*i]) != 1))
+	while (checker_node->pipe_string[*i])
 	{
-		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
-			break ;
 		j++;
 		(*i)++;
+		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
+			break ;
 		if (checker_node->pipe_string[*i] == ' ')
 			break ;
+		printf("le char %c\n", checker_node->pipe_string[*i]);
 	}
 	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1 && checker_node->pipe_string[*i - 1] == ' ')
 		j--;

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 20:16:22 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:17:05 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <signal.h>
+#include <termios.h>
 
 //extern int //g_exitcode;
+
+#define ECHOCTL  0001000  /* Echo control characters as ^(X) notation. */
+
 
 typedef struct s_env
 {
@@ -107,9 +111,15 @@ typedef struct s_pipe_chain
 	struct s_pipe_chain	*prev;
 }	t_pipe_chain;
 
+//Signals
+void	ft_exec_sig_handler(int sig);
+void	ft_main_sig_handler(int sig);
+
 // Builtins part :
+char	**build_env(t_env **env);
 void	unset(char **token, t_env **env);
-int	ft_builtins(char **token, t_env **env);
+int	ft_builtins(char **token, t_env **env, int fd[2], int keycode);
+void	exit_built(char **token);
 
 //export 
 t_env	*make_envlist(char **env);
@@ -172,7 +182,7 @@ int	ft_strcmp(const char *s1, const char *s2);
 int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
 
 //execution
-int		shell_exec2(t_pipe_chain *exec_nodes);
+int		shell_exec2(t_pipe_chain *exec_nodes, int j);
 int		get_outfile_number(t_pipe_chain *exec_nodes);
 void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2]);
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2]);

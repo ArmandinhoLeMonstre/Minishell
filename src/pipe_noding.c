@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_noding.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 10:40:25 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:58:56 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	pipe_noding(char *rl, char **envp)
 	else
 		append_node(&stack, rl, envp);
 	pipe_parsing(&stack, tab);
-	shell_exec2(stack);
+	shell_exec2(stack, 0);
 	return (0);
 }
 

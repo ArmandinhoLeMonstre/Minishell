@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 20:23:20 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:17:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ int	ft_ispipe(char *str)
 	return (0);
 }
 
-void handle_sigint(int sig) {
-    if (sig)
-        printf("a");
-    if (isatty(STDIN_FILENO)) {
-        // Print a new prompt line when Ctrl-C is pressed
-        printf("\nPrompt > ");
-        fflush(stdout);
-    }
-}
+// void handle_sigint(int sig) {
+//     if (sig)
+//         printf("a");
+//     if (isatty(STDIN_FILENO)) {
+//         // Print a new prompt line when Ctrl-C is pressed
+//         printf("\nPrompt > ");
+//         fflush(stdout);
+//     }
+// }
 
-// Signal handler for Ctrl-D (EOF, SIGTERM in this context)
-void handle_eof(int sig) {
-    if (sig)
-        printf("a");
-    if (isatty(STDIN_FILENO)) {
-        // Exit the shell when Ctrl-D is pressed
-        printf("\nExiting shell...\n");
-        exit(0);
-    }
-}
+// // Signal handler for Ctrl-D (EOF, SIGTERM in this context)
+// void handle_eof(int sig) {
+//     if (sig)
+//         printf("a");
+//     if (isatty(STDIN_FILENO)) {
+//         // Exit the shell when Ctrl-D is pressed
+//         printf("\nExiting shell...\n");
+//         exit(0);
+//     }
+// }
 
 int	main(int ac, char **av, char **envp)
 {
@@ -60,19 +60,19 @@ int	main(int ac, char **av, char **envp)
         printf("Starting the prompt !\n");
     while (1)
     {
-        //  signal(SIGINT, handle_sigint);   // Ctrl-C (SIGINT)
-        // //signal(SIGQUIT, handle_sigquit); // Ctrl-\ (SIGQUIT)
-        // signal(SIGTERM, handle_eof);
         rl = readline("Prompt > ");
+        // signal(SIGINT, ft_main_sig_handler);
+		// signal(SIGQUIT, SIG_IGN);
         token = ft_split(rl, ' ');
-        if (ft_isbuiltin(token[0]) == 1)
+        if (ft_isbuiltin(token[0]) == 1 && ft_ispipe(rl) == 0)
         {
             //cd(token);
-            ft_builtins(token, &env);
+            ft_builtins(token, &env, 0, 0);
         }
         else
         {
-            ft_free2(token);
+            //ft_free2(token);
+            envp = build_env(&env);
             pid = fork();
             if (pid == -1)
                 exit(1);
@@ -85,6 +85,7 @@ int	main(int ac, char **av, char **envp)
             }
             wait(0);
             free(rl);
+            ft_free2(token);
         }
     }
     return (0);
