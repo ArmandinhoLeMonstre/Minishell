@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_space_commas.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:01:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 11:11:16 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:52:57 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	get_space_number(const char *rl, int *i, int *nbr)
 {
-		if (rl[*i] == 39)
+	if (rl[*i] == 39)
+	{
+		(*i)++;
+		while (rl[*i] != 39)
 		{
+			if (rl[*i] == ' ')
+				(*nbr)++;
 			(*i)++;
-			while (rl[*i] != 39)
-			{
-				if (rl[*i] == ' ')
-					(*nbr)++;
-				(*i)++;
-			}
 		}
-		if (rl[*i] == 34)
+	}
+	if (rl[*i] == 34)
+	{
+		(*i)++;
+		while (rl[*i] != 34)
 		{
+			if (rl[*i] == ' ')
+				(*nbr)++;
 			(*i)++;
-			while (rl[*i] != 34)
-			{
-				if (rl[*i] == ' ')
-					(*nbr)++;
-				(*i)++;
-			}
 		}
+	}
 }
 
 int	space_numbers(const char *rl)
@@ -52,7 +52,7 @@ int	space_numbers(const char *rl)
 	return (nbr);
 }
 
-int change_space34(char *rl, t_change_space_data *data)
+int	change_space34(char *rl, t_change_space_data *data)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
@@ -70,7 +70,7 @@ int change_space34(char *rl, t_change_space_data *data)
 	return (data->i);
 }
 
-int change_space39(char *rl, t_change_space_data *data)
+int	change_space39(char *rl, t_change_space_data *data)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
@@ -88,9 +88,9 @@ int change_space39(char *rl, t_change_space_data *data)
 	return (data->i);
 }
 
-char *change_space(char *rl)
+char	*change_space(char *rl)
 {
-	t_change_space_data data;
+	t_change_space_data	data;
 
 	data.i = 0;
 	data.index = 0;
@@ -98,7 +98,7 @@ char *change_space(char *rl)
 	while (rl[data.i])
 	{
 		if (rl[data.i] == 34)
-				change_space34(rl, &data);
+			change_space34(rl, &data);
 		if (rl[data.i] == 39)
 			change_space39(rl, &data);
 		data.rl2[data.i] = rl[data.i];

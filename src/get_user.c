@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_user.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:37:43 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/04 14:10:57 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:00:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,5 @@ char	*get_user(t_pipe_chain *checker_node)
 	path = ft_path_user(checker_node);
 	path = ft_strchr(path, '=');
 	path = ft_strdup(path + 1);
-	// if (path == NULL)
-	// {
-	// 	return (ft_putstr_fd(checker_node->cmd[0], 2),
-	// 		ft_putendl_fd(": command not found", 2), ft_free2(allpaths), NULL);
-	// }
 	return (path);
 }

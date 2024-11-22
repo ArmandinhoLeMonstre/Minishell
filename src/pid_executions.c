@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:27:17 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 19:36:06 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:04:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ void	else_exec_output(t_pipe_chain *exec_nodes, int fd[2])
 void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2])
 {
 	int	std_out;
-	
+
 	std_out = dup(1);
 	dup2(std_out, 1);
 	if (exec_nodes->infile != 0)
 	{
-			if (exec_nodes->infile == -1)
-				panic_parsing(exec_nodes, 0);
-			dup2(exec_nodes->infile, 0);
-			if (exec_nodes->prev && (exec_nodes->outfile == 0 && exec_nodes->append == 0))
-			{
-				close(fd[0]);
-				close(fd[1]);
-			}
-			if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
-			{
-				free_nodes(&exec_nodes);
-				exit(1);
-			}
+		if (exec_nodes->infile == -1)
+			panic_parsing(exec_nodes, 0);
+		dup2(exec_nodes->infile, 0);
+		if (exec_nodes->prev && (exec_nodes->outfile == 0
+				&& exec_nodes->append == 0))
+		{
+			close(fd[0]);
+			close(fd[1]);
+		}
+		if (execve(exec_nodes->cmd_path, 
+				exec_nodes->cmd, exec_nodes->envp) == -1)
+		{
+			free_nodes(&exec_nodes);
+			exit(1);
+		}
 	}
 	else
 		else_exec_output(exec_nodes, fd);
@@ -73,7 +75,7 @@ void	else_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 		close(exec_nodes->fd[1]);
 	}
 	if (exec_nodes->next != NULL && exec_nodes->prev != NULL)
-	{	
+	{
 		close(fd[0]);
 		close(fd[1]);
 	}
@@ -86,7 +88,6 @@ void	else_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 {
-	
 	if (exec_nodes->infile != 0)
 	{
 		if (exec_nodes->infile == -1)
@@ -94,11 +95,12 @@ void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2])
 		dup2(exec_nodes->infile, 0);
 		close(exec_nodes->infile);
 		if (exec_nodes->next != NULL && exec_nodes->prev != NULL)
-		{	
+		{
 			close(fd[0]);
 			close(fd[1]);
 		}
-		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+		if (execve(exec_nodes->cmd_path, exec_nodes->cmd,
+				exec_nodes->envp) == -1)
 		{
 			free_nodes(&exec_nodes);
 			exit(1);
@@ -119,7 +121,8 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 		dup2(fd[1], 1);
 		close(fd[1]);
 		close(fd[0]);
-		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+		if (execve(exec_nodes->cmd_path, exec_nodes->cmd,
+				exec_nodes->envp) == -1)
 		{
 			free_nodes(&exec_nodes);
 			exit(1);
@@ -136,7 +139,8 @@ void	pid_exec(t_pipe_chain *exec_nodes, int fd[2])
 			close(exec_nodes->fd[1]);
 			close(exec_nodes->fd[0]);
 		}
-		if (execve(exec_nodes->cmd_path, exec_nodes->cmd, exec_nodes->envp) == -1)
+		if (execve(exec_nodes->cmd_path, exec_nodes->cmd,
+				exec_nodes->envp) == -1)
 		{
 			free_nodes(&exec_nodes);
 			exit(1);

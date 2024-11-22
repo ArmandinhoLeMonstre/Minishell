@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 11:22:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:00:59 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,17 @@ int	ft_strcmp(const char *s1, const char *s2)
 void	display_line(t_pipe_chain *checker_node)
 {
 	char	*line;
-	//int		len;
-
+	
 	line = ft_strdup("");
-	//len = ft_strlen(checker_node->heredoc_chars);
 	if (pipe(checker_node->fd) == -1)
 		exit(1);
-	while(1)
+	while (1)
 	{
 		line = readline ("> ");
-		if(ft_strcmp(line, checker_node->heredoc_chars) == 0)
+		if (ft_strcmp(line, checker_node->heredoc_chars) == 0)
 		{
 			close(checker_node->fd[1]);
-			break;
+			break ;
 		}
 		ft_putstr_fd2(line, checker_node->fd[1]);
 		ft_putstr_fd2("\n", checker_node->fd[1]);

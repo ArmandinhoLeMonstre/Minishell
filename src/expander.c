@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/20 16:40:18 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:00:18 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 {
 	i++;
 	(*total)++;
-	while (checker_node->pipe_string[i] != 34)	
+	while (checker_node->pipe_string[i] != 34)
 	{
 		if (checker_node->pipe_string[i] == '$')
 		{
 			if (check_dollars(checker_node, i) == 1)
 			{
-				(*total) = (*total) + ft_strlen(user);							
+				(*total) = (*total) + ft_strlen(user);					
 				i = i + 4;
 			}
 			else
 			{
-				while (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != 34)
+				while (checker_node->pipe_string[i] != ' '
+					&& checker_node->pipe_string[i] != 34)
 					i++;
 				i--;
-			}					
+			}
 		}
 		i++;
 		(*total)++;
@@ -54,15 +55,16 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 		{
 			if (check_dollars(checker_node, data->i) == 1)
 			{
-				data->total = data->total + ft_strlen(data->user);							
+				data->total = data->total + ft_strlen(data->user);
 				data->i = data->i + 4;
 			}
 			else
 			{
-				while (checker_node->pipe_string[data->i] != ' ' && checker_node->pipe_string[data->i] != 34)
+				while (checker_node->pipe_string[data->i] != ' '
+					&& checker_node->pipe_string[data->i] != 34)
 					data->i++;
 				data->i--;
-			}					
+			}
 		}
 		if (checker_node->pipe_string[data->i] == 34)
 			data->i = commas34(checker_node, data->i, &data->total, data->user);
@@ -73,7 +75,7 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 
 void	expander(t_pipe_chain *checker_node)
 {
-	t_expander_data data;
+	t_expander_data	data;
 
 	data.x = 0;
 	data.total = 0;
@@ -85,8 +87,6 @@ void	expander(t_pipe_chain *checker_node)
 		data.i = 0;
 		data.verif = 0;
 		parse_string_expander(checker_node, &data);
-		//checker_node->pipe_string = ft_strdup(clean_string(checker_node, data.total, data.user));
-		printf("la taille total : %d\n", data.total);
 		clean_string(checker_node, data.total, data.user);
 		checker_node = checker_node->next;
 		data.x++;

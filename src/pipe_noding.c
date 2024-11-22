@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 17:58:56 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:05:55 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	}
 }
 
-t_pipe_chain *appending(int i, char **envp, char *rl)
+t_pipe_chain	*appending(int i, char **envp, char *rl)
 {
-	char **split_rl;
+	char			**split_rl;
+	t_pipe_chain	*stack;
 
-	t_pipe_chain *stack;
 	stack = NULL;
 	if (ft_ispipe(rl) != 0)
 	{
@@ -88,7 +88,7 @@ t_pipe_chain *appending(int i, char **envp, char *rl)
 }
 
 int	pipe_noding(char *rl, char **envp)
-{	
+{
 	int				i;
 	int				*tab;
 	t_pipe_chain	*stack;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unexpected_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:07:05 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 13:03:16 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:07:17 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int	token_checker(char *rl)
 		if (rl[i] == 34)
 		{
 			i++;
-			while(rl[i] != 34)
+			while (rl[i] != 34)
 				i++;
 		}
 		if (rl[i] == 39)
 		{
 			i++;
-			while(rl[i] != 39)
+			while (rl[i] != 39)
 				i++;
 		}
 		if (ft_is_bash_char(rl[i]))

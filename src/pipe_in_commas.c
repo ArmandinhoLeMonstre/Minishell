@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_in_commas.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 12:49:48 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:05:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	get_pipe_number(const char *rl, int *i, int *nbr)
 {
-		if (rl[*i] == 39)
+	if (rl[*i] == 39)
+	{
+		(*i)++;
+		while (rl[*i] != 39)
 		{
+			if (rl[*i] == '|')
+				(*nbr)++;
 			(*i)++;
-			while (rl[*i] != 39)
-			{
-				if (rl[*i] == '|')
-					(*nbr)++;
-				(*i)++;
-			}
 		}
-		if (rl[*i] == 34)
+	}
+	if (rl[*i] == 34)
+	{
+		(*i)++;
+		while (rl[*i] != 34)
 		{
+			if (rl[*i] == '|')
+				(*nbr)++;
 			(*i)++;
-			while (rl[*i] != 34)
-			{
-				if (rl[*i] == '|')
-					(*nbr)++;
-				(*i)++;
-			}
 		}
+	}
 }
 
 int	pipe_numbers(const char *rl)
@@ -52,7 +52,7 @@ int	pipe_numbers(const char *rl)
 	return (nbr);
 }
 
-int change_pipe34(char *rl, t_change_pipe_data *data, int *tab)
+int	change_pipe34(char *rl, t_change_pipe_data *data, int *tab)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
@@ -70,7 +70,7 @@ int change_pipe34(char *rl, t_change_pipe_data *data, int *tab)
 	}
 	return (data->i);
 }
-int change_pipe39(char *rl, t_change_pipe_data *data, int *tab)
+int	change_pipe39(char *rl, t_change_pipe_data *data, int *tab)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
@@ -89,9 +89,9 @@ int change_pipe39(char *rl, t_change_pipe_data *data, int *tab)
 	return (data->i);
 }
 
-char *change_pipe(char *rl, int *tab)
+char	*change_pipe(char *rl, int *tab)
 {
-	t_change_pipe_data data;
+	t_change_pipe_data	data;
 
 	data.i = 0;
 	data.index = 0;
@@ -159,7 +159,7 @@ int *get_tab(const char *rl, int *tab)
 
 char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j)
 {
-	t_strdup2_data data;
+	t_strdup2_data	data;
 
 	data.total = 0;
 	data.index = 0;
@@ -168,7 +168,8 @@ char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j)
 	{
 		data.i = 0;
 		if (checker_node->prev != NULL)
-			data.total = data.total + ft_strlen(checker_node->prev->pipe_string) + 1;
+			data.total = data.total
+				+ ft_strlen(checker_node->prev->pipe_string) + 1;
 		while (checker_node->pipe_string[data.i])
 		{
 			if (data.i + data.total == tab[data.index])
@@ -177,7 +178,8 @@ char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j)
 				data.index++;
 			}
 			else
-				checker_node->pipe_string[data.i] = checker_node->pipe_string[data.i];
+				checker_node->pipe_string[data.i]
+					= checker_node->pipe_string[data.i];
 			data.i++;
 		}
 		checker_node = checker_node->next;

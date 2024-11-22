@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:04:16 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:56:24 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*access_check(char *av, char **allpaths)
 		i++;
 		free(joinpaths);
 	}
-	//ft_free2(allpaths);
 	return (NULL);
 }
 
@@ -64,7 +63,7 @@ char	*get_paths(t_pipe_chain *checker_node)
 	path1 = access_check(checker_node->cmd[0], allpaths);
 	if (path1 == NULL)
 	{
-		return  (ft_free2(allpaths), NULL);
+		return (ft_free2(allpaths), NULL);
 	}
 	ft_free2(allpaths);
 	return (path1);
@@ -93,7 +92,8 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 	else
 	{
 		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
-		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, cmd_name);
+		checker_node->cmd_string
+			= ft_strjoin(checker_node->cmd_string, cmd_name);
 	}
 	free(cmd_name);
 }
@@ -101,7 +101,7 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 {
 	int	j;
-	
+
 	j = 0;
 	while (checker_node->pipe_string[*i])
 	{
@@ -111,11 +111,12 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 			break ;
 		if (checker_node->pipe_string[*i] == ' ')
 			break ;
-		printf("le char %c\n", checker_node->pipe_string[*i]);
 	}
-	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1 && checker_node->pipe_string[*i - 1] == ' ')
+	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1
+		&& checker_node->pipe_string[*i - 1] == ' ')
 		j--;
-	if (checker_node->next == NULL && ft_is_bash_char(checker_node->pipe_string[*i]) != 1)
+	if (checker_node->next == NULL
+		&& ft_is_bash_char(checker_node->pipe_string[*i]) != 1)
 		j++;
 	(*i)--;
 	stock_cmd(checker_node, h, j);

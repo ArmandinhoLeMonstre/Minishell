@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_parsing_commas.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/16 18:56:23 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:54:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 	while (j > 0)
 	{
 		cmd_name[x] = checker_node->pipe_string[h];
-		printf("%c char de la cmd\n", cmd_name[x]);
 		h++;
 		j--;
 		x++;
 	}
-	printf(("la cmd %s\n"), cmd_name);
-	printf(("la cmd %d\n"), h);
 	cmd_name[x] = '\0';
 	if (checker_node->cmd_string == NULL)
 	{
@@ -37,14 +34,15 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 	else
 	{
 		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
-		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, cmd_name);
+		checker_node->cmd_string
+			= ft_strjoin(checker_node->cmd_string, cmd_name);
 	}
 }
 
-int	cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int	keycode)
+int	cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int keycode)
 {
 	int	j;
-	
+
 	j = 0;
 	if (keycode == 1)
 	{
@@ -62,7 +60,6 @@ int	cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int	keycode)
 			(*i)++;
 		}
 	}
-	printf("le j commas : %d\n", j);
 	stock_cmd_commas(checker_node, h, j);
 	return (1);
 }

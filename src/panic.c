@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:03:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:02:42 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	panic_parsing(t_pipe_chain *node, int error_code)
 			close(node->append);
 			free(node->last_append);
 		}
-		return (free(node->cmd_string), ft_free2(node->cmd), 
-					free(node->heredoc_chars), free(node->pipe_string),
-					 files_error(node, 0), 2);
+		return (free(node->cmd_string), ft_free2(node->cmd),
+			free(node->heredoc_chars), free(node->pipe_string),
+			files_error(node, 0), 2);
 	}
 	if (error_code == 1)
 	{
@@ -48,9 +48,9 @@ int	panic_parsing(t_pipe_chain *node, int error_code)
 			close(node->append);
 			free(node->last_append);
 		}
-		return (free(node->cmd_string), ft_free2(node->cmd), 
-					free(node->heredoc_chars), free(node->pipe_string), 
-						free_nodes(&node), exit(1), 2);
+		return (free(node->cmd_string), ft_free2(node->cmd),
+			free(node->heredoc_chars), free(node->pipe_string),
+			free_nodes(&node), exit(1), 2);
 	}
 	return (0);
 }

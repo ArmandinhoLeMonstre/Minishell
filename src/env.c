@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 21:04:10 by rafnasci          #+#    #+#             */
-/*   Updated: 2024/11/20 17:52:25 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:56:35 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	**build_env(t_env **env)
 	node = *env;
 	while (node && ++len)
 	{
-		// printf("env->name : %s\n env->value : %s\n", node->name,
-		//	node->value);
 		node = node->next;
 	}
 	envp = malloc(sizeof(char *) * (len + 1));

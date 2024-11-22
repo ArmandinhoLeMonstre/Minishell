@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 19:54:34 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:06:55 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	pipe_check(t_pipe_chain *checker_node)
 	int	i;
 	int	x;
 	int	j;
-	
+
 	x = 0;
 	j = stack_len(checker_node);
 	while (x < j)
@@ -116,11 +116,14 @@ int	pipe_check(t_pipe_chain *checker_node)
 		i = 0;
 		while (checker_node->pipe_string[i])
 		{
-			if (checker_node->pipe_string[i] == 34 || checker_node->pipe_string[i] == 39)
+			if (checker_node->pipe_string[i] == 34
+				|| checker_node->pipe_string[i] == 39)
 				pipe_check_commas(checker_node, &i, i);
-			else if (checker_node->pipe_string[i] == '>' || checker_node->pipe_string[i] == '<')
+			else if (checker_node->pipe_string[i] == '>'
+				|| checker_node->pipe_string[i] == '<')
 				pipe_check_redirect(checker_node, &i, i);
-			else if (checker_node->pipe_string[i] != 32 && ft_is_bash_char(checker_node->pipe_string[i]) == 0)
+			else if (checker_node->pipe_string[i] != 32
+				&& ft_is_bash_char(checker_node->pipe_string[i]) == 0)
 			{
 				cmd_check(checker_node, &i, i);
 			}
@@ -155,7 +158,7 @@ int	add_path(t_pipe_chain *checker_node, int j)
 
 void	while_space(t_pipe_chain *checker_node, int j)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (x < j)
@@ -173,7 +176,7 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 {
 	t_pipe_chain	*checker_node;
 	int				j;
-	
+
 	checker_node = *stack;
 	j = stack_len(checker_node);
 	if (tab != NULL)

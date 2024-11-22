@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:18:20 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 17:20:20 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:01:48 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	files_error(t_pipe_chain *checker_node, int c)
 {
-	// if find last checker == vrai, tt free;
 	if (c == 0)
 	{
 		ft_putstr_fd(checker_node->last_infile, 2);
