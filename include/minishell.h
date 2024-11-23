@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 16:01:58 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:55:48 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ typedef struct s_env
 	char			*value;
 	bool			equal;
 }	t_env;
+
+typedef struct s_built
+{
+	t_env				*env_oldpwd;
+	t_env				*env_pwd;
+	t_env				*env_home;
+	const char			*path;
+	char				*tmp;
+	DIR					*dir;
+}						t_built;
+
 
 typedef struct s_clean_string_data
 {
@@ -123,6 +134,7 @@ void	unset(char **token, t_env **env);
 int	ft_builtins(char **token, t_env **env, int fd[2], int keycode);
 void	exit_built(char **token);
 void	pwd(t_env **env);
+
 //export 
 t_env	*make_envlist(char **env);
 int	listlen(t_env *list);
@@ -132,11 +144,16 @@ void	sort_env(t_env *top);
 void	append_list(t_env **env_list, char *str);
 void	export(char **token, t_env **env);
 void	free_node(t_env *node);
+int	check_identifier(char *str);
 
 //cd
-void	cd(char **token);
+void	cd(char **token, t_env **env);
 int	ft_isbuiltin(char *str);
 t_env	*ft_findnode(t_env *env, char *name);
+void	cd_home(t_built *var);
+void	cd_oldpwd(t_built *var);
+void	cd_dir(t_built *var);
+int	diff_dir(const char *path);
 
 // Parsing part :
 

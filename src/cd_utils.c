@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:08:05 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/19 17:17:48 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:51:28 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "minishell.h"
 
 void	cd_dir(t_built *var)
 {
 	char	*tmp;
 
-	// if (var->env_oldpwd)
-	// {
-	// 	free(var->env_oldpwd->value);
-	// 	if (var->env_pwd)
-	// 		var->env_oldpwd->value = ft_strdup(var->env_pwd->value);
-	// 	else
-	// 		var->env_oldpwd->value = getcwd(NULL, 0);
-	// }
+	if (var->env_oldpwd)
+	{
+		free(var->env_oldpwd->value);
+		if (var->env_pwd)
+			var->env_oldpwd->value = ft_strdup(var->env_pwd->value);
+		else
+			var->env_oldpwd->value = getcwd(NULL, 0);
+	}
 	chdir(var->path);
-	// if (!var->env_pwd)
-	// 	return ;
-	// tmp = var->env_pwd->value;
-	// free(var->env_pwd->value);
-	// var->env_pwd->value = getcwd(NULL, 0);
-	// if (var->env_pwd->value)
-	// 	return ;
-	// ft_printf_fd(STDERR_FILENO,
-	// 	"cd: error retrieving current directory: getcwd: cannot");
-	// ft_printf_fd(STDERR_FILENO,
-	// 	" access parent directories: No such file or directory\n");
-	// var->env_pwd->value = ft_strjoin(tmp, "/..");
+	if (!var->env_pwd)
+		return ;
+	tmp = var->env_pwd->value;
+	free(var->env_pwd->value);
+	var->env_pwd->value = getcwd(NULL, 0);
+	if (var->env_pwd->value)
+		return ;
+	ft_printf_fd(STDERR_FILENO,
+		"cd: error retrieving current directory: getcwd: cannot");
+	ft_printf_fd(STDERR_FILENO,
+		" access parent directories: No such file or directory\n");
+	var->env_pwd->value = ft_strjoin(tmp, "/..");
 }
 
 void	cd_oldpwd(t_built *var)

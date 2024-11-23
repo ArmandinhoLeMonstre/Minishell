@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_noding.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:05:55 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:42:49 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	node = malloc(sizeof(t_pipe_chain));
 	node->next = NULL;
 	node->pipe_string = ft_strdup(rl);
+	node->cmd = NULL;
 	node->envp = envp;
 	node->infile = 0;
 	node->outfile = 0;
@@ -96,6 +97,8 @@ int	pipe_noding(char *rl, char **envp)
 	i = 0;
 	stack = NULL;
 	tab = NULL;
+	if (rl[0] == '\0')
+		exit(1);
 	if (token_checker(rl) == 1)
 		exit(1);
 	if (pipe_numbers(rl) > 0)

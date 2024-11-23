@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:22:40 by armitite          #+#    #+#             */
-/*   Updated: 2024/05/20 12:59:47 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:20:27 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 char	*ft_strdup(const char *s1)
 {
 	char	*dst;
-	size_t	i;
 
-	i = 0;
-	dst = (char *) malloc(ft_strlen(s1) + 1);
+	if (!s1)
+		return (NULL);
+	dst = (char *) malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!dst)
-		return (0);
-	while (s1[i])
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	dst[i] = 0;
+		return (NULL);
+	ft_strlcpy(dst, s1, ft_strlen(s1) + 1);
 	return (dst);
 }

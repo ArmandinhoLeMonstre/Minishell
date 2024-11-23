@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:49:14 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:48:10 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ int	cmd_loop2(t_pipe_chain *exec_nodes)
 		while_loop2(exec_nodes, fd);	
 		exec_nodes = exec_nodes->next;
 	}
+	if (exec_nodes->cmd == NULL)
+		exit(1);
 	if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
 	{
-		//cd(token);
 		ft_builtins(exec_nodes->cmd, &env, 0, 0);
 		exit(1);
 	}

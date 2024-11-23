@@ -4,7 +4,7 @@ LIBFT = ./libft/libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I/Users/armitite/homebrew/opt/readline/include
-MFLAGS = -lreadline -L/Users/armitite/homebrew/opt/readline/lib
+MFLAGS = -lreadline -L/Users/armitite/homebrew/opt/readline/lib -fsanitize=address -g
 
 RM = rm -rf
 
@@ -13,7 +13,7 @@ OBJ_DIR = obj/
 
 SRC_FILES = main pipe_noding pipe_parsing infile_parsing panic panic_parsing_fct free_fct unexpected_token cmd_parsing \
 shell_execution pid_executions quote_check heredoc pipe_in_commas expander get_user expander_utils cmd_parsing_commas \
-clean_space_commas cd builtins env export_sort export_utils export unset signals exit pwd
+clean_space_commas cd cd_utils builtins env export_sort export_utils export unset signals exit pwd
 
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:06:55 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:45:06 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,13 +143,12 @@ int	add_path(t_pipe_chain *checker_node, int j)
 	x = 0;
 	while (x < j)
 	{
-		checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
-		// if (ft_builtins(checker_node->cmd, &env) == 0)
-		// {
-		// 	exit(1);
-		// }
-		checker_node->cmd_path = get_paths(checker_node);
-		checker_node->cmd = ft_strdup3(checker_node->cmd);
+		if (checker_node->cmd_string != NULL)
+		{
+			checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
+			checker_node->cmd_path = get_paths(checker_node);
+			checker_node->cmd = ft_strdup3(checker_node->cmd);
+		}
 		checker_node = checker_node->next;
 		x++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:56:24 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:42:56 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,22 @@ char	*get_paths(t_pipe_chain *checker_node)
 	char	*path;
 	char	**allpaths;
 
+	path1 = NULL;
 	path = ft_path(checker_node);
-	path = ft_strchr(path, '/');
-	allpaths = ft_split(path, ':');
-	path1 = access_check(checker_node->cmd[0], allpaths);
-	if (path1 == NULL)
+	if (path != NULL)
 	{
-		return (ft_free2(allpaths), NULL);
+		path = ft_strchr(path, '/');
+		allpaths = ft_split(path, ':');
+		if (checker_node->cmd != NULL)
+		{
+			path1 = access_check(checker_node->cmd[0], allpaths);
+			if (path1 == NULL)
+			{
+				return (ft_free2(allpaths), NULL);
+			}
+			ft_free2(allpaths);
+		}
 	}
-	ft_free2(allpaths);
 	return (path1);
 }
 
