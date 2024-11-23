@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:07:48 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/19 18:37:14 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:01:49 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// t_env	*ft_findnode(t_env *env, char *name)
-// {
-// 	t_env	*tmp;
+t_env	*ft_findnode(t_env *env, char *name)
+{
+	t_env	*tmp;
 
-// 	tmp = env;
-// 	while (tmp)
-// 	{
-// 		if (ft_strncmp(tmp->name, name, INT_MAX) == 0)
-// 			return (tmp);
-// 		tmp = tmp->next;
-// 	}
-// 	return (NULL);
-// }
+	tmp = env;
+	while (tmp)
+	{
+		if (ft_strncmp(tmp->name, name, INT_MAX) == 0)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
 
 // static int	cd_error(t_env **env, t_built *var)
 // {

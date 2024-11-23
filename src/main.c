@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:17:41 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:44:52 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_ispipe(char *str)
     int i;
     
     i = 0;
+    if (!str)
+        return (0);
     while (str[i])
     {
 	    if (str[i] == '|')
@@ -56,22 +58,22 @@ int	main(int ac, char **av, char **envp)
  
     
 	env = make_envlist(envp);
+    token = NULL;
     if (av || ac)
         printf("Starting the prompt !\n");
     while (1)
     {
+        signal(SIGINT, ft_main_sig_handler);
+		signal(SIGQUIT, SIG_IGN);
         rl = readline("Prompt > ");
-        // signal(SIGINT, ft_main_sig_handler);
-		// signal(SIGQUIT, SIG_IGN);
-        token = ft_split(rl, ' ');
+        if (rl != NULL)
+            token = ft_split(rl, ' ');
+        else
+            return (printf("exit\n"), exit(1), 2);
         if (ft_isbuiltin(token[0]) == 1 && ft_ispipe(rl) == 0)
-        {
-            //cd(token);
             ft_builtins(token, &env, 0, 0);
-        }
         else
         {
-            //ft_free2(token);
             envp = build_env(&env);
             pid = fork();
             if (pid == -1)
@@ -79,13 +81,14 @@ int	main(int ac, char **av, char **envp)
             if (pid == 0)
             {
                 if (quote_checker(rl) != 0)
-                    return (printf("Error quotes\n"), exit(1), 2);
+                    return (exit(1), 2);
                 pipe_noding(rl, envp);
-                //printf("%s\n", rl);
             }
             wait(0);
-            free(rl);
-            ft_free2(token);
+            if (rl != NULL)
+                free(rl);
+            if (token != NULL)
+                ft_free2(token);
         }
     }
     return (0);

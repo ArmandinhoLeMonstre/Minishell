@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:44:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:16:49 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 15:58:45 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_isbuiltin(char *str)
 		return (0);
 	if (ft_strcmp(str, "cd") == 0
 		|| ft_strcmp(str, "export") == 0 || ft_strcmp(str, "exit") == 0
-		|| ft_strcmp(str, "unset") == 0)
+		|| ft_strcmp(str, "unset") == 0 || ft_strcmp(str, "pwd") == 0)
 		return (1);
 	else
 		return (0);
@@ -54,8 +54,8 @@ int	ft_builtins(char **token, t_env **env, int fd[2], int keycode)
 	}
 	if (ft_strncmp(token[0], "cd", INT_MAX) == 0)
 		return (cd(token), 0);
-	// else if (ft_strncmp(token[0], "pwd", INT_MAX) == 0)
-	// 	return (pwd(env), 0);
+	else if (ft_strncmp(token[0], "pwd", INT_MAX) == 0)
+		return (pwd(env), 0);
 	else if (ft_strncmp(token[0], "export", INT_MAX) == 0)
 		return (export(token, env), 0);
 	else if (ft_strncmp(token[0], "unset", INT_MAX) == 0)

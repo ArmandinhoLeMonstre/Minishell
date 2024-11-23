@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:17:05 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:01:58 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "../libft/include/libft.h"
+//# include "../libft/include/libft.h"
+# include "../Libft/libft.h"
 #include <sys/wait.h>
 # include <dirent.h>
 # include <errno.h>
@@ -27,10 +28,11 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <termios.h>
+#include <string.h>
 
 //extern int //g_exitcode;
 
-#define ECHOCTL  0001000  /* Echo control characters as ^(X) notation. */
+//#define ECHOCTL  0001000  /* Echo control characters as ^(X) notation. */
 
 
 typedef struct s_env
@@ -120,7 +122,7 @@ char	**build_env(t_env **env);
 void	unset(char **token, t_env **env);
 int	ft_builtins(char **token, t_env **env, int fd[2], int keycode);
 void	exit_built(char **token);
-
+void	pwd(t_env **env);
 //export 
 t_env	*make_envlist(char **env);
 int	listlen(t_env *list);
@@ -134,6 +136,7 @@ void	free_node(t_env *node);
 //cd
 void	cd(char **token);
 int	ft_isbuiltin(char *str);
+t_env	*ft_findnode(t_env *env, char *name);
 
 // Parsing part :
 
@@ -197,5 +200,5 @@ int		panic_parsing(t_pipe_chain *checker_node, int error_code);
 void	files_error(t_pipe_chain *checker_node, int c);
 
 
-extern char *readline PARAMS((const char *));
+//extern char *readline PARAMS((const char *));
 #endif

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:10:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/18 12:58:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:01:20 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	quote_checker(char *rl)
 
 	i = 0;
 	x = 0;
+	if (!rl)
+		return (2);
 	while (rl[i])
 	{
 		if (rl[i] == '"')
