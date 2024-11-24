@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:44:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:11:37 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:54:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_builtins(char **token, t_env **env, int fd[2], int keycode)
 	
 	if (!token[0])
 		return (1);
-	//g_exitcode = 0;
+	g_exitcode = 0;
 	node = *env;
 	if (keycode == 1)
 	{
@@ -75,5 +75,5 @@ int	ft_builtins(char **token, t_env **env, int fd[2], int keycode)
 	// 	return (echo_built(token), 0);
 	return (1);
 }
-// check "command" '(' //g_exitcode = 258
-// and all error in the exec ¿//g_exitcode = 1?
+// check "command" '(' g_exitcode = 258
+// and all error in the exec ¿g_exitcode = 1?

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:48:10 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:52:16 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,9 @@ int	shell_exec2(t_pipe_chain *exec_nodes, int j)
 			}
 		}
 		else
+		{
 			cmd_loop2(exec_nodes);
+		}
 		j = 0;
 	}
 	return (0);

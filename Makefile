@@ -3,8 +3,8 @@ NAME = minishell
 LIBFT = ./libft/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I/Users/armitite/homebrew/opt/readline/include
-MFLAGS = -lreadline -L/Users/armitite/homebrew/opt/readline/lib -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -I/Users/armitite/homebrew/opt/readline/include -g3
+MFLAGS = -lreadline -L/Users/armitite/homebrew/opt/readline/lib -g3 #-fsanitize=address -g
 
 RM = rm -rf
 

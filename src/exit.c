@@ -6,28 +6,25 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:51:17 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/23 18:22:10 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:56:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	ft_exit(char *arg)
+static void	ft_exit(char *arg, long n)
 {
 	if (arg)
 	{
 		ft_printf_fd(1, "exit\n");
-		ft_printf_fd(2, "bash: exit: %s: numeric argument required\n", arg);
-		//exit(//g_exitcode = 255);
-		exit(1);
-
+		ft_printf_fd(2, "minishell: exit: %s: numeric argument required\n",
+			arg);
+		exit(g_exitcode = 255);
 	}
 	else
 	{
 		ft_printf_fd(1, "exit\n");
-		//exit(//g_exitcode = n % 256);
-		exit(1);
-
+		exit(g_exitcode = n % 256);
 	}
 }
 
@@ -68,21 +65,20 @@ void	exit_built(char **token)
 	if (!token[1])
 	{
 		ft_printf_fd(1, "exit\n");
-		//exit(//g_exitcode);
-		exit(1);
+		exit(g_exitcode);
 	}
 	arg = ft_strdup(token[1]);
 	overflow = 0;
 	n = ft_atol(arg, &overflow);
 	if (overflow)
-		ft_exit(arg);
+		ft_exit(arg, n);
 	if (token[2])
 	{
-		ft_printf_fd(2, "bash: exit: too many arguments\n");
-		//g_exitcode = 1;
+		ft_printf_fd(2, "minishell: exit: too many arguments\n");
+		g_exitcode = 1;
 	}
 	else
-		ft_exit(NULL);
+		ft_exit(NULL, n);
 	free(arg);
 }
 // FREE ALL

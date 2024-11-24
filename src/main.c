@@ -6,11 +6,13 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:28:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:52:04 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int		g_exitcode;
 
 int	ft_ispipe(char *str)
 {

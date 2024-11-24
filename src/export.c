@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:12:48 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/23 19:55:27 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:54:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	export(char **token, t_env **env)
 		{
 			ft_printf_fd(2, "bash: export: %s: not a valid identifier\n",
 				token[i]);
-			//g_exitcode = 1;
+			g_exitcode = 1;
 		}
 		else
 			set_var(token[i], env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:00:18 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:41:30 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,12 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 	{
 		if (checker_node->pipe_string[data->i] == '$')
 		{
-			if (check_dollars(checker_node, data->i) == 1)
+			if (checker_node->pipe_string[data->i + 1] == '?')
+			{
+				data->i++;
+				data->total++;
+			}
+			else if (check_dollars(checker_node, data->i) == 1)
 			{
 				data->total = data->total + ft_strlen(data->user);
 				data->i = data->i + 4;

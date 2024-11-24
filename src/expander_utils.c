@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:57:57 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:56:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,29 @@ void	clean_string34(t_pipe_chain *checker_node,
 
 void	if_verif(t_pipe_chain *checker_node, t_clean_string_data *data,
 	int *total, char *user)
+	
 {
+	char *itoa;
+	int i;
+	
+	i = 0;
+	itoa = NULL;
 	if (checker_node->pipe_string[data->i] == 34)
 		clean_string34(checker_node, data, total, user);
 	if (checker_node->pipe_string[data->i] == '$')
 	{
-		if (check_dollars(checker_node, data->i) == 1)
+		if (checker_node->pipe_string[data->i + 1] == '?')
+		{	
+			data->i++;
+			data->i++;
+			i = 0;
+			itoa = ft_itoa(g_exitcode);
+			while (itoa[i])
+			{
+				data->string2[(*total)++] = itoa[i++];
+			}
+		}
+		else if (check_dollars(checker_node, data->i) == 1)
 		{
 			data->h = 0;
 			while (user[data->h])

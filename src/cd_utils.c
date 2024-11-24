@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:08:05 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/23 19:51:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:54:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void	cd_oldpwd(t_built *var)
 		|| !var->env_oldpwd->value[0])
 	{
 		printf("bash: cd: OLDPWD not set\n");
-		//g_exitcode = 1;
+		g_exitcode = 1;
 		return ;
 	}
 	var->tmp = getcwd(NULL, 0);
 	if (chdir(var->env_oldpwd->value) < 0)
 	{
-		//g_exitcode = 1;
+		g_exitcode = 1;
 		return (ft_printf_fd(2, "bash: cd: %s: %s\n", var->env_oldpwd->value,
 				strerror(errno)), free(var->tmp));
 	}
@@ -75,7 +75,7 @@ static int	cd_homecheck(t_built *var)
 	else if (!var->env_home)
 	{
 		ft_printf_fd(2, "bash: cd: HOME not set\n");
-		//g_exitcode = 1;
+		g_exitcode = 1;
 		return (0);
 	}
 	return (1);

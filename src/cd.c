@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:07:48 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/23 19:41:45 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:54:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	cd_error(t_env **env, t_built *var)
 	if (var->path && !var->dir && !diff_dir(var->path))
 	{
 		ft_printf_fd(2, "bash: cd: %s: %s\n", var->path, strerror(errno));
-		//g_exitcode = 1;
+		g_exitcode = 1;
 		return (0);
 	}
 	if (var->dir)
@@ -53,7 +53,7 @@ void	cd(char **token, t_env **env)
 	else if (var.path && token[2])
 	{
 		ft_printf_fd(2, "bash: cd: too many arguments\n");
-		//g_exitcode = 1;
+		g_exitcode = 1;
 		return ;
 	}
 	if (!cd_error(env, &var))

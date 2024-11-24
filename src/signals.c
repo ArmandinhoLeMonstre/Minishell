@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 13:36:29 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 17:07:35 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:54:41 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_hered_sig_handler(int sig)
 		ft_boolhere(1);
 		printf("\n");
 		close(STDIN_FILENO);
-		//g_exitcode = 1;
+		g_exitcode = 1;
 	}
 	tcgetattr(1, &term);
 	term.c_lflag &= ~ECHOCTL;
@@ -47,7 +47,7 @@ void	ft_main_sig_handler(int sig)
 		printf("\n");
 		rl_on_new_line();
 		rl_redisplay();
-		//g_exitcode = 1;
+		g_exitcode = 1;
 	}
 	tcgetattr(1, &term);
 	term.c_lflag &= ~ECHOCTL;
@@ -60,11 +60,11 @@ void	ft_exec_sig_handler(int sig)
 	{
 		rl_on_new_line();
 		rl_replace_line("", 0);
-		//g_exitcode = 130;
+		g_exitcode = 130;
 	}
 	if (sig == SIGQUIT)
 	{
 		ft_printf_fd(2, "^\\Quit : 3\n");
-		//g_exitcode = 131;
+		g_exitcode = 131;
 	}
 }
