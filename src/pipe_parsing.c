@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:45:06 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:32:30 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int	add_path(t_pipe_chain *checker_node, int j)
 		{
 			checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 			checker_node->cmd_path = get_paths(checker_node);
+			printf("test : %s\n", checker_node->cmd_path);
 			checker_node->cmd = ft_strdup3(checker_node->cmd);
 		}
 		checker_node = checker_node->next;

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 15:52:44 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:27:07 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_pipe_chain
 	int					pid;
 	int					fd[2];
 	int					pipe_number;
+	int					gv_fd[2];
 	//struct s_outfiles	*outfiles;
 	struct s_pipe_chain	*next;
 	struct s_pipe_chain	*prev;
@@ -180,7 +181,7 @@ int *get_tab_space(const char *rl, int *tab);
 char	**ft_strdup3(char **cmd);
 
 //pipe_parsing fonctions
-int		pipe_noding(char *rl, char **envp);
+int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp);
 int		pipe_split(t_pipe_chain *stack, char *rl, char **envp, int *tab);
 void	append_node(t_pipe_chain **stack, char *rl, char **envp);
 int		ft_ispipe(char *str);
@@ -202,7 +203,7 @@ int	ft_strcmp(const char *s1, const char *s2);
 int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
 
 //execution
-int		shell_exec2(t_pipe_chain *exec_nodes, int j);
+int	shell_exec2(t_pipe_chain **s, int j);
 int		get_outfile_number(t_pipe_chain *exec_nodes);
 void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2]);
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2]);

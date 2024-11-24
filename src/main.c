@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 16:52:04 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:43:21 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,41 +30,22 @@ int	ft_ispipe(char *str)
 	return (0);
 }
 
-// void handle_sigint(int sig) {
-//     if (sig)
-//         printf("a");
-//     if (isatty(STDIN_FILENO)) {
-//         // Print a new prompt line when Ctrl-C is pressed
-//         printf("\nPrompt > ");
-//         fflush(stdout);
-//     }
-// }
-
-// // Signal handler for Ctrl-D (EOF, SIGTERM in this context)
-// void handle_eof(int sig) {
-//     if (sig)
-//         printf("a");
-//     if (isatty(STDIN_FILENO)) {
-//         // Exit the shell when Ctrl-D is pressed
-//         printf("\nExiting shell...\n");
-//         exit(0);
-//     }
-// }
-
 int	main(int ac, char **av, char **envp)
 {
     char    *rl;
     int     pid;
     t_env	*env;
+    t_pipe_chain	*stack;
     char    **token;
  
     
 	env = make_envlist(envp);
-    token = NULL;
     if (av || ac)
         printf("Starting the prompt !\n");
     while (1)
     {
+        token = NULL;
+        stack = NULL;
         signal(SIGINT, ft_main_sig_handler);
 		signal(SIGQUIT, SIG_IGN);
         rl = readline("Prompt > ");
@@ -77,14 +58,18 @@ int	main(int ac, char **av, char **envp)
         else
         {
             envp = build_env(&env);
+            if (quote_checker(rl) != 0)
+                return (exit(1), 2);
+            pipe_noding(&stack, rl, envp);
             pid = fork();
             if (pid == -1)
                 exit(1);
             if (pid == 0)
             {
-                if (quote_checker(rl) != 0)
-                    return (exit(1), 2);
-                pipe_noding(rl, envp);
+                shell_exec2(&stack, 0);
+                // if (quote_checker(rl) != 0)
+                //     return (exit(1), 2);
+                // pipe_noding(rl, envp);
             }
             wait(0);
             if (rl != NULL)

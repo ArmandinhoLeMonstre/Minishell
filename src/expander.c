@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 16:41:30 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:20:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 	{
 		if (checker_node->pipe_string[i] == '$')
 		{
-			if (check_dollars(checker_node, i) == 1)
+			if (checker_node->pipe_string[i + 1] == '?')
+			{
+				i++;
+				total += ft_strlen(ft_itoa(g_exitcode));
+			}
+			else if (check_dollars(checker_node, i) == 1)
 			{
 				(*total) = (*total) + ft_strlen(user);					
 				i = i + 4;
@@ -56,7 +61,7 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 			if (checker_node->pipe_string[data->i + 1] == '?')
 			{
 				data->i++;
-				data->total++;
+				data->total += ft_strlen(ft_itoa(g_exitcode));
 			}
 			else if (check_dollars(checker_node, data->i) == 1)
 			{
@@ -71,7 +76,7 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 				data->i--;
 			}
 		}
-		if (checker_node->pipe_string[data->i] == 34)
+		else if (checker_node->pipe_string[data->i] == 34)
 			data->i = commas34(checker_node, data->i, &data->total, data->user);
 		data->i++;
 		data->total++;

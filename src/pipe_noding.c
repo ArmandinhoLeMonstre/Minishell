@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:42:49 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:47:35 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,41 +66,45 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	}
 }
 
-t_pipe_chain	*appending(int i, char **envp, char *rl)
+int appending(t_pipe_chain **stack, int i, char **envp, char *rl)
 {
 	char			**split_rl;
-	t_pipe_chain	*stack;
+	//t_pipe_chain	*stack;
 
-	stack = NULL;
+	//stack = NULL;
 	if (ft_ispipe(rl) != 0)
 	{
 		i = 0;
 		split_rl = ft_split(rl, '|');
 		while (split_rl[i])
 		{
-			append_node(&stack, split_rl[i], envp);
+			append_node(stack, split_rl[i], envp);
 			i++;
 		}
 		ft_free2(split_rl);
 	}
 	else
-		append_node(&stack, rl, envp);
-	return (stack);
+		append_node(stack, rl, envp);
+	//return (stack);
+	return (0);
 }
 
-int	pipe_noding(char *rl, char **envp)
+int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp)
 {
 	int				i;
 	int				*tab;
-	t_pipe_chain	*stack;
+	//t_pipe_chain	*stack;
 
 	i = 0;
-	stack = NULL;
+	//stack = *s;
 	tab = NULL;
 	if (rl[0] == '\0')
 		exit(1);
 	if (token_checker(rl) == 1)
-		exit(1);
+	{
+		g_exitcode = 258;
+		return (2);
+	}
 	if (pipe_numbers(rl) > 0)
 	{
 		tab = (malloc(pipe_numbers(rl) * sizeof(int)));
@@ -108,11 +112,11 @@ int	pipe_noding(char *rl, char **envp)
 		rl = change_pipe(rl, tab);
 	}
 	if (ft_ispipe(rl) != 0)
-		stack = appending(i, envp, rl);
+		appending(stack, i, envp, rl);
 	else
-		append_node(&stack, rl, envp);
-	pipe_parsing(&stack, tab);
-	shell_exec2(stack, 0);
+		append_node(stack, rl, envp);
+	pipe_parsing(stack, tab);
+	//shell_exec2(&stack, 0);
 	return (0);
 }
 
