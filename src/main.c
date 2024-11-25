@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 19:43:21 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:18:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ int	ft_ispipe(char *str)
 	return (0);
 }
 
+int check_unavaible_chars(char *rl)
+{
+    if (ft_strchr(rl, ';') != 0)
+        return (printf("';' is not a valid char\n"), 1);
+    if (ft_strchr(rl, '\\') != 0)
+        return (printf("'\\' is not a valid char\n"), 1);
+    return (0);
+}
+
 int	main(int ac, char **av, char **envp)
 {
     char    *rl;
@@ -37,8 +46,10 @@ int	main(int ac, char **av, char **envp)
     t_env	*env;
     t_pipe_chain	*stack;
     char    **token;
+    int status;
  
     
+    status = 0;
 	env = make_envlist(envp);
     if (av || ac)
         printf("Starting the prompt !\n");
@@ -58,24 +69,25 @@ int	main(int ac, char **av, char **envp)
         else
         {
             envp = build_env(&env);
-            if (quote_checker(rl) != 0)
-                return (exit(1), 2);
-            pipe_noding(&stack, rl, envp);
-            pid = fork();
-            if (pid == -1)
-                exit(1);
-            if (pid == 0)
+            if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0)
             {
-                shell_exec2(&stack, 0);
-                // if (quote_checker(rl) != 0)
-                //     return (exit(1), 2);
-                // pipe_noding(rl, envp);
+                pipe_noding(&stack, rl, envp);
+                pid = fork();
+                if (pid == -1)
+                    exit(1);
+                if (pid == 0)
+                {
+                    shell_exec2(&stack, 0);
+                }
+                waitpid(pid, &status, 0);
+                if (g_exitcode == 0)
+                    g_exitcode = status / 256;
+                wait(0);
             }
-            wait(0);
-            if (rl != NULL)
-                free(rl);
-            if (token != NULL)
-                ft_free2(token);
+                if (rl != NULL)
+                    free(rl);
+                if (token != NULL)
+                    ft_free2(token);
         }
     }
     return (0);

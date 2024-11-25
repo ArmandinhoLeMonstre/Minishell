@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:10:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 17:01:20 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/25 08:39:11 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int	quote_checker(char *rl)
 		{
 			x = after_quote(rl, &i, 1);
 			if (x == -1)
-				return (printf("Error quote\n"), exit(1), 2);
+				return (printf("Error quote\n"), 2);
 		}
 		if (rl[i] == 39)
 		{
 			x = after_quote(rl, &i, 2);
 			if (x == -1)
-				return (printf("Error quote\n"), exit(1), 2);
+				return (printf("Error quote\n"), 2);
 		}
 		i++;
 	}

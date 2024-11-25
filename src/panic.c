@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   panic.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:02:42 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:57:04 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	panic_parsing(t_pipe_chain *node, int error_code)
 		}
 		return (free(node->cmd_string), ft_free2(node->cmd),
 			free(node->heredoc_chars), free(node->pipe_string),
-			free_nodes(&node), exit(1), 2);
+			free_nodes(&node), exit(127), 2);
 	}
 	return (0);
 }

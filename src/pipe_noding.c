@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 19:47:35 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/25 08:44:00 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp)
 	//stack = *s;
 	tab = NULL;
 	if (rl[0] == '\0')
-		exit(1);
+		return (2);
 	if (token_checker(rl) == 1)
 	{
 		g_exitcode = 258;
@@ -116,6 +116,7 @@ int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp)
 	else
 		append_node(stack, rl, envp);
 	pipe_parsing(stack, tab);
+	g_exitcode = 0;
 	//shell_exec2(&stack, 0);
 	return (0);
 }
