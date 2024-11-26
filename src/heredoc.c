@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:00:59 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:13:23 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 	size_t	i;
 
 	i = 0;
+	// if (s1[0] == '\0')
+	// 	return (2);
 	while ((s1[i] || s2[i]))
 	{
 		if ((unsigned char) s1[i] != (unsigned char) s2[i])
@@ -50,6 +52,11 @@ void	display_line(t_pipe_chain *checker_node)
 	while (1)
 	{
 		line = readline ("> ");
+		if (!line)
+		{
+			close(checker_node->fd[1]);
+			break ;
+		}
 		if (ft_strcmp(line, checker_node->heredoc_chars) == 0)
 		{
 			close(checker_node->fd[1]);

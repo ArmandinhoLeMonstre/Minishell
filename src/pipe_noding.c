@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/25 08:44:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:57:39 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int appending(t_pipe_chain **stack, int i, char **envp, char *rl)
 	return (0);
 }
 
-int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp)
+int	pipe_noding(t_pipe_chain **stack, t_env **env, char *rl, char **envp)
 {
 	int				i;
 	int				*tab;
@@ -115,7 +115,7 @@ int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp)
 		appending(stack, i, envp, rl);
 	else
 		append_node(stack, rl, envp);
-	pipe_parsing(stack, tab);
+	pipe_parsing(stack, tab, env);
 	g_exitcode = 0;
 	//shell_exec2(&stack, 0);
 	return (0);

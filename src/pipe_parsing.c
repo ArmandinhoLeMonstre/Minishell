@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 19:32:30 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:01:39 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	while_space(t_pipe_chain *checker_node, int j)
 	}
 }
 
-void	pipe_parsing(t_pipe_chain **stack, int *tab)
+void	pipe_parsing(t_pipe_chain **stack, int *tab, t_env **env)
 {
 	t_pipe_chain	*checker_node;
 	int				j;
@@ -184,7 +184,7 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab)
 		ft_strdup2(checker_node, tab, j);
 		free(tab);
 	}
-	expander(checker_node);
+	expander(checker_node, env);
 	while_space(checker_node, j);
 	pipe_check(checker_node);
 	add_path(checker_node, j);

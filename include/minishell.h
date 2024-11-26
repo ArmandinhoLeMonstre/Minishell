@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 19:27:07 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:07:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,10 +169,10 @@ char	*change_pipe(char *rl, int *tab);
 char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j);
 
 //Expander
-void	expander(t_pipe_chain *checker_node);
+void	expander(t_pipe_chain *checker_node, t_env **env);
 char	*get_user(t_pipe_chain *checker_node);
-char	*clean_string(t_pipe_chain *checker_node, int total, char *user);
-int	check_dollars(t_pipe_chain *checker_node, int i);
+char	*clean_string(t_pipe_chain *checker_node, t_env **env, int total, char *user);
+int     check_dollars(t_pipe_chain *checker_node, int i, t_env **env);
 
 //Clean_space
 int	space_numbers(const char *rl);
@@ -181,11 +181,11 @@ int *get_tab_space(const char *rl, int *tab);
 char	**ft_strdup3(char **cmd);
 
 //pipe_parsing fonctions
-int	pipe_noding(t_pipe_chain **stack, char *rl, char **envp);
+int	pipe_noding(t_pipe_chain **stack, t_env **env, char *rl, char **envp);
 int		pipe_split(t_pipe_chain *stack, char *rl, char **envp, int *tab);
 void	append_node(t_pipe_chain **stack, char *rl, char **envp);
 int		ft_ispipe(char *str);
-void	pipe_parsing(t_pipe_chain **stack, int *tab);
+void	pipe_parsing(t_pipe_chain **stack, int *tab, t_env **env);
 int	token_checker(char *rl);
 int		stack_len(t_pipe_chain *stack);
 char	*get_paths(t_pipe_chain *checker_node);

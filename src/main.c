@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/25 10:18:08 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:56:53 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,27 @@ int	main(int ac, char **av, char **envp)
             envp = build_env(&env);
             if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0)
             {
-                pipe_noding(&stack, rl, envp);
-                pid = fork();
-                if (pid == -1)
-                    exit(1);
-                if (pid == 0)
-                {
-                    shell_exec2(&stack, 0);
+                if (pipe_noding(&stack, &env, rl, envp) != 2)
+                {    
+                    pid = fork();
+                    if (pid == -1)
+                        exit(1);
+                    if (pid == 0)
+                    {
+                        shell_exec2(&stack, 0);
+                    }
+                    waitpid(pid, &status, 0);
+                    if (g_exitcode == 0)
+                        g_exitcode = status / 256;
+                    wait(0);
                 }
-                waitpid(pid, &status, 0);
-                if (g_exitcode == 0)
-                    g_exitcode = status / 256;
-                wait(0);
             }
-                if (rl != NULL)
-                    free(rl);
-                if (token != NULL)
-                    ft_free2(token);
         }
+        add_history(rl);
+        if (rl != NULL)
+            free(rl);
+        if (token != NULL)
+            ft_free2(token);
     }
     return (0);
 }

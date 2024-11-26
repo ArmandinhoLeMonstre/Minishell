@@ -6,24 +6,55 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 18:20:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:22:01 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_dollars(t_pipe_chain *checker_node, int i)
+int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 {
+	int	x;
+	int k;
+	char *name;
+	t_env *en;
+	
+	en = *env;
 	i++;
-	if (ft_strncmp(checker_node->pipe_string + i, "USER", 4) == 0)
-		return (1);
+	x = i;
+	k = i;
+	while (checker_node->pipe_string[i] && checker_node->pipe_string[i] != ' ')
+	{
+		i++;
+		x++;
+	}
+	name = malloc(sizeof(char) * (x + 1));
+	x = 0;
+	while (checker_node->pipe_string[k] && checker_node->pipe_string[k] != ' ')
+	{
+		name[x] = checker_node->pipe_string[k];
+		x++;
+		k++;
+	}
+	name[x] = '\0';
+	printf("le name %s\n", name);
+	while (en->next != NULL)
+	{
+		printf("le name %s\n", en->name);
+		if (ft_strncmp(name, en->name, x + 1) == 0)
+			return (ft_strlen(en->value));
+		en = en->next;
+	}
 	return (0);
 }
 
-int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
+int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **env)
 {
+	int x;
 	i++;
 	(*total)++;
+	x = 0;
+	user = NULL;
 	while (checker_node->pipe_string[i] != 34)
 	{
 		if (checker_node->pipe_string[i] == '$')
@@ -33,10 +64,12 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 				i++;
 				total += ft_strlen(ft_itoa(g_exitcode));
 			}
-			else if (check_dollars(checker_node, i) == 1)
+			else if ((x = check_dollars(checker_node, i, env)) > 0)
 			{
-				(*total) = (*total) + ft_strlen(user);					
-				i = i + 4;
+				(*total) = (*total) + x;
+				while (checker_node->pipe_string[i] && checker_node->pipe_string[i] != ' ')			
+					i++;
+				i--;
 			}
 			else
 			{
@@ -52,8 +85,11 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user)
 	return (i);
 }
 
-void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
+void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_env **env)
 {
+	int x;
+
+	x = 0;
 	while (checker_node->pipe_string[data->i])
 	{
 		if (checker_node->pipe_string[data->i] == '$')
@@ -63,10 +99,13 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 				data->i++;
 				data->total += ft_strlen(ft_itoa(g_exitcode));
 			}
-			else if (check_dollars(checker_node, data->i) == 1)
+			else if ((x = check_dollars(checker_node, data->i, env)) > 0)
 			{
-				data->total = data->total + ft_strlen(data->user);
-				data->i = data->i + 4;
+				data->total = data->total + x;
+				printf("le x : %d\n", x);
+				while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
+					data->i++;
+				data->i--;
 			}
 			else
 			{
@@ -77,13 +116,13 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data)
 			}
 		}
 		else if (checker_node->pipe_string[data->i] == 34)
-			data->i = commas34(checker_node, data->i, &data->total, data->user);
+			data->i = commas34(checker_node, data->i, &data->total, data->user, env);
 		data->i++;
 		data->total++;
 	}
 }
 
-void	expander(t_pipe_chain *checker_node)
+void	expander(t_pipe_chain *checker_node, t_env **env)
 {
 	t_expander_data	data;
 
@@ -91,13 +130,13 @@ void	expander(t_pipe_chain *checker_node)
 	data.total = 0;
 	data.j = stack_len(checker_node);
 	data.user = get_user(checker_node);
-	printf("la taille : %ld\n", ft_strlen(checker_node->pipe_string));
+
 	while (data.x < data.j)
 	{
 		data.i = 0;
 		data.verif = 0;
-		parse_string_expander(checker_node, &data);
-		clean_string(checker_node, data.total, data.user);
+		parse_string_expander(checker_node, &data, env);
+		clean_string(checker_node, env, data.total, data.user);
 		checker_node = checker_node->next;
 		data.x++;
 	}

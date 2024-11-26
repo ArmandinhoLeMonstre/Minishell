@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/25 09:56:43 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/26 08:34:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,6 @@ int	shell_exec2(t_pipe_chain **s, int j)
 	t_pipe_chain *exec_nodes;
 	
 	exec_nodes = *s;
-	printf("la p");
-	printf("la pipe string :%s\n", exec_nodes->pipe_string);
 	while (exec_nodes)
 	{	
 		j = get_outfile_number(exec_nodes);
