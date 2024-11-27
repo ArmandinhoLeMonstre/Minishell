@@ -6,21 +6,31 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:07:05 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/24 18:21:58 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:25:46 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	after_token(char *rl, int *i)
+int	after_token(char *rl, int *i, int x)
 {
-	if (rl[*i] == '>' && rl[*i + 1] == '>')
+	if ((rl[*i] == '>' && rl[*i + 1] == '>') && ft_is_bash_char(rl[*i + 2]) != 1)
 		return (0);
-	if (rl[*i] == '<' && rl[*i + 1] == '<')
+	if ((rl[*i] == '<' && rl[*i + 1] == '<') && ft_is_bash_char(rl[*i + 2]) != 1)
 		return (0);
 	(*i)++;
 	while (rl[*i] == ' ')
 		(*i)++;
+	if (rl[x] == '|' && (rl[*i] == '<' || rl[*i] == '>'))
+	{
+		if (rl[*i] == '>' && rl[*i + 1] == '>')
+			(*i)++;
+		if (rl[*i] == '<' && rl[*i + 1] == '<')
+			(*i)++;
+		(*i)++;
+		while (rl[*i] == ' ')
+			(*i)++;
+	}
 	while (rl[*i])
 	{
 		if (rl[*i] == 34 || rl[*i] == 39)
@@ -28,13 +38,13 @@ int	after_token(char *rl, int *i)
 		if (ft_is_bash_char(rl[*i]))
 		{
 			ft_putstr_fd("syntax error near unexpected token `", 2);
-			//ft_putstr_fd(&rl[*i], 2);
 			write(2, &rl[*i], 1);
 			ft_putendl_fd("'", 2);
 			return (1);
 		}
 		else
 			return (0);
+		(*i)++;
 	}
 	ft_putendl_fd("syntax error near unexpected token `newline'", 2);
 		//ft_putendl_fd("syntax error near unexpected token `|'", 2);
@@ -44,8 +54,12 @@ int	after_token(char *rl, int *i)
 int	token_checker(char *rl)
 {
 	int	i;
+	int	k;
+	int	z;
 	
 	i = 0;
+	k = 0;
+	z = 0;
 	while (rl[i])
 	{
 		if (rl[i] == 34)
@@ -61,7 +75,7 @@ int	token_checker(char *rl)
 				i++;
 		}
 		if (ft_is_bash_char(rl[i]))
-			if (after_token(rl, &i) == 1)
+			if (after_token(rl, &i, i) == 1)
 				return (1);
 		i++;
 	}
