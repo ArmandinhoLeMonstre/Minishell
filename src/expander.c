@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/26 21:22:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:43:56 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,33 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	
 	en = *env;
 	i++;
-	x = i;
+	x = 0;
 	k = i;
-	while (checker_node->pipe_string[i] && checker_node->pipe_string[i] != ' ')
+	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))
 	{
 		i++;
 		x++;
 	}
 	name = malloc(sizeof(char) * (x + 1));
 	x = 0;
-	while (checker_node->pipe_string[k] && checker_node->pipe_string[k] != ' ')
+	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$'))
 	{
 		name[x] = checker_node->pipe_string[k];
 		x++;
 		k++;
 	}
 	name[x] = '\0';
-	printf("le name %s\n", name);
 	while (en->next != NULL)
 	{
-		printf("le name %s\n", en->name);
 		if (ft_strncmp(name, en->name, x + 1) == 0)
-			return (ft_strlen(en->value));
+		{
+			int h = ft_strlen(en->value);
+			printf("%d\n", h);
+			return (free(name), h);
+		}
 		en = en->next;
 	}
-	return (0);
+	return (free(name), 0);
 }
 
 int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **env)
@@ -67,14 +69,14 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **
 			else if ((x = check_dollars(checker_node, i, env)) > 0)
 			{
 				(*total) = (*total) + x;
-				while (checker_node->pipe_string[i] && checker_node->pipe_string[i] != ' ')			
+				i++;
+				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))			
 					i++;
 				i--;
 			}
 			else
 			{
-				while (checker_node->pipe_string[i] != ' '
-					&& checker_node->pipe_string[i] != 34)
+				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))
 					i++;
 				i--;
 			}
@@ -103,15 +105,21 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_
 			{
 				data->total = data->total + x;
 				printf("le x : %d\n", x);
+				printf("le data tot : %d\n", data->total);
+				data->i++;
 				while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
 					data->i++;
 				data->i--;
 			}
 			else
 			{
-				while (checker_node->pipe_string[data->i] != ' '
-					&& checker_node->pipe_string[data->i] != 34)
+				data->i++;
+				while (checker_node->pipe_string[data->i])
+				{
 					data->i++;
+					if (checker_node->pipe_string[data->i] == ' ' && checker_node->pipe_string[data->i] == '$')
+						break ;
+				}
 				data->i--;
 			}
 		}

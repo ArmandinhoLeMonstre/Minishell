@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/26 20:56:53 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:09:12 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int ac, char **av, char **envp)
         signal(SIGINT, ft_main_sig_handler);
 		signal(SIGQUIT, SIG_IGN);
         rl = readline("Prompt > ");
+        envp = build_env(&env);
         if (rl != NULL)
             token = ft_split(rl, ' ');
         else
@@ -68,7 +69,6 @@ int	main(int ac, char **av, char **envp)
             ft_builtins(token, &env, 0, 0);
         else
         {
-            envp = build_env(&env);
             if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0)
             {
                 if (pipe_noding(&stack, &env, rl, envp) != 2)
@@ -92,6 +92,8 @@ int	main(int ac, char **av, char **envp)
             free(rl);
         if (token != NULL)
             ft_free2(token);
+        if (envp != NULL)
+            ft_free2(envp);
     }
     return (0);
 }
