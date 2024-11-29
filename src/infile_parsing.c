@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   infile_parsing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:53:04 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:01:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:58:06 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	outfiles_function(t_pipe_chain *checker_node, int c)
 		if (checker_node->infile != 0)
 			close(checker_node->infile);
 		checker_node->infile = open(checker_node->last_infile, O_RDONLY);
+		checker_node->checker_in_here = 2;
 	}
 	if (c == 2)
 	{

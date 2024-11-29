@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/25 09:57:04 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:15:50 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	panic_parsing(t_pipe_chain *node, int error_code)
 		ft_putstr_fd(node->cmd[0], 2);
 		ft_putendl_fd(": command not found", 2);
 		if (node->infile != 0)
+		{
 			close(node->infile);
+			free(node->last_infile);
+		}
 		if (node->outfile != 0)
 		{
 			close(node->outfile);

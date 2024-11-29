@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/26 21:07:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:27:07 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,17 +113,19 @@ typedef struct s_pipe_chain
 	char				*heredoc_chars;
 	char				*cmd_string;
 	int					checker;
+	int					checker_in_here;
 	int					infile;
 	int					outfile;
 	int					append;
 	int					pid;
 	int					fd[2];
 	int					pipe_number;
-	int					gv_fd[2];
 	//struct s_outfiles	*outfiles;
 	struct s_pipe_chain	*next;
 	struct s_pipe_chain	*prev;
 }	t_pipe_chain;
+
+int	cmd_loop2_bis(t_pipe_chain *exec_nodes);
 
 //Signals
 void	ft_exec_sig_handler(int sig);

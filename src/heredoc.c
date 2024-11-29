@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/26 19:13:23 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:57:09 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	display_line(t_pipe_chain *checker_node)
 	line = ft_strdup("");
 	if (pipe(checker_node->fd) == -1)
 		exit(1);
+	checker_node->checker_in_here = 1;
 	while (1)
 	{
 		line = readline ("> ");

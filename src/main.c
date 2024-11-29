@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/27 17:09:12 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:23:15 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,30 @@ int	main(int ac, char **av, char **envp)
                     waitpid(pid, &status, 0);
                     if (g_exitcode == 0)
                         g_exitcode = status / 256;
-                    wait(0);
+                    if (stack != NULL)
+                    {
+                        if (stack->infile != 0)
+                        {
+                            close(stack->infile);
+                            free(stack->last_infile);
+                        }
+                        if (stack->outfile != 0)
+                        {
+                            close(stack->outfile);
+                            free(stack->last_outfile);
+                        }
+                        if (stack->append != 0)
+                        {
+                            close(stack->append);
+                            free(stack->last_append);
+                        }
+                        free(stack->cmd_string);
+                        free(stack->cmd_path);
+                        ft_free2(stack->cmd);
+			            free(stack->heredoc_chars);
+                        free(stack->pipe_string);
+			            free_nodes(&stack);
+                    }
                 }
             }
         }
@@ -94,6 +117,7 @@ int	main(int ac, char **av, char **envp)
             ft_free2(token);
         if (envp != NULL)
             ft_free2(envp);
+        //system("leaks minishell");
     }
     return (0);
 }

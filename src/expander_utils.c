@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 15:18:17 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:05:21 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,9 @@ char	*clean_string(t_pipe_chain *checker_node, t_env **env, int total, char *use
 			data.string2[total++] = checker_node->pipe_string[data.i++];
 	}
 	data.string2[total] = '\0';
+	free(checker_node->pipe_string);
 	checker_node->pipe_string = ft_strdup(data.string2);
+	//system("leaks minishell");
 	free(data.string2);
 	return (NULL);
 }

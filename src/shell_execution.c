@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:22:56 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/26 08:34:36 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:28:07 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,35 +112,38 @@ int cmd_loop(t_pipe_chain *exec_nodes, int x)
 
 int	shell_exec2(t_pipe_chain **s, int j)
 {
-	int	x;
-	int	pid;
+	//int	x;
+	//int	pid;
 	t_pipe_chain *exec_nodes;
 	
 	exec_nodes = *s;
-	while (exec_nodes)
-	{	
-		j = get_outfile_number(exec_nodes);
-		if (j > 0)
-		{
-			pid = fork();
-			if (pid == -1)
-				exit(1);
-			x = 0;
-			if (pid == 0)
-			{
-				cmd_loop(exec_nodes, 0);
-			}
-			while (x < j)
-			{
-				exec_nodes = exec_nodes->next;
-				x++;
-			}
-		}
-		else
-		{
-			cmd_loop2(exec_nodes);
-		}
-		j = 0;
-	}
+	// while (exec_nodes)
+	// {	
+	 	j = get_outfile_number(exec_nodes);
+	// 	if (j > 0)
+	// 	{
+	// 		pid = fork();
+	// 		if (pid == -1)
+	// 			exit(1);
+	// 		x = 0;
+	// 		if (pid == 0)
+	// 		{
+	// 			cmd_loop(exec_nodes, 0);
+	// 		}
+	// 		//waitpid(pid, NULL, 0);
+	// 		while (x < j)
+	// 		{
+	// 			exec_nodes = exec_nodes->next;
+	// 			x++;
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		cmd_loop2(exec_nodes);
+	// 	}
+	// 	j = 0;
+	// }
+	cmd_loop2_bis(exec_nodes);
+	exit(0);
 	return (0);
 }

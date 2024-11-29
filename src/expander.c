@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 15:38:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:57:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ void	expander(t_pipe_chain *checker_node, t_env **env)
 	data.total = 0;
 	data.j = stack_len(checker_node);
 	data.user = get_user(checker_node);
-
 	while (data.x < data.j)
 	{
 		data.i = 0;
