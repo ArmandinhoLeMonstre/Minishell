@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 19:00:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 19:18:12 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	while_loop2_bis(t_pipe_chain *exec_nodes, int fd[2])
 			pid_exec_bis(exec_nodes, fd);
 		exit(1);
 	}
+	waitpid(pid, NULL, 0);
 	dup2(fd[0], 0);
 	close(fd[0]);
 	close(fd[1]);
