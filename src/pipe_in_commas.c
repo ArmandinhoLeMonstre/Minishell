@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_in_commas.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 21:05:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:36:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,11 +138,9 @@ int *get_tab(const char *rl, int *tab)
 	while (rl[data.i])
 	{
 		if (rl[data.i] == 39)
-			get_tab34(rl, &data, tab);
-		if (rl[data.i] == 34)
 		{
 			data.i++;
-			while (rl[data.i] != 34)
+			while (rl[data.i] != 39)
 			{
 				if (rl[data.i] == '|')
 				{
@@ -151,6 +149,20 @@ int *get_tab(const char *rl, int *tab)
 				}
 				data.i++;
 			}
+		}
+		if (rl[data.i] == 34)
+		{
+			get_tab34(rl, &data, tab);
+			// data.i++;
+			// while (rl[data.i] != 34)
+			// {
+			// 	if (rl[data.i] == '|')
+			// 	{
+			// 		tab[data.index] = data.i;
+			// 		data.index++;
+			// 	}
+			// 	data.i++;
+			// }
 		}
 		data.i++;
 	}

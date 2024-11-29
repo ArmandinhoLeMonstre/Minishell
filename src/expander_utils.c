@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/27 18:43:51 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:18:17 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	*check_dollars_value(t_pipe_chain *checker_node, int i, t_env **env)
 	i++;
 	x = i;
 	k = i;
-	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))
+	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[i] != 34))
 	{
 		i++;
 		x++;
 	}
 	name = malloc(sizeof(char) * (x + 1));
 	x = 0;
-	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$'))
+	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$' && checker_node->pipe_string[k] != 34))
 	{
 		name[x] = checker_node->pipe_string[k];
 		x++;
@@ -51,10 +51,12 @@ void	clean_string34(t_pipe_chain *checker_node,
 	t_clean_string_data *data, int *total, char *user, t_env **env)
 {
 	char *itoa;
+	char *value;
 	int i;
 	
 	i = 0;
 	itoa = NULL;
+	user = NULL;
 	data->string2[(*total)] = checker_node->pipe_string[data->i];
 	(*total)++;
 	data->i++;
@@ -73,12 +75,22 @@ void	clean_string34(t_pipe_chain *checker_node,
 					data->string2[(*total)++] = itoa[i++];
 				}
 			}
-			else if (check_dollars(checker_node, data->i, env) == 1)
+			else if (check_dollars(checker_node, data->i, env) > 0)
 			{
 				data->h = 0;
-				while (user[data->h])
-					data->string2[(*total)++] = user[data->h++];
-				data->i = data->i + 5;
+				value = ft_strdup(check_dollars_value(checker_node, data->i, env));
+				printf("la value %s\n", value);
+				printf("la data i %d\n", data->i);
+				
+				if (value != NULL)
+				{
+					while (value[data->h])
+						data->string2[(*total)++] = value[data->h++];
+				}
+				data->i++;
+				while (checker_node->pipe_string[data->i] && (checker_node->pipe_string[data->i] != ' ' && checker_node->pipe_string[data->i] != '$' && checker_node->pipe_string[data->i] != 34))
+					data->i++;
+				free(value);
 			}
 			else
 			{

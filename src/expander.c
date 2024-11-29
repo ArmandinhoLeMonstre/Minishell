@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/27 18:43:56 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:38:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	i++;
 	x = 0;
 	k = i;
-	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))
+	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[k] != 34))
 	{
 		i++;
 		x++;
 	}
 	name = malloc(sizeof(char) * (x + 1));
 	x = 0;
-	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$'))
+	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$' && checker_node->pipe_string[k] != 34))
 	{
 		name[x] = checker_node->pipe_string[k];
 		x++;
@@ -64,13 +64,15 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **
 			if (checker_node->pipe_string[i + 1] == '?')
 			{
 				i++;
-				total += ft_strlen(ft_itoa(g_exitcode));
+				(*total) += ft_strlen(ft_itoa(g_exitcode));
 			}
 			else if ((x = check_dollars(checker_node, i, env)) > 0)
 			{
 				(*total) = (*total) + x;
+				printf("le x bis : %d\n", x);
+				printf("le data tot bis : %d\n", (*total));
 				i++;
-				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))			
+				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[i] != 34))			
 					i++;
 				i--;
 			}
@@ -90,41 +92,48 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **
 void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_env **env)
 {
 	int x;
+	int verif;
 
 	x = 0;
+	verif = 0;
 	while (checker_node->pipe_string[data->i])
 	{
-		if (checker_node->pipe_string[data->i] == '$')
+		if (checker_node->pipe_string[data->i] == 39)
+			verif++;
+		if (verif % 2 == 0)
 		{
-			if (checker_node->pipe_string[data->i + 1] == '?')
+			if (checker_node->pipe_string[data->i] == '$')
 			{
-				data->i++;
-				data->total += ft_strlen(ft_itoa(g_exitcode));
-			}
-			else if ((x = check_dollars(checker_node, data->i, env)) > 0)
-			{
-				data->total = data->total + x;
-				printf("le x : %d\n", x);
-				printf("le data tot : %d\n", data->total);
-				data->i++;
-				while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
-					data->i++;
-				data->i--;
-			}
-			else
-			{
-				data->i++;
-				while (checker_node->pipe_string[data->i])
+				if (checker_node->pipe_string[data->i + 1] == '?')
 				{
 					data->i++;
-					if (checker_node->pipe_string[data->i] == ' ' && checker_node->pipe_string[data->i] == '$')
-						break ;
+					data->total += ft_strlen(ft_itoa(g_exitcode));
 				}
-				data->i--;
+				else if ((x = check_dollars(checker_node, data->i, env)) > 0)
+				{
+					data->total = data->total + x;
+					printf("le x : %d\n", x);
+					printf("le data tot : %d\n", data->total);
+					data->i++;
+					while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
+						data->i++;
+					data->i--;
+				}
+				else
+				{
+					data->i++;
+					while (checker_node->pipe_string[data->i])
+					{
+						data->i++;
+						if (checker_node->pipe_string[data->i] == ' ' && checker_node->pipe_string[data->i] == '$')
+							break ;
+					}
+					data->i--;
+				}
 			}
+			else if (checker_node->pipe_string[data->i] == 34)
+				data->i = commas34(checker_node, data->i, &data->total, data->user, env);
 		}
-		else if (checker_node->pipe_string[data->i] == 34)
-			data->i = commas34(checker_node, data->i, &data->total, data->user, env);
 		data->i++;
 		data->total++;
 	}
