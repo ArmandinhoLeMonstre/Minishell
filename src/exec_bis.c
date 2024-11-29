@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 19:18:12 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:23:32 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	pid_exec_bis(t_pipe_chain *exec_nodes, int fd[2])
 	{
 		if (ft_strlen(exec_nodes->heredoc_chars) > 0)
 		{
-			write(1, "ici\n", 4);
 			dup2(exec_nodes->fd[0], 0);
 			close(exec_nodes->fd[1]);
 			close(exec_nodes->fd[0]);
@@ -31,7 +30,6 @@ void	pid_exec_bis(t_pipe_chain *exec_nodes, int fd[2])
 	}
 	if (exec_nodes->checker_in_here == 2)
 	{
-		//write(1, "ici\n", 4);
 		if (exec_nodes->infile == -1)
 			panic_parsing(exec_nodes, 0);
 		dup2(exec_nodes->infile, 0);
@@ -89,10 +87,10 @@ void	while_loop2_bis(t_pipe_chain *exec_nodes, int fd[2])
 		exit(1);
 	if (pid == 0)
 	{
-		//  if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
-        // {
-		// 	exit(1);
-        // }
+		 if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
+        {
+			exit(1);
+        }
 		if (exec_nodes->cmd_path == NULL)
 		{
 			panic_parsing(exec_nodes, 1);
@@ -102,6 +100,10 @@ void	while_loop2_bis(t_pipe_chain *exec_nodes, int fd[2])
 		exit(1);
 	}
 	waitpid(pid, NULL, 0);
+	if (exec_nodes->cmd_path == NULL)
+	{
+		panic_parsing(exec_nodes, 1);
+	}
 	dup2(fd[0], 0);
 	close(fd[0]);
 	close(fd[1]);

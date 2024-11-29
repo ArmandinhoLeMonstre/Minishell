@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 17:23:15 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:54:23 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ int	ft_ispipe(char *str)
         i++;
     }
 	return (0);
+}
+
+int empty_rl(char *rl)
+{
+    int i;
+
+    i = 0;
+    while (rl[i])
+    {
+        if (rl[i] != 32)
+            return (0);
+        else
+            i++;
+    }
+    return (1);
 }
 
 int check_unavaible_chars(char *rl)
@@ -69,7 +84,7 @@ int	main(int ac, char **av, char **envp)
             ft_builtins(token, &env, 0, 0);
         else
         {
-            if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0)
+            if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0 && empty_rl(rl) == 0)
             {
                 if (pipe_noding(&stack, &env, rl, envp) != 2)
                 {    

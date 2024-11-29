@@ -6,20 +6,18 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 15:57:22 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:44:37 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
+char *get_name(t_pipe_chain *checker_node, int i)
 {
 	int	x;
 	int k;
 	char *name;
-	t_env *en;
 	
-	en = *env;
 	i++;
 	x = 0;
 	k = i;
@@ -37,6 +35,18 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 		k++;
 	}
 	name[x] = '\0';
+	return (name);
+}
+
+int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
+{
+	int	x;
+	char *name;
+	t_env *en;
+	
+	en = *env;
+	x = 0;
+	name = get_name(checker_node, i);
 	while (en->next != NULL)
 	{
 		if (ft_strncmp(name, en->name, x + 1) == 0)
@@ -50,13 +60,12 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	return (free(name), 0);
 }
 
-int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **env)
+int	commas34(t_pipe_chain *checker_node, int i, int *total, t_env **env)
 {
 	int x;
 	i++;
 	(*total)++;
 	x = 0;
-	user = NULL;
 	while (checker_node->pipe_string[i] != 34)
 	{
 		if (checker_node->pipe_string[i] == '$')
@@ -69,8 +78,6 @@ int	commas34(t_pipe_chain *checker_node, int i, int *total, char *user, t_env **
 			else if ((x = check_dollars(checker_node, i, env)) > 0)
 			{
 				(*total) = (*total) + x;
-				printf("le x bis : %d\n", x);
-				printf("le data tot bis : %d\n", (*total));
 				i++;
 				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[i] != 34))			
 					i++;
@@ -112,8 +119,6 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_
 				else if ((x = check_dollars(checker_node, data->i, env)) > 0)
 				{
 					data->total = data->total + x;
-					printf("le x : %d\n", x);
-					printf("le data tot : %d\n", data->total);
 					data->i++;
 					while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
 						data->i++;
@@ -132,7 +137,7 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_
 				}
 			}
 			else if (checker_node->pipe_string[data->i] == 34)
-				data->i = commas34(checker_node, data->i, &data->total, data->user, env);
+				data->i = commas34(checker_node, data->i, &data->total, env);
 		}
 		data->i++;
 		data->total++;
