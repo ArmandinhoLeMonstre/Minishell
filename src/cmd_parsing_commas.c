@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_parsing_commas.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:54:08 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 22:06:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 	if (checker_node->cmd_string == NULL)
 	{
 		checker_node->cmd_string = ft_strdup(cmd_name);
+		//checker_node->cmd_string = cmd_name;
 	}
 	else
 	{
@@ -37,6 +38,7 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 		checker_node->cmd_string
 			= ft_strjoin(checker_node->cmd_string, cmd_name);
 	}
+	free(cmd_name);
 }
 
 int	cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int keycode)

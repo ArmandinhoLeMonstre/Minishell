@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 20:23:32 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:28:33 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ void	pid_exec_bis(t_pipe_chain *exec_nodes, int fd[2])
 			}
 		}
 	}
+	// if (exec_nodes->prev)
+	// {
+	// 	if (exec_nodes->prev->cmd_path == NULL)
+	// 	{
+	// 		if (pipe(fd) == -1)
+	// 			exit(1);
+	// 		dup2(fd[0], 0);
+	// 		close(fd[0]);
+	// 		close(fd[1]);
+	// 	}
+	// }
 	if (exec_nodes->next != NULL && (exec_nodes->checker != 3 && exec_nodes->checker != 2))
 	{
 		dup2(fd[1], 1);
@@ -87,23 +98,25 @@ void	while_loop2_bis(t_pipe_chain *exec_nodes, int fd[2])
 		exit(1);
 	if (pid == 0)
 	{
-		 if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
-        {
-			exit(1);
-        }
+		if (exec_nodes->cmd != NULL)
+		{
+			if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
+			{
+				exit(1);
+			}
+		}
 		if (exec_nodes->cmd_path == NULL)
 		{
 			panic_parsing(exec_nodes, 1);
 		}
 		else
 			pid_exec_bis(exec_nodes, fd);
-		exit(1);
 	}
 	waitpid(pid, NULL, 0);
-	if (exec_nodes->cmd_path == NULL)
-	{
-		panic_parsing(exec_nodes, 1);
-	}
+	// if (exec_nodes->cmd_path == NULL)
+	// {
+	// 	panic_parsing(exec_nodes, 1);
+	// }
 	dup2(fd[0], 0);
 	close(fd[0]);
 	close(fd[1]);
@@ -119,18 +132,20 @@ int	cmd_loop2_bis(t_pipe_chain *exec_nodes)
 		while_loop2_bis(exec_nodes, fd);	
 		exec_nodes = exec_nodes->next;
 	}
-	pid_exec_bis(exec_nodes, fd);
 	// if (exec_nodes->cmd == NULL)
 	// 	exit(1);
-	// // if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
-	// // {
-	// // 	ft_builtins(exec_nodes->cmd, &env, 0, 0);
-	// // 	exit(1);
-	// // }
-	// if (exec_nodes->cmd_path == NULL)
-	// {
-	// 	panic_parsing(exec_nodes, 1);
-	// }
+	if (exec_nodes->cmd != NULL)
+	{
+		if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
+		{
+			exit(1);
+		}
+	}
+	if (exec_nodes->cmd_path == NULL)
+	{
+		panic_parsing(exec_nodes, 1);
+	}
+	pid_exec_bis(exec_nodes, fd);
 	// pid_exec_output(exec_nodes, fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 20:44:37 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:18:58 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 		if (ft_strncmp(name, en->name, x + 1) == 0)
 		{
 			int h = ft_strlen(en->value);
-			printf("%d\n", h);
+			//printf("%d\n", h);
 			return (free(name), h);
 		}
 		en = en->next;

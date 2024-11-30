@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 16:05:21 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:48:06 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ char	*check_dollars_value(t_pipe_chain *checker_node, int i, t_env **env)
 		k++;
 	}
 	name[x] = '\0';
-	printf("le name %s\n", name);
+	//printf("le name %s\n", name);
 	while (en->next != NULL)
 	{
 		if (ft_strncmp(name, en->name, x + 1) == 0)
-			return (en->value);
+			return (free(name), en->value);
 		en = en->next;
 	}
-	return (NULL);
+	return (free(name), NULL);
 }
 
 void	clean_string34(t_pipe_chain *checker_node,
@@ -79,8 +79,8 @@ void	clean_string34(t_pipe_chain *checker_node,
 			{
 				data->h = 0;
 				value = ft_strdup(check_dollars_value(checker_node, data->i, env));
-				printf("la value %s\n", value);
-				printf("la data i %d\n", data->i);
+				//printf("la value %s\n", value);
+				//printf("la data i %d\n", data->i);
 				
 				if (value != NULL)
 				{
@@ -133,8 +133,8 @@ void	if_verif(t_pipe_chain *checker_node, t_clean_string_data *data, int *total,
 		{
 			data->h = 0;
 			value = ft_strdup(check_dollars_value(checker_node, data->i, env));
-			printf("la value %s\n", value);
-			printf("la data i %d\n", data->i);
+			//printf("la value %s\n", value);
+			//printf("la data i %d\n", data->i);
 			
 			if (value != NULL)
 			{

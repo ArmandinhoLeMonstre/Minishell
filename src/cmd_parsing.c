@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:42:56 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 22:11:39 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ char	*access_check(char *av, char **allpaths)
 	i = 0;
 	if (!av)
 		return (NULL);
-	if (access(av, X_OK) == 0)
-		return (av);
+	if (ft_strchr(av, '/'))
+		if (access(av, X_OK) == 0)
+			return (av);
 	while (allpaths[i])
 	{
 		joinpaths = ft_strjoin(allpaths[i], "/");
@@ -80,6 +81,7 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 {
 	int		x;
 	char	*cmd_name;
+	char	*tmp;
 
 	x = 0;
 	cmd_name = malloc(sizeof(char) * (j + 1));
@@ -88,19 +90,23 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 	while (j > 0)
 	{
 		cmd_name[x] = checker_node->pipe_string[h];
-		printf("%c char de la cmd\n", cmd_name[x]);
 		h++;
 		j--;
 		x++;
 	}
 	cmd_name[x] = '\0';
 	if (checker_node->cmd_string == NULL)
-		checker_node->cmd_string = ft_strdup(cmd_name);
+	{
+		tmp = ft_strdup(cmd_name);
+		checker_node->cmd_string = ft_strdup(tmp);
+		free(tmp);
+	}
 	else
 	{
-		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
-		checker_node->cmd_string
-			= ft_strjoin(checker_node->cmd_string, cmd_name);
+		tmp = ft_strjoin(checker_node->cmd_string, " ");
+		free(checker_node->cmd_string);
+		checker_node->cmd_string = ft_strjoin(tmp, cmd_name);
+		free(tmp);
 	}
 	free(cmd_name);
 }

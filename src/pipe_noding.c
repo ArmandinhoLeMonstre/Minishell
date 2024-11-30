@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 17:56:19 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:41:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	node = malloc(sizeof(t_pipe_chain));
 	node->next = NULL;
 	node->pipe_string = ft_strdup(rl);
+	//node->cmd_path = NULL;
 	node->cmd = NULL;
 	node->envp = envp;
 	node->infile = 0;

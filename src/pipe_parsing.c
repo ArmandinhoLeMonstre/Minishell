@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 15:56:31 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 20:03:44 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ int	add_path(t_pipe_chain *checker_node, int j)
 		{
 			checker_node->cmd = ft_split(checker_node->cmd_string, ' ');
 			checker_node->cmd_path = get_paths(checker_node);
-			printf("test : %s\n", checker_node->cmd_path);
+			//printf("test : %s\n", checker_node->cmd_path);
 			checker_node->cmd = ft_strdup3(checker_node->cmd);
 		}
 		checker_node = checker_node->next;
@@ -188,4 +188,5 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab, t_env **env)
 	while_space(checker_node, j);
 	pipe_check(checker_node);
 	add_path(checker_node, j);
+	//system("leaks minishell");
 }

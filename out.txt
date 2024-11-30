@@ -1,34 +1,1961 @@
-==6515== Memcheck, a memory error detector
-==6515== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==6515== Using Valgrind-3.23.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
-==6515== Command: ./minishell
-==6515== Parent PID: 6400
-==6515== 
---6515-- UNKNOWN task message [id 3453, to mach_task_self(), reply 0x707]
-==6515== Warning: set address range perms: large range [0xffffffff000, 0x120000000000) (defined)
-==6515== Warning: set address range perms: large range [0x140000000000, 0x200000000000) (defined)
-==6515== Warning: set address range perms: large range [0x120000000000, 0x140000000000) (noaccess)
-==6515== Warning: set address range perms: large range [0x600000000000, 0x640000003000) (noaccess)
-==6515== 
-==6515== Process terminating with default action of signal 1 (SIGHUP)
-==6515==    at 0x1001E84E0: __sanitizer::LeakyResetEnv(char const*, char const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x1001E002C: __sanitizer::DD::DD(__sanitizer::DDFlags const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x1001E0107: __sanitizer::DD::DD(__sanitizer::DDFlags const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x1001FE494: handleVLABoundNotPositive(__ubsan::VLABoundData*, unsigned long, __ubsan::ReportOptions) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x1001DB84F: __asan::AsanThread::Init(__asan::AsanThread::InitOptions const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x1001D31EE: __asan_poison_stack_memory (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
-==6515==    by 0x101099801: tlv_load_notification (in /usr/lib/system/libdyld.dylib)
-==6515==    by 0x100020711: dyld::registerAddCallback(void (*)(mach_header const*, long)) (in /usr/lib/dyld)
-==6515==    by 0x101098E7A: _dyld_register_func_for_add_image (in /usr/lib/system/libdyld.dylib)
-==6515==    by 0x1010B141A: _dyld_initializer (in /usr/lib/system/libdyld.dylib)
-==6515==    by 0x100EC7780: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==6515==    by 0x100037352: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==6515== 
-==6515== HEAP SUMMARY:
-==6515==     in use at exit: 0 bytes in 0 blocks
-==6515==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==6515== 
-==6515== All heap blocks were freed -- no leaks are possible
-==6515== 
-==6515== For lists of detected and suppressed errors, rerun with: -s
-==6515== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+==3390== Memcheck, a memory error detector
+==3390== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==3390== Using Valgrind-3.23.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==3390== Command: ./minishell
+==3390== Parent PID: 2782
+==3390== 
+==3401== Conditional jump or move depends on uninitialised value(s)
+==3401==    at 0x10000A2DD: ??? (in ./minishell)
+==3401==    by 0x10000A557: ??? (in ./minishell)
+==3401==    by 0x10000523E: ??? (in ./minishell)
+==3401==    by 0x1000032BB: ??? (in ./minishell)
+==340==2763== Warning: set address range perms: large range [0x120000000000, 0x140000000000) (noaccess)
+==2763== Warning: set address range perms: large range [0x600000000000, 0x640000003000) (noaccess)
+==2763== 
+==2763== Process terminating with default action of signal 1 (SIGHUP)
+==2763==    at 0x1001E74E0: __sanitizer::LeakyResetEnv(char const*, char const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x1001DF02C: __sanitizer::DD::DD(__sanitizer::DDFlags const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x1001DF107: __sanitizer::DD::DD(__sanitizer::DDFlags const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x1001FD494: handleVLABoundNotPositive(__ubsan::VLABoundData*, unsigned long, __ubsan::ReportOptions) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x1001DA84F: __asan::AsanThread::Init(__asan::AsanThread::InitOptions const*) (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x1001D21EE: __asan_poison_stack_memory (in /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.asan_osx_dynamic.dylib)
+==2763==    by 0x101098801: tlv_load_notification (in /usr/lib/system/libdyld.dylib)
+==2763==    by 0x100020711: dyld::registerAddCallback(void (*)(mach_header const*, long)) (in /usr/lib/dyld)
+==2763==    by 0x101097E7A: _dyld_register_func_for_add_image (in /usr/lib/system/libdyld.dylib)
+==2763==    by 0x1010B041A: _dyld_initializer (in /usr/lib/system/libdyld.dylib)
+==2763==    by 0x100EC6780: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==2763==    by 0x1000371D2: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==2763== 
+==2763== HEAP SUMMARY:
+==2763==     in use at exit: 0 bytes in 0 blocks
+==2763==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==2763== 
+==2763== All heap blocks were freed -- no leaks are possible
+==2763== 
+==2763== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+--2763-- 
+--2763-- used_suppression:      1 OSX1015:dyld-2 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:746
+==2763== 
+==2763== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+000ADEE: ??? (in ./minishell)
+==3423==    by 0x1000075C6: ??? (in ./minishell)
+==3423==    by 0x100006A65: ??? (in ./minishell)
+==3423==    by 0x100003E62: ??? (in ./minishell)
+==3423==    by 0x1000036EC: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 3 bytes in 1 blocks are indirectly lost in loss record 5 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000ADEE: ??? (in ./minishell)
+==3423==    by 0x100004D05: ??? (in ./minishell)
+==3423==    by 0x100004E90: ??? (in ./minishell)
+==3423==    by 0x100003CAC: ??? (in ./minishell)
+==3423==    by 0x100003E77: ??? (in ./minishell)
+==3423==    by 0x1000036EC: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 3 bytes in 1 blocks are indirectly lost in loss record 6 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000B96D: ??? (in ./minishell)
+==3423==    by 0x10000B83D: ??? (in ./minishell)
+==3423==    by 0x10000B637: ??? (in ./minishell)
+==3423==    by 0x100003D32: ??? (in ./minishell)
+==3423==    by 0x100003E86: ??? (in ./minishell)
+==3423==    by 0x1000036EC: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4 bytes in 1 blocks are still reachable in loss record 7 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143E06: readline_internal_teardown (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143924: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4 bytes in 1 blocks are still reachable in loss record 8 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000B96D: ??? (in ./minishell)
+==3423==    by 0x10000B83D: ??? (in ./minishell)
+==3423==    by 0x10000B637: ??? (in ./minishell)
+==3423==    by 0x1000031D3: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 7 bytes in 1 blocks are still reachable in loss record 9 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000AD30: ??? (in ./minishell)
+==3423==    by 0x10000AF92: ??? (in ./minishell)
+==3423==    by 0x100008966: ??? (in ./minishell)
+==3423==    by 0x100008D04: ??? (in ./minishell)
+==3423==    by 0x100003139: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8 bytes in 1 blocks are still reachable in loss record 10 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10046FCE5: strdup (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x100191855: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8 bytes in 1 blocks are still reachable in loss record 11 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C7E: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100154FE2: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 9 bytes in 1 blocks are still reachable in loss record 12 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004782AA: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x100165079: sh_set_lines_and_columns (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 9 bytes in 1 blocks are still reachable in loss record 13 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D3DF: _rl_reset_region_color (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D253: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 10 bytes in 1 blocks are still reachable in loss record 14 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143883: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 10 bytes in 1 blocks are still reachable in loss record 15 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100154F88: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 11 bytes in 1 blocks are still reachable in loss record 16 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D395: _rl_reset_region_color (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D264: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12 bytes in 1 blocks are still reachable in loss record 17 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004782AA: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12 bytes in 1 blocks are still reachable in loss record 18 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100160F1E: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10000330F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12 bytes in 1 blocks are still reachable in loss record 19 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015FDFC: _rl_init_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015FECB: _rl_reset_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014396E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 14 bytes in 1 blocks are still reachable in loss record 21 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x100191FA8: tparm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001AC4D6: _nc_remove_string (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x100191848: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 15 bytes in 1 blocks are still reachable in loss record 22 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10046FCE5: strdup (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1001902E7: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 16 bytes in 1 blocks are still reachable in loss record 25 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100143B3B: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 16 bytes in 1 blocks are still reachable in loss record 26 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000AD30: ??? (in ./minishell)
+==3423==    by 0x10000B5FA: ??? (in ./minishell)
+==3423==    by 0x1000031D3: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 16 bytes in 1 blocks are still reachable in loss record 27 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100791905: method_t::remappedImp(bool) const (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x1007921AD: list_array_tt<property_t, property_list_t, RawPtr>::attachLists(property_list_t* const*, unsigned int) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10079201A: method_list_t::duplicate() const (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100793061: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783D44: -[NSObject dealloc] (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783398: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10073789D: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423== 
+==3423== 16 bytes in 1 blocks are indirectly lost in loss record 28 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000AD30: ??? (in ./minishell)
+==3423==    by 0x10000B5FA: ??? (in ./minishell)
+==3423==    by 0x100003D32: ??? (in ./minishell)
+==3423==    by 0x100003E86: ??? (in ./minishell)
+==3423==    by 0x1000036EC: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 18 bytes in 1 blocks are indirectly lost in loss record 29 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000B0A2: ??? (in ./minishell)
+==3423==    by 0x100004B18: ??? (in ./minishell)
+==3423==    by 0x100004BF2: ??? (in ./minishell)
+==3423==    by 0x100003D43: ??? (in ./minishell)
+==3423==    by 0x100003E86: ??? (in ./minishell)
+==3423==    by 0x1000036EC: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 19 bytes in 1 blocks are still reachable in loss record 30 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004782AA: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1007378D7: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 24 bytes in 1 blocks are still reachable in loss record 33 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100160D36: alloc_history_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100160F3F: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10000330F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 28 bytes in 1 blocks are still reachable in loss record 35 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1001908B9: _nc_home_terminfo (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001906E9: _nc_next_db (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10019055F: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 32 bytes in 1 blocks are still reachable in loss record 41 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1000088CE: ??? (in ./minishell)
+==3423==    by 0x100008D04: ??? (in ./minishell)
+==3423==    by 0x100003139: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 32 bytes in 1 blocks are still reachable in loss record 42 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100791927: method_t_remappedImp_nolock(method_t const*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x1007921AD: list_array_tt<property_t, property_list_t, RawPtr>::attachLists(property_list_t* const*, unsigned int) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10079201A: method_list_t::duplicate() const (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100793061: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783D44: -[NSObject dealloc] (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783398: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10073789D: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423== 
+==3423== 46 bytes in 1 blocks are still reachable in loss record 48 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10019110F: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 51 bytes in 1 blocks are still reachable in loss record 51 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004DF783: _dirhelper_init (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x1006A6EC6: _os_once_callout (in /usr/lib/system/libsystem_platform.dylib)
+==3423==    by 0x1004E0C5A: _libcoreservices_fork_child (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x100186AA8: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 64 bytes in 1 blocks are still reachable in loss record 54 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100784602: getClass_impl(char const*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100784095: objc_object::sidetable_clearDeallocating() (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783B26: _finishInitializing(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783398: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10073789D: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 64 bytes in 1 blocks are still reachable in loss record 55 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100784602: getClass_impl(char const*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100784095: objc_object::sidetable_clearDeallocating() (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783B26: _finishInitializing(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783398: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10071D251: -[OS_xpc_object dealloc] (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x10073789D: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 64 bytes in 1 blocks are still reachable in loss record 56 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100782667: objc_msgSend_stret (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x1002DAFEC: _os_object_alloc_realized (in /usr/lib/system/libdispatch.dylib)
+==3423==    by 0x100730AFA: _xpc_pipe_create (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x1007378AA: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423==    by 0x100186AB7: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 72 bytes in 1 blocks are still reachable in loss record 57 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100783F61: _object_remove_assocations (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x1007918E1: method_t::remappedImp(bool) const (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x1007921AD: list_array_tt<property_t, property_list_t, RawPtr>::attachLists(property_list_t* const*, unsigned int) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10079201A: method_list_t::duplicate() const (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100791E6B: class_rw_t::extAlloc(class_ro_t const*, bool) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100793061: realizeClassWithoutSwift(objc_class*, objc_class*) (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783D44: -[NSObject dealloc] (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x100783398: lookUpImpOrForward (in /usr/lib/libobjc.A.dylib)
+==3423==    by 0x10073789D: xpc_atfork_child (in /usr/lib/system/libxpc.dylib)
+==3423== 
+==3423== 78 bytes in 1 blocks are still reachable in loss record 58 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x100191124: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 83 bytes in 1 blocks are still reachable in loss record 59 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1001933A3: _nc_tparm_analyze (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x100191D71: tparm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001AC4D6: _nc_remove_string (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x100191848: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 172 (128 direct, 44 indirect) bytes in 1 blocks are definitely lost in loss record 66 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000344D: ??? (in ./minishell)
+==3423==    by 0x1000036DB: ??? (in ./minishell)
+==3423==    by 0x100003281: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 240 bytes in 1 blocks are still reachable in loss record 68 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10019019F: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 256 bytes in 1 blocks are still reachable in loss record 69 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001439E0: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 328 bytes in 1 blocks are still reachable in loss record 75 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100008AF4: ??? (in ./minishell)
+==3423==    by 0x1000031B6: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 344 bytes in 1 blocks are still reachable in loss record 76 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100478203: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 480 bytes in 1 blocks are still reachable in loss record 77 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10019143B: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 504 bytes in 39 blocks are still reachable in loss record 78 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000AD30: ??? (in ./minishell)
+==3423==    by 0x10000AEFB: ??? (in ./minishell)
+==3423==    by 0x100008966: ??? (in ./minishell)
+==3423==    by 0x100008CC0: ??? (in ./minishell)
+==3423==    by 0x100003139: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 680 bytes in 1 blocks are still reachable in loss record 79 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1001912EF: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 80 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100158D35: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 81 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100158D4B: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 82 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100158D68: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 83 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100158D7E: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 84 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100155569: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 85 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015558B: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 86 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001555A3: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 87 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001555C2: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 88 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004DF602: _dirhelper_init (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x1006A6EC6: _os_once_callout (in /usr/lib/system/libsystem_platform.dylib)
+==3423==    by 0x1004E0C5A: _libcoreservices_fork_child (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x100186AA8: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,024 bytes in 1 blocks are still reachable in loss record 89 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004DF637: _dirhelper_init (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x1006A6EC6: _os_once_callout (in /usr/lib/system/libsystem_platform.dylib)
+==3423==    by 0x1004E0C5A: _libcoreservices_fork_child (in /usr/lib/system/libsystem_coreservices.dylib)
+==3423==    by 0x100186AA8: libSystem_atfork_child (in /usr/lib/libSystem.B.dylib)
+==3423==    by 0x1004298AC: fork (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10000328F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,145 bytes in 38 blocks are still reachable in loss record 90 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000AD30: ??? (in ./minishell)
+==3423==    by 0x10000AF92: ??? (in ./minishell)
+==3423==    by 0x10000894F: ??? (in ./minishell)
+==3423==    by 0x100008CC0: ??? (in ./minishell)
+==3423==    by 0x100003139: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,248 bytes in 39 blocks are still reachable in loss record 91 of 133
+==3423==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1000088CE: ??? (in ./minishell)
+==3423==    by 0x100008CC0: ??? (in ./minishell)
+==3423==    by 0x100003139: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,487 bytes in 1 blocks are still reachable in loss record 92 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100190C52: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,536 bytes in 1 blocks are still reachable in loss record 94 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C7E: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148B9A: rl_add_funmap_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148C1C: rl_initialize_funmap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A28: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 1,651 bytes in 39 blocks are still reachable in loss record 97 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x10000B0A2: ??? (in ./minishell)
+==3423==    by 0x100008B65: ??? (in ./minishell)
+==3423==    by 0x1000031B6: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 2,032 bytes in 1 blocks are still reachable in loss record 98 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015CEA5: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 2,272 bytes in 142 blocks are still reachable in loss record 102 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148BAB: rl_add_funmap_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148C1C: rl_initialize_funmap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A28: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 3,776 bytes in 1 blocks are still reachable in loss record 103 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10019113A: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3423==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,016 bytes in 1 blocks are still reachable in loss record 104 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100160EDC: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10000330F: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,080 bytes in 1 blocks are still reachable in loss record 105 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015CEC2: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 107 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 108 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 109 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 110 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 111 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 112 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 113 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 114 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 115 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 116 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 117 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 118 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 4,112 bytes in 1 blocks are still reachable in loss record 119 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 120 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 121 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 122 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 123 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 124 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 125 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 126 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 127 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 128 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143ADB: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 8,224 bytes in 2 blocks are still reachable in loss record 129 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143AED: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12,336 bytes in 3 blocks are still reachable in loss record 130 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12,336 bytes in 3 blocks are still reachable in loss record 131 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 12,336 bytes in 3 blocks are still reachable in loss record 132 of 133
+==3423==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== 103,292 bytes in 1 blocks are still reachable in loss record 133 of 133
+==3423==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3423==    by 0x1004776F9: reallocf (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10047AF27: _Read_RuneMagi (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10044BE4A: __setrunelocale (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10044C314: __wrap_setrunelocale (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10044BB08: loadlocale (in /usr/lib/system/libsystem_c.dylib)
+==3423==    by 0x10015FD7D: _rl_init_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x10015FE29: _rl_init_eightbit (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x100143A2D: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3423==    by 0x1000031A9: ??? (in ./minishell)
+==3423==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3423== 
+==3423== LEAK SUMMARY:
+==3423==    definitely lost: 128 bytes in 1 blocks
+==3423==    indirectly lost: 44 bytes in 6 blocks
+==3423==      possibly lost: 0 bytes in 0 blocks
+==3423==    still reachable: 313,166 bytes in 395 blocks
+==3423==         suppressed: 17,956 bytes in 162 blocks
+==3423== 
+==3423== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 10 from 10)
+--3423-- 
+--3423-- used_suppression:      1 OSX1015:Leak01-printf /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:814 suppressed: 4,096 bytes in 1 blocks
+--3423-- used_suppression:      3 OSX1015:dyld-4 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:764 suppressed: 4,152 bytes in 3 blocks
+--3423-- used_suppression:      1 OSX1015:Leak02-objc /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:825 suppressed: 2,048 bytes in 1 blocks
+--3423-- used_suppression:     15 OSX1015:dyld-7 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:794 suppressed: 4,032 bytes in 120 blocks
+--3423-- used_suppression:     13 OSX1015:dyld-8 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:804 suppressed: 3,204 bytes in 29 blocks
+--3423-- used_suppression:      6 OSX1015:dyld-5 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:774 suppressed: 424 bytes in 8 blocks
+--3423-- used_suppression:      1 OSX1015:dyld-2 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:746
+==3423== 
+==3423== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 10 from 10)
+==3390== 
+==3390== HEAP SUMMARY:
+==3390==     in use at exit: 329,101 bytes in 561 blocks
+==3390==   total heap usage: 1,004 allocs, 443 frees, 354,542 bytes allocated
+==3390== 
+==3390== 2 bytes in 1 blocks are still reachable in loss record 1 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000B1AA: ??? (in ./minishell)
+==3390==    by 0x100008C39: ??? (in ./minishell)
+==3390==    by 0x100008CEF: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 2 bytes in 2 blocks are indirectly lost in loss record 2 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000ADEE: ??? (in ./minishell)
+==3390==    by 0x1000034BD: ??? (in ./minishell)
+==3390==    by 0x1000036DB: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 7 bytes in 1 blocks are still reachable in loss record 3 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000AD30: ??? (in ./minishell)
+==3390==    by 0x10000AF92: ??? (in ./minishell)
+==3390==    by 0x100008966: ??? (in ./minishell)
+==3390==    by 0x100008D04: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 7 bytes in 2 blocks are still reachable in loss record 4 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160D4F: alloc_history_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160F3F: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10000330F: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 7 bytes in 2 blocks are indirectly lost in loss record 5 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000ADEE: ??? (in ./minishell)
+==3390==    by 0x1000075C6: ??? (in ./minishell)
+==3390==    by 0x100006A65: ??? (in ./minishell)
+==3390==    by 0x100003E62: ??? (in ./minishell)
+==3390==    by 0x1000036EC: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 7 bytes in 2 blocks are indirectly lost in loss record 6 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000ADEE: ??? (in ./minishell)
+==3390==    by 0x100004D05: ??? (in ./minishell)
+==3390==    by 0x100004E90: ??? (in ./minishell)
+==3390==    by 0x100003CAC: ??? (in ./minishell)
+==3390==    by 0x100003E77: ??? (in ./minishell)
+==3390==    by 0x1000036EC: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 7 bytes in 2 blocks are indirectly lost in loss record 7 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000B96D: ??? (in ./minishell)
+==3390==    by 0x10000B83D: ??? (in ./minishell)
+==3390==    by 0x10000B637: ??? (in ./minishell)
+==3390==    by 0x100003D32: ??? (in ./minishell)
+==3390==    by 0x100003E86: ??? (in ./minishell)
+==3390==    by 0x1000036EC: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8 bytes in 1 blocks are still reachable in loss record 8 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10046FCE5: strdup (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x100191855: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8 bytes in 1 blocks are still reachable in loss record 9 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C7E: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100154FE2: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 9 bytes in 1 blocks are still reachable in loss record 10 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1004782AA: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x100165079: sh_set_lines_and_columns (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 9 bytes in 1 blocks are still reachable in loss record 11 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D3DF: _rl_reset_region_color (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D253: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 10 bytes in 1 blocks are still reachable in loss record 12 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143883: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 10 bytes in 1 blocks are still reachable in loss record 13 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100154F88: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 11 bytes in 1 blocks are still reachable in loss record 14 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D395: _rl_reset_region_color (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D264: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 12 bytes in 1 blocks are still reachable in loss record 15 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1004782AA: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 12 bytes in 1 blocks are still reachable in loss record 16 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015FDFC: _rl_init_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015FECB: _rl_reset_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014396E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 14 bytes in 1 blocks are still reachable in loss record 18 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x100191FA8: tparm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001AC4D6: _nc_remove_string (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x100191848: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 15 bytes in 1 blocks are still reachable in loss record 19 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10046FCE5: strdup (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x1001902E7: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 16 bytes in 1 blocks are still reachable in loss record 22 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100143B3B: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 18 bytes in 1 blocks are indirectly lost in loss record 23 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000B0A2: ??? (in ./minishell)
+==3390==    by 0x100004B18: ??? (in ./minishell)
+==3390==    by 0x100004BF2: ??? (in ./minishell)
+==3390==    by 0x100003D43: ??? (in ./minishell)
+==3390==    by 0x100003E86: ??? (in ./minishell)
+==3390==    by 0x1000036EC: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 24 bytes in 2 blocks are still reachable in loss record 26 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160F1E: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10000330F: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 28 bytes in 1 blocks are still reachable in loss record 28 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1001908B9: _nc_home_terminfo (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001906E9: _nc_next_db (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10019055F: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 32 bytes in 1 blocks are still reachable in loss record 37 of 119
+==3390==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1000088CE: ??? (in ./minishell)
+==3390==    by 0x100008D04: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 32 bytes in 2 blocks are indirectly lost in loss record 38 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000AD30: ??? (in ./minishell)
+==3390==    by 0x10000B5FA: ??? (in ./minishell)
+==3390==    by 0x100003D32: ??? (in ./minishell)
+==3390==    by 0x100003E86: ??? (in ./minishell)
+==3390==    by 0x1000036EC: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 46 bytes in 1 blocks are still reachable in loss record 39 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10019110F: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 48 bytes in 2 blocks are still reachable in loss record 42 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160D36: alloc_history_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160F3F: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10000330F: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 78 bytes in 1 blocks are still reachable in loss record 46 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x100191124: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 83 bytes in 1 blocks are still reachable in loss record 47 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1001933A3: _nc_tparm_analyze (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x100191D71: tparm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001AC4D6: _nc_remove_string (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x100191848: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FE0F: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 240 bytes in 1 blocks are still reachable in loss record 55 of 119
+==3390==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10019019F: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 256 bytes in 1 blocks are still reachable in loss record 56 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001439E0: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 328 bytes in 1 blocks are still reachable in loss record 62 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100008AF4: ??? (in ./minishell)
+==3390==    by 0x1000031B6: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 329 (256 direct, 73 indirect) bytes in 2 blocks are definitely lost in loss record 63 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000344D: ??? (in ./minishell)
+==3390==    by 0x1000036DB: ??? (in ./minishell)
+==3390==    by 0x100003281: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 344 bytes in 1 blocks are still reachable in loss record 64 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100478203: __setenv_locked (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x1004786A3: setenv (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10015CCDF: _rl_get_screen_size (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100154E87: expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001554BD: rl_expand_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438B9: rl_set_prompt (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438DC: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 480 bytes in 1 blocks are still reachable in loss record 65 of 119
+==3390==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10019143B: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 504 bytes in 39 blocks are still reachable in loss record 66 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000AD30: ??? (in ./minishell)
+==3390==    by 0x10000AEFB: ??? (in ./minishell)
+==3390==    by 0x100008966: ??? (in ./minishell)
+==3390==    by 0x100008CC0: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 680 bytes in 1 blocks are still reachable in loss record 67 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1001912EF: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 68 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100158D35: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 69 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100158D4B: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 70 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100158D68: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 71 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C88: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100158D7E: realloc_line (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100155536: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 72 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100155569: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 73 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015558B: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 74 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001555A3: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,024 bytes in 1 blocks are still reachable in loss record 75 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001555C2: init_line_structures (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100153236: rl_redisplay (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143CDD: readline_internal_setup (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143902: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,145 bytes in 38 blocks are still reachable in loss record 76 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000AD30: ??? (in ./minishell)
+==3390==    by 0x10000AF92: ??? (in ./minishell)
+==3390==    by 0x10000894F: ??? (in ./minishell)
+==3390==    by 0x100008CC0: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,248 bytes in 39 blocks are still reachable in loss record 77 of 119
+==3390==    at 0x10012F488: calloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1000088CE: ??? (in ./minishell)
+==3390==    by 0x100008CC0: ??? (in ./minishell)
+==3390==    by 0x100003139: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,487 bytes in 1 blocks are still reachable in loss record 78 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100190C52: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,536 bytes in 1 blocks are still reachable in loss record 80 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C7E: xrealloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148B9A: rl_add_funmap_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148C1C: rl_initialize_funmap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A28: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 1,651 bytes in 39 blocks are still reachable in loss record 83 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x10000B0A2: ??? (in ./minishell)
+==3390==    by 0x100008B65: ??? (in ./minishell)
+==3390==    by 0x1000031B6: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 2,032 bytes in 1 blocks are still reachable in loss record 84 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015CEA5: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 2,272 bytes in 142 blocks are still reachable in loss record 88 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148BAB: rl_add_funmap_entry (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148C1C: rl_initialize_funmap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A28: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 3,776 bytes in 1 blocks are still reachable in loss record 89 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100191516: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10019113A: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001909C6: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001905D7: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x1001901C4: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10018FC46: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==3390==    by 0x10015CEDF: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,016 bytes in 1 blocks are still reachable in loss record 90 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100160EDC: add_history (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10000330F: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,080 bytes in 1 blocks are still reachable in loss record 91 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015CEC2: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 93 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 94 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 95 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 96 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 97 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 98 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 99 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 100 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4D7: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 101 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4EA: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 102 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4FD: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 103 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 104 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 4,112 bytes in 1 blocks are still reachable in loss record 105 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014501B: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 106 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D215: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 107 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 108 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D221: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 109 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D452: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 110 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D4C4: bind_termcap_arrow_keys (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015D22D: _rl_init_terminal_io (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A0E: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 111 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 112 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 113 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014500C: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 114 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143ADB: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 8,224 bytes in 2 blocks are still reachable in loss record 115 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143AED: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 12,336 bytes in 3 blocks are still reachable in loss record 116 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A78: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 12,336 bytes in 3 blocks are still reachable in loss record 117 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A87: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 12,336 bytes in 3 blocks are still reachable in loss record 118 of 119
+==3390==    at 0x10012B215: malloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x100166C34: xmalloc (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100148CEB: rl_make_bare_keymap (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E871: rl_generic_bind (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10014E60E: rl_bind_keyseq_if_unbound_in_map (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100144FE3: bind_arrow_keys_internal (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143AB4: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== 103,292 bytes in 1 blocks are still reachable in loss record 119 of 119
+==3390==    at 0x10012F802: realloc (in /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==3390==    by 0x1004776F9: reallocf (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10047AF27: _Read_RuneMagi (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10044BE4A: __setrunelocale (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10044C314: __wrap_setrunelocale (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10044BB08: loadlocale (in /usr/lib/system/libsystem_c.dylib)
+==3390==    by 0x10015FD7D: _rl_init_locale (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x10015FE29: _rl_init_eightbit (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x100143A2D: rl_initialize (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1001438E1: readline (in /Users/armitite/homebrew/Cellar/readline/8.2.13/lib/libreadline.8.2.dylib)
+==3390==    by 0x1000031A9: ??? (in ./minishell)
+==3390==    by 0x100371CC8: start (in /usr/lib/system/libdyld.dylib)
+==3390== 
+==3390== LEAK SUMMARY:
+==3390==    definitely lost: 256 bytes in 2 blocks
+==3390==    indirectly lost: 73 bytes in 11 blocks
+==3390==      possibly lost: 0 bytes in 0 blocks
+==3390==    still reachable: 310,752 bytes in 385 blocks
+==3390==         suppressed: 18,020 bytes in 163 blocks
+==3390== 
+==3390== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 5 from 5)
+--3390-- 
+--3390-- used_suppression:      1 OSX1015:Leak01-printf /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:814 suppressed: 4,096 bytes in 1 blocks
+--3390-- used_suppression:      3 OSX1015:dyld-4 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:764 suppressed: 4,152 bytes in 3 blocks
+--3390-- used_suppression:      1 OSX1015:Leak02-objc /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:825 suppressed: 2,048 bytes in 1 blocks
+--3390-- used_suppression:     17 OSX1015:dyld-7 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:794 suppressed: 2,560 bytes in 74 blocks
+--3390-- used_suppression:     15 OSX1015:dyld-8 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:804 suppressed: 4,900 bytes in 81 blocks
+--3390-- used_suppression:      1 OSX1015:dyld-5 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:774 suppressed: 264 bytes in 3 blocks
+--3390-- used_suppression:      1 OSX1015:dyld-2 /Users/armitite/homebrew/Cellar/valgrind/HEAD-93191c1/libexec/valgrind/default.supp:746
+==3390== 
+==3390== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 5 from 5)

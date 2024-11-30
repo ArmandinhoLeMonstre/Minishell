@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 15:36:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:18:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	*change_pipe(char *rl, int *tab)
 		data.i++;
 	}
 	data.rl2[data.i] = '\0';
-	printf("la string ds change pipe %s\n", data.rl2);
+	//printf("la string ds change pipe %s\n", data.rl2);
 	return (data.rl2);
 }
 
