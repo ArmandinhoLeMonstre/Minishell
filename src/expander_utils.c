@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 17:43:15 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:13:15 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	clean_string34(t_pipe_chain *checker_node,
 			}
 			else
 			{
+				data->i++;
 				while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
 					data->i++;
 			}
