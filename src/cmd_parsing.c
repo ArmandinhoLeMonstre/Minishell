@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/30 22:11:39 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:44:21 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,10 @@ char	*get_paths(t_pipe_chain *checker_node)
 
 void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 {
-	int		x;
 	char	*cmd_name;
 	char	*tmp;
 
-	x = 0;
-	cmd_name = malloc(sizeof(char) * (j + 1));
-	while (checker_node->pipe_string[h] == ' ')
-		h++;
-	while (j > 0)
-	{
-		cmd_name[x] = checker_node->pipe_string[h];
-		h++;
-		j--;
-		x++;
-	}
-	cmd_name[x] = '\0';
+	cmd_name = get_name_cmd(checker_node, h, j);
 	if (checker_node->cmd_string == NULL)
 	{
 		tmp = ft_strdup(cmd_name);

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 17:57:09 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:25:05 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,17 @@ void	display_line(t_pipe_chain *checker_node)
 		if (!line)
 		{
 			close(checker_node->fd[1]);
+			free(line);
 			break ;
 		}
 		if (ft_strcmp(line, checker_node->heredoc_chars) == 0)
 		{
 			close(checker_node->fd[1]);
+			free(line);
 			break ;
 		}
 		ft_putstr_fd2(line, checker_node->fd[1]);
 		ft_putstr_fd2("\n", checker_node->fd[1]);
+		free(line);
 	}
 }

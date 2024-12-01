@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/30 22:21:23 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:26:01 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,33 +100,7 @@ int	main(int ac, char **av, char **envp)
                         g_exitcode = status / 256;
                     if (stack != NULL)
                     {
-                        if (stack->infile != 0)
-                        {
-                            close(stack->infile);
-                            free(stack->last_infile);
-                        }
-                        if (stack->outfile != 0)
-                        {
-                            close(stack->outfile);
-                            free(stack->last_outfile);
-                        }
-                        if (stack->append != 0)
-                        {
-                            close(stack->append);
-                            free(stack->last_append);
-                        }
-                        if (stack->cmd_string != NULL)
-                            free(stack->cmd_string);
-                        if (stack->cmd_path != NULL)
-                            free(stack->cmd_path);
-                        if (stack->cmd != NULL)
-                            ft_free2(stack->cmd);
-                        if (stack->heredoc_chars != NULL)
-			                free(stack->heredoc_chars);
-                        if (stack->pipe_string != NULL)
-                            free(stack->pipe_string);
-                        if (stack != NULL)
-			                free_nodes(&stack);
+			            free_nodes(&stack);
                     }
                 }
             }
@@ -138,7 +112,7 @@ int	main(int ac, char **av, char **envp)
             ft_free2(token);
         if (envp != NULL)
             ft_free2(envp);
-        system("leaks minishell");
+        //system("leaks minishell");
     }
     return (0);
 }

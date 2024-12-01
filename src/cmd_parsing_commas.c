@@ -6,13 +6,13 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/30 22:06:02 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:29:00 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
+char *get_name_cmd(t_pipe_chain *checker_node, int h, int j)
 {
 	int		x;
 	char	*cmd_name;
@@ -27,16 +27,27 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 		x++;
 	}
 	cmd_name[x] = '\0';
+	return (cmd_name);
+}
+
+void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
+{
+	char	*cmd_name;
+	char	*tmp;
+
+	cmd_name = get_name_cmd(checker_node, h, j);
 	if (checker_node->cmd_string == NULL)
 	{
-		checker_node->cmd_string = ft_strdup(cmd_name);
-		//checker_node->cmd_string = cmd_name;
+		tmp = ft_strdup(cmd_name);
+		checker_node->cmd_string = ft_strdup(tmp);
+		free(tmp);
 	}
 	else
 	{
-		checker_node->cmd_string = ft_strjoin(checker_node->cmd_string, " ");
-		checker_node->cmd_string
-			= ft_strjoin(checker_node->cmd_string, cmd_name);
+		tmp = ft_strjoin(checker_node->cmd_string, " ");
+		free(checker_node->cmd_string);
+		checker_node->cmd_string = ft_strjoin(tmp, cmd_name);
+		free(tmp);
 	}
 	free(cmd_name);
 }

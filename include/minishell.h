@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/29 18:27:07 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:30:17 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ int	ft_strcmp(const char *s1, const char *s2);
 
 //cmd_parsing fonctions
 int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
+char	*get_name_cmd(t_pipe_chain *checker_node, int h, int j);
 
 //execution
 int	shell_exec2(t_pipe_chain **s, int j);
