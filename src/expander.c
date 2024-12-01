@@ -6,11 +6,26 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/30 17:18:58 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 17:40:49 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	is_expander_char(t_pipe_chain *checker_node, int i)
+{
+	if (checker_node->pipe_string[i] == ' ')
+		return (1);
+	if (checker_node->pipe_string[i] == 34)
+		return (1);
+	if (checker_node->pipe_string[i] == 39)
+		return (1);
+	if (checker_node->pipe_string[i] == '$')
+		return (1);
+	if (checker_node->pipe_string[i] == ' ')
+		return (1);
+	return (0);
+}
 
 char *get_name(t_pipe_chain *checker_node, int i)
 {
@@ -21,14 +36,14 @@ char *get_name(t_pipe_chain *checker_node, int i)
 	i++;
 	x = 0;
 	k = i;
-	while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[k] != 34))
+	while (checker_node->pipe_string[i] && is_expander_char(checker_node, i) == 0)
 	{
 		i++;
 		x++;
 	}
 	name = malloc(sizeof(char) * (x + 1));
 	x = 0;
-	while (checker_node->pipe_string[k] && (checker_node->pipe_string[k] != ' ' && checker_node->pipe_string[k] != '$' && checker_node->pipe_string[k] != 34))
+	while (checker_node->pipe_string[k] && is_expander_char(checker_node, k) == 0)
 	{
 		name[x] = checker_node->pipe_string[k];
 		x++;
@@ -59,39 +74,48 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	}
 	return (free(name), 0);
 }
-
-int	commas34(t_pipe_chain *checker_node, int i, int *total, t_env **env)
+int	if_dollarz(t_pipe_chain *checker_node, t_expander_data *data, t_env **env)
 {
 	int x;
-	i++;
-	(*total)++;
+
 	x = 0;
-	while (checker_node->pipe_string[i] != 34)
+	if (checker_node->pipe_string[data->i + 1] == '?')
 	{
-		if (checker_node->pipe_string[i] == '$')
+		data->i++;
+		data->total += ft_strlen(ft_itoa(g_exitcode));
+	}
+	else if ((x = check_dollars(checker_node, data->i, env)) > 0)
+	{
+		data->total = data->total + x;
+		data->i++;
+		while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0 )
+			data->i++;
+		data->i--;
+	}
+	else
+	{
+		data->i++;
+		while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
+			data->i++;
+		data->i--;
+	}
+	return (0);
+}
+
+int	commas34(t_pipe_chain *checker_node, int i, t_env **env, t_expander_data *data)
+{
+	int x;
+	data->i++;
+	data->total++;
+	x = 0;
+	while (checker_node->pipe_string[data->i] != 34)
+	{
+		if (checker_node->pipe_string[data->i] == '$')
 		{
-			if (checker_node->pipe_string[i + 1] == '?')
-			{
-				i++;
-				(*total) += ft_strlen(ft_itoa(g_exitcode));
-			}
-			else if ((x = check_dollars(checker_node, i, env)) > 0)
-			{
-				(*total) = (*total) + x;
-				i++;
-				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$' && checker_node->pipe_string[i] != 34))			
-					i++;
-				i--;
-			}
-			else
-			{
-				while (checker_node->pipe_string[i] && (checker_node->pipe_string[i] != ' ' && checker_node->pipe_string[i] != '$'))
-					i++;
-				i--;
-			}
+			if_dollarz(checker_node, data, env);
 		}
-		i++;
-		(*total)++;
+		data->i++;
+		data->total++;
 	}
 	return (i);
 }
@@ -111,33 +135,11 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_
 		{
 			if (checker_node->pipe_string[data->i] == '$')
 			{
-				if (checker_node->pipe_string[data->i + 1] == '?')
-				{
-					data->i++;
-					data->total += ft_strlen(ft_itoa(g_exitcode));
-				}
-				else if ((x = check_dollars(checker_node, data->i, env)) > 0)
-				{
-					data->total = data->total + x;
-					data->i++;
-					while (checker_node->pipe_string[data->i] && checker_node->pipe_string[data->i] != ' ')			
-						data->i++;
-					data->i--;
-				}
-				else
-				{
-					data->i++;
-					while (checker_node->pipe_string[data->i])
-					{
-						data->i++;
-						if (checker_node->pipe_string[data->i] == ' ' && checker_node->pipe_string[data->i] == '$')
-							break ;
-					}
-					data->i--;
-				}
+				if_dollarz(checker_node, data, env);
 			}
 			else if (checker_node->pipe_string[data->i] == 34)
-				data->i = commas34(checker_node, data->i, &data->total, env);
+				commas34(checker_node, data->i, env, data);
+			//data->i = 
 		}
 		data->i++;
 		data->total++;

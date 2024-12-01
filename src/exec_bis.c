@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 14:46:17 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:24:27 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,37 +48,37 @@ void	pid_exec_inredirect(t_pipe_chain *exec_nodes, int fd[2])
 
 void	pid_exec_bis(t_pipe_chain *exec_nodes, int fd[2])
 {
-	if (exec_nodes->checker_in_here == 1)
-	{
-		if (ft_strlen(exec_nodes->heredoc_chars) > 0)
-		{
-			dup2(exec_nodes->fd[0], 0);
-			close(exec_nodes->fd[1]);
-			close(exec_nodes->fd[0]);
-		}
-	}
-	if (exec_nodes->checker_in_here == 2)
-	{
-		if (exec_nodes->infile == -1)
-			panic_parsing(exec_nodes, 0);
-		dup2(exec_nodes->infile, 0);
-		close(exec_nodes->infile);
-	}
-	if (exec_nodes->prev != NULL)
-	{
-		if (exec_nodes->prev->outfile != 0 || exec_nodes->prev->append != 0)
-		{
-			if (exec_nodes->checker_in_here != 2 && exec_nodes->checker_in_here == 1)
-			{
-				if (pipe(fd) == -1)
-					exit(1);
-				dup2(fd[0], 0);
-				close(fd[0]);
-				close(fd[1]);
-			}
-		}
-	}
-	//pid_exec_inredirect(exec_nodes, fd);
+	// if (exec_nodes->checker_in_here == 1)
+	// {
+	// 	if (ft_strlen(exec_nodes->heredoc_chars) > 0)
+	// 	{
+	// 		dup2(exec_nodes->fd[0], 0);
+	// 		close(exec_nodes->fd[1]);
+	// 		close(exec_nodes->fd[0]);
+	// 	}
+	// }
+	// if (exec_nodes->checker_in_here == 2)
+	// {
+	// 	if (exec_nodes->infile == -1)
+	// 		panic_parsing(exec_nodes, 0);
+	// 	dup2(exec_nodes->infile, 0);
+	// 	close(exec_nodes->infile);
+	// }
+	// if (exec_nodes->prev != NULL)
+	// {
+	// 	if (exec_nodes->prev->outfile != 0 || exec_nodes->prev->append != 0)
+	// 	{
+	// 		if (exec_nodes->checker_in_here != 2 && exec_nodes->checker_in_here == 1)
+	// 		{
+	// 			if (pipe(fd) == -1)
+	// 				exit(1);
+	// 			dup2(fd[0], 0);
+	// 			close(fd[0]);
+	// 			close(fd[1]);
+	// 		}
+	// 	}
+	// }
+	pid_exec_inredirect(exec_nodes, fd);
 	if (exec_nodes->next != NULL && (exec_nodes->checker != 3 && exec_nodes->checker != 2))
 		dup2(fd[1], 1);
 	if (exec_nodes->checker == 2)
