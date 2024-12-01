@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:33:51 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 18:13:15 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:58:00 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,15 @@ char	*check_dollars_value(t_pipe_chain *checker_node, int i, t_env **env)
 	
 	en = *env;
 	i++;
-	x = i;
+	x = 0;
 	k = i;
-	while (checker_node->pipe_string[i] && is_expander_char(checker_node, i) == 0)
-	{
-		i++;
+	while (checker_node->pipe_string[i++] && is_expander_char(checker_node, i) == 0)
 		x++;
-	}
 	name = malloc(sizeof(char) * (x + 1));
 	x = 0;
 	while (checker_node->pipe_string[k] && is_expander_char(checker_node, k) == 0)
-	{
-		name[x] = checker_node->pipe_string[k];
-		x++;
-		k++;
-	}
+		name[x++] = checker_node->pipe_string[k++];
 	name[x] = '\0';
-	//printf("le name %s\n", name);
 	while (en->next != NULL)
 	{
 		if (ft_strncmp(name, en->name, x + 1) == 0)
@@ -47,11 +39,40 @@ char	*check_dollars_value(t_pipe_chain *checker_node, int i, t_env **env)
 	return (free(name), NULL);
 }
 
+
+void	if_dollarz2(t_pipe_chain *checker_node, t_clean_string_data *data, int *total, t_env **env)
+{
+	int	i;
+	char *itoa;
+	char *value;
+
+	if (checker_node->pipe_string[data->i + 1] == '?')
+	{	
+		data->i++;
+		i = 0;
+		itoa = ft_itoa(g_exitcode);
+		while (itoa[i])
+			data->string2[(*total)++] = itoa[i++];
+	}
+	else if (check_dollars(checker_node, data->i, env) > 0)
+	{
+		data->h = 0;
+		if ((value = ft_strdup(check_dollars_value(checker_node, data->i, env))) != NULL)
+		{
+			while (value[data->h])
+				data->string2[(*total)++] = value[data->h++];
+		}
+		free(value);
+	}
+	data->i++;
+	while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
+		data->i++;
+}
+
 void	clean_string34(t_pipe_chain *checker_node,
 	t_clean_string_data *data, int *total, char *user, t_env **env)
 {
 	char *itoa;
-	char *value;
 	int i;
 	
 	i = 0;
@@ -64,37 +85,7 @@ void	clean_string34(t_pipe_chain *checker_node,
 	{
 		if (checker_node->pipe_string[data->i] == '$')
 		{
-			if (checker_node->pipe_string[data->i + 1] == '?')
-			{	
-				data->i++;
-				data->i++;
-				i = 0;
-				itoa = ft_itoa(g_exitcode);
-				while (itoa[i])
-				{
-					data->string2[(*total)++] = itoa[i++];
-				}
-			}
-			else if (check_dollars(checker_node, data->i, env) > 0)
-			{
-				data->h = 0;
-				value = ft_strdup(check_dollars_value(checker_node, data->i, env));
-				if (value != NULL)
-				{
-					while (value[data->h])
-						data->string2[(*total)++] = value[data->h++];
-				}
-				data->i++;
-				while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
-					data->i++;
-				free(value);
-			}
-			else
-			{
-				data->i++;
-				while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
-					data->i++;
-			}
+			if_dollarz2(checker_node, data, total, env);
 		}
 		else if (checker_node->pipe_string[data->i] != 34)
 		{
@@ -102,11 +93,9 @@ void	clean_string34(t_pipe_chain *checker_node,
 		}
 	}
 }
-
 void	if_verif(t_pipe_chain *checker_node, t_clean_string_data *data, int *total, char *user, t_env **env)	
 {
 	char *itoa;
-	char *value;
 	int i;
 	
 	i = 0;
@@ -115,37 +104,7 @@ void	if_verif(t_pipe_chain *checker_node, t_clean_string_data *data, int *total,
 		clean_string34(checker_node, data, total, user, env);
 	if (checker_node->pipe_string[data->i] == '$')
 	{
-		if (checker_node->pipe_string[data->i + 1] == '?')
-		{	
-			data->i++;
-			data->i++;
-			i = 0;
-			itoa = ft_itoa(g_exitcode);
-			while (itoa[i])
-			{
-				data->string2[(*total)++] = itoa[i++];
-			}
-		}
-		else if (check_dollars(checker_node, data->i, env) > 0)
-		{
-			data->h = 0;
-			value = ft_strdup(check_dollars_value(checker_node, data->i, env));
-			if (value != NULL)
-			{
-				while (value[data->h])
-					data->string2[(*total)++] = value[data->h++];
-			}
-			data->i++;
-			while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
-				data->i++;
-			free(value);
-		}
-		else
-		{
-			data->i++;
-			while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
-				data->i++;
-		}
+		if_dollarz2(checker_node, data, total, env);
 	}
 	else if (checker_node->pipe_string[data->i] != '\0')
 	{
@@ -177,7 +136,6 @@ char	*clean_string(t_pipe_chain *checker_node, t_env **env, int total, char *use
 	data.string2[total] = '\0';
 	free(checker_node->pipe_string);
 	checker_node->pipe_string = ft_strdup(data.string2);
-	//system("leaks minishell");
 	free(data.string2);
 	return (NULL);
 }

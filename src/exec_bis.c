@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 16:24:27 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:38:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	while_loop2_bis(t_pipe_chain *exec_nodes, int fd[2])
 		exit(1);
 	if (pid == 0)
 	{
+		close (fd[0]);
 		if (exec_nodes->cmd != NULL)
 		{
 			if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)

@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 14:26:01 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:46:51 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	main(int ac, char **av, char **envp)
                 if (pipe_noding(&stack, &env, rl, envp) != 2)
                 {    
                     pid = fork();
+                    signal(SIGINT, ft_exec_sig_handler);
+		            signal(SIGQUIT, ft_exec_sig_handler);
                     if (pid == -1)
                         exit(1);
                     if (pid == 0)

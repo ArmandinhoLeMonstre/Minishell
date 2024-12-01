@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 17:40:49 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:43:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 {
 	int	x;
 	char *name;
+	int h;
 	t_env *en;
 	
 	en = *env;
@@ -66,8 +67,7 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	{
 		if (ft_strncmp(name, en->name, x + 1) == 0)
 		{
-			int h = ft_strlen(en->value);
-			//printf("%d\n", h);
+			h = ft_strlen(en->value);
 			return (free(name), h);
 		}
 		en = en->next;
@@ -139,7 +139,6 @@ void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_
 			}
 			else if (checker_node->pipe_string[data->i] == 34)
 				commas34(checker_node, data->i, env, data);
-			//data->i = 
 		}
 		data->i++;
 		data->total++;
