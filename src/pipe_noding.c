@@ -6,35 +6,11 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:50:07 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 10:03:28 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:01:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// int	stack_len(t_pipe_chain *stack)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!stack)
-// 		return (0);
-// 	while (stack != NULL)
-// 	{
-// 		i++;
-// 		stack = stack->next;
-// 	}
-// 	return (i);
-// }
-
-// t_pipe_chain	*find_last(t_pipe_chain *stack)
-// {
-// 	if (!stack)
-// 		return (NULL);
-// 	while (stack->next != NULL)
-// 		stack = stack->next;
-// 	return (stack);
-// }
 
 void	allocate_node(t_pipe_chain	*node, char *rl, char **envp)
 {
@@ -71,10 +47,10 @@ void	append_node(t_pipe_chain **stack, char *rl, char **envp)
 	}
 }
 
-int appending(t_pipe_chain **stack, int i, char **envp, char *rl)
+int	appending(t_pipe_chain **stack, int i, char **envp, char *rl)
 {
-	char			**split_rl;
-	
+	char	**split_rl;
+
 	if (ft_ispipe(rl) != 0)
 	{
 		i = 0;
@@ -119,5 +95,3 @@ int	pipe_noding(t_pipe_chain **stack, t_env **env, char *rl, char **envp)
 	g_exitcode = 0;
 	return (0);
 }
-
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:05:23 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/20 17:52:36 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:04:57 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,29 @@ void	free_list(t_env *list)
 		free_node(tmp);
 		tmp = NULL;
 	}
+}
+
+int	ft_printf_fd(int fd, const char *format, ...)
+{
+	va_list	args;
+	int		i;
+
+	i = 0;
+	va_start(args, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == 's')
+				ft_putstr_fd(va_arg(args, char *), fd);
+			else if (format[i] == 'd')
+				ft_putnbr_fd(va_arg(args, int), fd);
+		}
+		else
+			ft_putchar_fd(format[i], fd);
+		i++;
+	}
+	va_end(args);
+	return (1);
 }

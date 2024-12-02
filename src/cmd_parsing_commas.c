@@ -6,13 +6,13 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 14:29:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:07:37 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *get_name_cmd(t_pipe_chain *checker_node, int h, int j)
+char	*get_name_cmd(t_pipe_chain *checker_node, int h, int j)
 {
 	int		x;
 	char	*cmd_name;

@@ -6,11 +6,22 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 10:07:22 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:00:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	files_error(t_pipe_chain *checker_node, int c)
+{
+	if (c == 0)
+	{
+		ft_putstr_fd(checker_node->last_infile, 2);
+		ft_putendl_fd(": No such file or directory", 2);
+		free_nodes(&checker_node);
+		exit(1);
+	}
+}
 
 int	panic_parsing(t_pipe_chain *node, int error_code)
 {

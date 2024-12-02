@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 13:30:59 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 09:53:17 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:04:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 {
-	int	x;
-	char *name;
-	int h;
-	t_env *en;
-	
+	int		x;
+	char	*name;
+	int		h;
+	t_env	*en;
+
 	en = *env;
 	x = 0;
 	name = get_name(checker_node, i);
@@ -33,37 +33,40 @@ int	check_dollars(t_pipe_chain *checker_node, int i, t_env **env)
 	}
 	return (free(name), 0);
 }
+
 int	if_dollarz(t_pipe_chain *checker_node, t_expander_data *data, t_env **env)
 {
-	int x;
+	int	x;
 
-	x = 0;
+	x = check_dollars(checker_node, data->i, env);
+	data->i++;
 	if (checker_node->pipe_string[data->i + 1] == '?')
 	{
-		data->i++;
 		data->total += ft_strlen(ft_itoa(g_exitcode));
 	}
-	else if ((x = check_dollars(checker_node, data->i, env)) > 0)
+	else if (x > 0)
 	{
 		data->total = data->total + x;
-		data->i++;
-		while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0 )
+		while (checker_node->pipe_string[data->i]
+			&& is_expander_char(checker_node, data->i) == 0)
 			data->i++;
 		data->i--;
 	}
 	else
 	{
-		data->i++;
-		while (checker_node->pipe_string[data->i] && is_expander_char(checker_node, data->i) == 0)
+		while (checker_node->pipe_string[data->i]
+			&& is_expander_char(checker_node, data->i) == 0)
 			data->i++;
 		data->i--;
 	}
 	return (0);
 }
 
-int	commas34(t_pipe_chain *checker_node, int i, t_env **env, t_expander_data *data)
+int	commas34(t_pipe_chain *checker_node, int i,
+	t_env **env, t_expander_data *data)
 {
-	int x;
+	int	x;
+
 	data->i++;
 	data->total++;
 	x = 0;
@@ -79,10 +82,11 @@ int	commas34(t_pipe_chain *checker_node, int i, t_env **env, t_expander_data *da
 	return (i);
 }
 
-void	parse_string_expander(t_pipe_chain *checker_node, t_expander_data *data, t_env **env)
+void	parse_string_expander(t_pipe_chain *checker_node,
+	t_expander_data *data, t_env **env)
 {
-	int x;
-	int verif;
+	int	x;
+	int	verif;
 
 	x = 0;
 	verif = 0;

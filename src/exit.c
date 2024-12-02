@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:51:17 by mucabrin          #+#    #+#             */
-/*   Updated: 2024/11/24 15:56:36 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:43:05 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,3 @@ void	exit_built(char **token)
 		ft_exit(NULL, n);
 	free(arg);
 }
-// FREE ALL

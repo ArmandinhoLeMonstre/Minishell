@@ -1,26 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_space_commas.c                               :+:      :+:    :+:   */
+/*   pipe_in_commas_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 14:01:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 16:40:43 by armitite         ###   ########.fr       */
+/*   Created: 2024/12/02 16:33:43 by armitite          #+#    #+#             */
+/*   Updated: 2024/12/02 19:21:11 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	change_space34(char *rl, t_change_space_data *data)
+void	get_pipe_number(const char *rl, int *i, int *nbr)
+{
+	if (rl[*i] == 39)
+	{
+		(*i)++;
+		while (rl[*i] != 39)
+		{
+			if (rl[*i] == '|')
+				(*nbr)++;
+			(*i)++;
+		}
+	}
+	if (rl[*i] == 34)
+	{
+		(*i)++;
+		while (rl[*i] != 34)
+		{
+			if (rl[*i] == '|')
+				(*nbr)++;
+			(*i)++;
+		}
+	}
+}
+
+int	pipe_numbers(const char *rl)
+{
+	int	i;
+	int	nbr;
+
+	i = 0;
+	nbr = 0;
+	while (rl[i])
+	{
+		if (rl[i] == 39 || rl[i] == 34)
+			get_pipe_number(rl, &i, &nbr);
+		i++;
+	}
+	return (nbr);
+}
+
+int	change_pipe34(char *rl, t_change_pipe_data *data, int *tab)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
 	while (rl[data->i] != 34)
 	{
-		if (rl[data->i] == ' ')
+		if (rl[data->i] == '|')
 		{
-			data->rl2[data->i] = '\t';
+			data->rl2[data->i] = 'a';
+			tab[data->index] = data->i;
 			data->index++;
 		}
 		else
@@ -30,15 +71,16 @@ int	change_space34(char *rl, t_change_space_data *data)
 	return (data->i);
 }
 
-int	change_space39(char *rl, t_change_space_data *data)
+int	change_pipe39(char *rl, t_change_pipe_data *data, int *tab)
 {
 	data->rl2[data->i] = rl[data->i];
 	data->i++;
 	while (rl[data->i] != 39)
 	{
-		if (rl[data->i] == ' ')
+		if (rl[data->i] == '|')
 		{
-			data->rl2[data->i] = '\t';
+			data->rl2[data->i] = 'a';
+			tab[data->index] = data->i;
 			data->index++;
 		}
 		else
@@ -48,9 +90,9 @@ int	change_space39(char *rl, t_change_space_data *data)
 	return (data->i);
 }
 
-char	*change_space(char *rl)
+char	*change_pipe(char *rl, int *tab)
 {
-	t_change_space_data	data;
+	t_change_pipe_data	data;
 
 	data.i = 0;
 	data.index = 0;
@@ -58,56 +100,16 @@ char	*change_space(char *rl)
 	while (rl[data.i])
 	{
 		if (rl[data.i] == 34)
-			change_space34(rl, &data);
+		{
+			change_pipe34(rl, &data, tab);
+		}
 		if (rl[data.i] == 39)
-			change_space39(rl, &data);
+		{
+			change_pipe39(rl, &data, tab);
+		}
 		data.rl2[data.i] = rl[data.i];
 		data.i++;
 	}
 	data.rl2[data.i] = '\0';
 	return (data.rl2);
-}
-
-char	**ft_strdup3(char **cmd)
-{
-	int		index;
-	int		i;
-	int		x;
-
-	i = 0;
-	index = 0;
-	x = 0;
-	while (cmd[x])
-	{
-		i = 0;
-		while (cmd[x][i])
-		{
-			if (cmd[x][i] == '\t')
-			{
-				cmd[x][i] = ' ';
-				index++;
-			}
-			else
-				cmd[x][i] = cmd[x][i];
-			i++;
-		}
-		x++;
-	}
-	return (cmd);
-}
-
-void	while_space(t_pipe_chain *checker_node, int j)
-{
-	int	x;
-
-	x = 0;
-	while (x < j)
-	{
-		if (space_numbers(checker_node->pipe_string) > 0)
-		{
-			checker_node->pipe_string = change_space(checker_node->pipe_string);
-		}
-		checker_node = checker_node->next;
-		x++;
-	}
 }

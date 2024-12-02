@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:08:25 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 09:54:03 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:20:45 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 void	display_line(t_pipe_chain *checker_node)
 {
 	char	*line;
-	
+
 	line = ft_strdup("");
 	if (pipe(checker_node->fd) == -1)
 		exit(1);

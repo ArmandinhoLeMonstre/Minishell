@@ -6,19 +6,11 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:11:06 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 09:55:24 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 18:04:38 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	ft_is_bash_char(int c)
-{
-	if (c == '<' || c == '>' || c == '|')
-		return (1);
-	else
-		return (0);
-}
 
 int	pipe_check_commas(t_pipe_chain *checker_node, int *i, int z)
 {
@@ -92,8 +84,8 @@ int	pipe_check(t_pipe_chain *checker_node, int j)
 
 int	add_path(t_pipe_chain *checker_node, int j)
 {
-	int x;
-	
+	int	x;
+
 	x = 0;
 	while (x < j)
 	{
@@ -120,7 +112,7 @@ void	pipe_parsing(t_pipe_chain **stack, int *tab, t_env **env)
 	{
 		ft_strdup2(checker_node, tab, j);
 		free(tab);
-	} 
+	}
 	expander(checker_node, env);
 	while_space(checker_node, j);
 	pipe_check(checker_node, j);

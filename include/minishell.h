@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 10:12:23 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:39:16 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,14 @@ typedef struct s_expander_data
 	int	j;
 	int	total;
 	int	verif;
-	char *user;
 }	t_expander_data;
 
 typedef struct s_strdup2_data
 {
 	int		total;
 	int		index;
-	int	i;
-	int	x;
+	int		i;
+	int		x;
 }	t_strdup2_data;
 
 typedef struct s_pipe_chain
@@ -120,7 +119,6 @@ typedef struct s_pipe_chain
 	int					pid;
 	int					fd[2];
 	int					pipe_number;
-	//struct s_outfiles	*outfiles;
 	struct s_pipe_chain	*next;
 	struct s_pipe_chain	*prev;
 }	t_pipe_chain;
@@ -132,11 +130,15 @@ void	ft_exec_sig_handler(int sig);
 void	ft_main_sig_handler(int sig);
 
 // Builtins part :
-char	**build_env(t_env **env);
+int		ft_builtins(char **token, t_env **env);
 void	unset(char **token, t_env **env);
-int	ft_builtins(char **token, t_env **env, int fd[2], int keycode);
 void	exit_built(char **token);
 void	pwd(t_env **env);
+void	echo_built(char **token);
+
+//env
+int	ft_len_list(t_env **list);
+char	**build_env(t_env **env);
 
 //export 
 t_env	*make_envlist(char **env);
@@ -160,7 +162,6 @@ int	diff_dir(const char *path);
 
 // Parsing part :
 
-
 //Main global Utils
 int		quote_checker(char *rl);
 int	ft_ispipe(char *str);
@@ -182,6 +183,7 @@ int     check_dollars(t_pipe_chain *checker_node, int i, t_env **env);
 int		is_expander_char(t_pipe_chain *checker_node, int i);
 char *get_name(t_pipe_chain *checker_node, int i);
 int	is_expander_char(t_pipe_chain *checker_node, int i);
+char	*check_dollars_value(t_pipe_chain *checker_node, int i, t_env **env);
 
 //Clean_space
 int	space_numbers(const char *rl);
