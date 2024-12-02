@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:44:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 18:05:44 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:45:59 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_builtins(char **token, t_env **env)
 		return (pwd(env), 0);
 	else if (ft_strncmp(token[0], "unset", INT_MAX) == 0)
 		return (unset(token, env), 0);
+	else if (ft_strncmp(token[0], "export", INT_MAX) == 0)
+		return (export(token, env), 0);
 	else if (ft_strncmp(token[0], "env", INT_MAX) == 0)
 	{
 		if (!ft_env(node))

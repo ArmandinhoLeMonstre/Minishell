@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 17:03:17 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:08:39 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*get_paths(t_pipe_chain *checker_node)
 	return (path1);
 }
 
-void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
+void	stock_cmd(t_pipe_chain *checker_node, int h, int j, int checker)
 {
 	char	*cmd_name;
 	char	*tmp;
@@ -91,7 +91,10 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 	}
 	else
 	{
-		tmp = ft_strjoin(checker_node->cmd_string, " ");
+		if (checker == 0)
+			tmp = ft_strjoin(checker_node->cmd_string, " ");
+		if (checker == 1)
+			tmp = ft_strdup(checker_node->cmd_string);
 		free(checker_node->cmd_string);
 		checker_node->cmd_string = ft_strjoin(tmp, cmd_name);
 		free(tmp);
@@ -102,10 +105,19 @@ void	stock_cmd(t_pipe_chain *checker_node, int h, int j)
 int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 {
 	int	j;
+	int	checker;
 
 	j = 0;
+	checker = 0;
+	if (checker_node->pipe_string[*i - 1] == 34 || checker_node->pipe_string[*i - 1] == 39)
+		checker = 1;
 	while (checker_node->pipe_string[*i])
 	{
+		if (checker_node->pipe_string[*i] == 34 || checker_node->pipe_string[*i] == 39)
+		{
+			checker = 1;
+			break ;
+		}
 		j++;
 		(*i)++;
 		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
@@ -117,9 +129,10 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 		&& checker_node->pipe_string[*i - 1] == ' ')
 		j--;
 	if (checker_node->next == NULL
-		&& ft_is_bash_char(checker_node->pipe_string[*i]) != 1)
+		&& ft_is_bash_char(checker_node->pipe_string[*i]) != 1
+			&& checker_node->pipe_string[*i] != 34 && checker_node->pipe_string[*i] != 39)
 		j++;
 	(*i)--;
-	stock_cmd(checker_node, h, j);
+	stock_cmd(checker_node, h, j, checker);
 	return (1);
 }

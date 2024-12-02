@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 18:07:37 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:26:31 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 	}
 	else
 	{
-		tmp = ft_strjoin(checker_node->cmd_string, " ");
+		if (checker_node->cmd_string[h - 1] == 32 || checker_node->cmd_string[h - 1] == 39)
+			tmp = ft_strjoin(checker_node->cmd_string, " ");
+		else
+			tmp = ft_strdup(checker_node->cmd_string);
 		free(checker_node->cmd_string);
 		checker_node->cmd_string = ft_strjoin(tmp, cmd_name);
 		free(tmp);
