@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   panic.c                                            :+:      :+:    :+:   */
+/*   pipe_noding_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 10:07:22 by armitite         ###   ########.fr       */
+/*   Created: 2024/12/02 10:03:00 by armitite          #+#    #+#             */
+/*   Updated: 2024/12/02 10:03:22 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	panic_parsing(t_pipe_chain *node, int error_code)
+int	stack_len(t_pipe_chain *stack)
 {
-	if (error_code == -1)
-		return (free_nodes(&node), exit(1), 2);
-	if (error_code == 0)
+	int	i;
+
+	i = 0;
+	if (!stack)
+		return (0);
+	while (stack != NULL)
 	{
-		return (files_error(node, 0), 2);
+		i++;
+		stack = stack->next;
 	}
-	if (error_code == 1)
-	{
-		if (node->cmd)
-		{
-			ft_putstr_fd(node->cmd[0], 2);
-			ft_putendl_fd(": command not found", 2);
-		}
-		if (node != NULL)
-			free_nodes(&node);
-		return (exit(127), 2);
-	}
-	return (0);
+	return (i);
+}
+
+t_pipe_chain	*find_last(t_pipe_chain *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

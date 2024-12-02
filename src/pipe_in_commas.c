@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:14:28 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/30 17:18:22 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:07:53 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ char	*change_pipe(char *rl, int *tab)
 		data.i++;
 	}
 	data.rl2[data.i] = '\0';
-	//printf("la string ds change pipe %s\n", data.rl2);
 	return (data.rl2);
 }
 
@@ -151,19 +150,7 @@ int *get_tab(const char *rl, int *tab)
 			}
 		}
 		if (rl[data.i] == 34)
-		{
 			get_tab34(rl, &data, tab);
-			// data.i++;
-			// while (rl[data.i] != 34)
-			// {
-			// 	if (rl[data.i] == '|')
-			// 	{
-			// 		tab[data.index] = data.i;
-			// 		data.index++;
-			// 	}
-			// 	data.i++;
-			// }
-		}
 		data.i++;
 	}
 	return (tab);

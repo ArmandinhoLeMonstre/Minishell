@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:07:05 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 08:14:11 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 08:40:55 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,7 @@ int	after_token(char *rl, int *i, int x)
 	(*i)++;
 	while (rl[*i] == ' ')
 		(*i)++;
-	//special_case(rl, i, x);
-	if (rl[x] == '|' && (rl[*i] == '<' || rl[*i] == '>'))
-	{
-		if (rl[*i] == '>' && rl[*i + 1] == '>')
-			(*i)++;
-		if (rl[*i] == '<' && rl[*i + 1] == '<')
-			(*i)++;
-		(*i)++;
-		while (rl[*i] == ' ')
-			(*i)++;
-	}
+	special_case(rl, i, x);
 	while (rl[*i])
 	{
 		if (rl[*i] == 34 || rl[*i] == 39)

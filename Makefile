@@ -11,9 +11,9 @@ RM = rm -rf
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRC_FILES = main pipe_noding pipe_parsing infile_parsing panic panic_parsing_fct free_fct unexpected_token cmd_parsing \
-shell_execution pid_executions quote_check heredoc pipe_in_commas expander get_user expander_utils cmd_parsing_commas \
-clean_space_commas cd cd_utils builtins env export_sort export_utils export unset signals exit pwd exec_bis echo
+SRC_FILES = main pipe_noding pipe_noding_utils pipe_parsing file_parsing panic panic_parsing_fct free_fct unexpected_token cmd_parsing \
+quote_check heredoc pipe_in_commas expander expander_utils expander_utils2 cmd_parsing_commas clean_space_commas_utils \
+clean_space_commas cd cd_utils builtins env export_sort export_utils export unset signals exit pwd exec_bis echo main_global_utils
 
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

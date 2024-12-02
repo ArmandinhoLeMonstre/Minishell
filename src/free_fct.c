@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:19:01 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 13:39:44 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:21:09 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	free_stack(t_pipe_chain *stack)
 {
-	// t_pipe_chain	*stack;
-
-	// stack = *a;
 	if (stack->infile != 0)
 	{
 		close(stack->infile);

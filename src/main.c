@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 08:24:13 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:39:08 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,107 +14,74 @@
 
 int		g_exitcode;
 
-int	ft_ispipe(char *str)
+int first_check(char *rl, t_env	*env)
 {
-    int i;
+    char    **token;
+
+    token = NULL;
+    if (rl != NULL)
+        token = ft_split(rl, ' ');
+    else
+        return (printf("exit\n"), exit(1), 2);
+    if (ft_isbuiltin(token[0]) == 1 && ft_ispipe(rl) == 0)
+        ft_builtins(token, &env, 0, 0);
+    if (token != NULL)
+        ft_free2(token);
+    return (0);
+}
+
+int main_checks_ok(t_pipe_chain	*stack, t_env *env, char *rl, char **envp)
+{
+    int     pid;
+    int     status;
     
-    i = 0;
-    if (!str)
-        return (0);
-    while (str[i])
-    {
-	    if (str[i] == '|')
-	    	return (1);
-        i++;
+    status = 0;
+    if (pipe_noding(&stack, &env, rl, envp) != 2)
+    {    
+        pid = fork();
+        signal(SIGINT, ft_exec_sig_handler);
+        signal(SIGQUIT, ft_exec_sig_handler);
+        if (pid == -1)
+            exit(1);
+        if (pid == 0)
+        {
+            cmd_loop2_bis(stack);
+        }
+        waitpid(pid, &status, 0);
+        if (g_exitcode == 0)
+            g_exitcode = status / 256;
+        if (stack != NULL)
+        {
+            free_nodes(&stack);
+        }
     }
-	return (0);
-}
-
-int empty_rl(char *rl)
-{
-    int i;
-
-    i = 0;
-    while (rl[i])
-    {
-        if (rl[i] != 32)
-            return (0);
-        else
-            i++;
-    }
-    return (1);
-}
-
-int check_unavaible_chars(char *rl)
-{
-    if (ft_strchr(rl, ';') != 0)
-        return (printf("';' is not a valid char\n"), 1);
-    if (ft_strchr(rl, '\\') != 0)
-        return (printf("'\\' is not a valid char\n"), 1);
     return (0);
 }
 
 int	main(int ac, char **av, char **envp)
 {
     char    *rl;
-    int     pid;
     t_env	*env;
     t_pipe_chain	*stack;
-    char    **token;
-    int status;
- 
-    
-    status = 0;
+
 	env = make_envlist(envp);
     if (av || ac)
         printf("Starting the prompt !\n");
     while (1)
     {
-        token = NULL;
         stack = NULL;
         signal(SIGINT, ft_main_sig_handler);
 		signal(SIGQUIT, SIG_IGN);
         rl = readline("Prompt > ");
         envp = build_env(&env);
-        if (rl != NULL)
-            token = ft_split(rl, ' ');
-        else
-            return (printf("exit\n"), exit(1), 2);
-        if (ft_isbuiltin(token[0]) == 1 && ft_ispipe(rl) == 0)
-            ft_builtins(token, &env, 0, 0);
-        else
-        {
-            if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0 && empty_rl(rl) == 0)
-            {
-                if (pipe_noding(&stack, &env, rl, envp) != 2)
-                {    
-                    pid = fork();
-                    signal(SIGINT, ft_exec_sig_handler);
-		            signal(SIGQUIT, ft_exec_sig_handler);
-                    if (pid == -1)
-                        exit(1);
-                    if (pid == 0)
-                    {
-                        shell_exec2(&stack, 0);
-                    }
-                    waitpid(pid, &status, 0);
-                    if (g_exitcode == 0)
-                        g_exitcode = status / 256;
-                    if (stack != NULL)
-                    {
-			            free_nodes(&stack);
-                    }
-                }
-            }
-        }
+        first_check(rl, env);
+        if (quote_checker(rl) == 0 && check_unavaible_chars(rl) == 0 && empty_rl(rl) == 0)
+            main_checks_ok(stack, env, rl, envp);
         add_history(rl);
         if (rl != NULL)
             free(rl);
-        if (token != NULL)
-            ft_free2(token);
         if (envp != NULL)
             ft_free2(envp);
-        //system("leaks minishell");
     }
     return (0);
 }

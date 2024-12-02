@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/01 18:25:53 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:12:23 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,12 @@ int	diff_dir(const char *path);
 
 // Parsing part :
 
-//quote_checking
+
+//Main global Utils
 int		quote_checker(char *rl);
+int	ft_ispipe(char *str);
+int empty_rl(char *rl);
+int check_unavaible_chars(char *rl);
 
 //Pipe in "" and ''
 char	*reput_pipe(t_pipe_chain *checker_node, int *tab);
@@ -173,16 +177,22 @@ char	*ft_strdup2(t_pipe_chain *checker_node, int *tab, int j);
 //Expander
 void	expander(t_pipe_chain *checker_node, t_env **env);
 char	*get_user(t_pipe_chain *checker_node);
-char	*clean_string(t_pipe_chain *checker_node, t_env **env, int total, char *user);
+char	*clean_string(t_pipe_chain *checker_node, t_env **env, int total);
 int     check_dollars(t_pipe_chain *checker_node, int i, t_env **env);
 int		is_expander_char(t_pipe_chain *checker_node, int i);
 char *get_name(t_pipe_chain *checker_node, int i);
+int	is_expander_char(t_pipe_chain *checker_node, int i);
 
 //Clean_space
 int	space_numbers(const char *rl);
 char *change_space(char *rl);
 int *get_tab_space(const char *rl, int *tab);
 char	**ft_strdup3(char **cmd);
+void	while_space(t_pipe_chain *checker_node, int j);
+
+//pipe_noding
+int	stack_len(t_pipe_chain *stack);
+t_pipe_chain	*find_last(t_pipe_chain *stack);
 
 //pipe_parsing fonctions
 int	pipe_noding(t_pipe_chain **stack, t_env **env, char *rl, char **envp);
@@ -198,6 +208,7 @@ int		cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int	keycode);
 //file_parsing fonctions
 void	stock_file(t_pipe_chain *checker_node, int h, int j, int redirect);
 int		ft_is_bash_char(int c);
+int	file_check(t_pipe_chain *checker_node, int *i, int h, int redirect);
 
 //Heredoc
 void	display_line(t_pipe_chain *checker_node);
@@ -208,7 +219,7 @@ int		cmd_check(t_pipe_chain *checker_node, int *i, int h);
 char	*get_name_cmd(t_pipe_chain *checker_node, int h, int j);
 
 //execution
-int	shell_exec2(t_pipe_chain **s, int j);
+int	shell_exec2(t_pipe_chain **s);
 int		get_outfile_number(t_pipe_chain *exec_nodes);
 void	pid_exec_output(t_pipe_chain *exec_nodes, int fd[2]);
 void	pid_exec_outfile(t_pipe_chain *exec_nodes, int fd[2]);

@@ -3,54 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean_space_commas.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:01:45 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/22 20:52:57 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:08:00 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	get_space_number(const char *rl, int *i, int *nbr)
-{
-	if (rl[*i] == 39)
-	{
-		(*i)++;
-		while (rl[*i] != 39)
-		{
-			if (rl[*i] == ' ')
-				(*nbr)++;
-			(*i)++;
-		}
-	}
-	if (rl[*i] == 34)
-	{
-		(*i)++;
-		while (rl[*i] != 34)
-		{
-			if (rl[*i] == ' ')
-				(*nbr)++;
-			(*i)++;
-		}
-	}
-}
-
-int	space_numbers(const char *rl)
-{
-	int	i;
-	int	nbr;
-
-	i = 0;
-	nbr = 0;
-	while (rl[i])
-	{
-		if (rl[i] == 39 || rl[i] == 34)
-			get_space_number(rl, &i, &nbr);
-		i++;
-	}
-	return (nbr);
-}
 
 int	change_space34(char *rl, t_change_space_data *data)
 {
@@ -134,4 +94,20 @@ char	**ft_strdup3(char **cmd)
 		x++;
 	}
 	return (cmd);
+}
+
+void	while_space(t_pipe_chain *checker_node, int j)
+{
+	int	x;
+
+	x = 0;
+	while (x < j)
+	{
+		if (space_numbers(checker_node->pipe_string) > 0)
+		{
+			checker_node->pipe_string = change_space(checker_node->pipe_string);
+		}
+		checker_node = checker_node->next;
+		x++;
+	}
 }

@@ -1,35 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   panic.c                                            :+:      :+:    :+:   */
+/*   clean_space_commas_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 12:18:39 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 10:07:22 by armitite         ###   ########.fr       */
+/*   Created: 2024/12/02 09:06:44 by armitite          #+#    #+#             */
+/*   Updated: 2024/12/02 09:10:10 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	panic_parsing(t_pipe_chain *node, int error_code)
+void	get_space_number(const char *rl, int *i, int *nbr)
 {
-	if (error_code == -1)
-		return (free_nodes(&node), exit(1), 2);
-	if (error_code == 0)
+	if (rl[*i] == 39)
 	{
-		return (files_error(node, 0), 2);
-	}
-	if (error_code == 1)
-	{
-		if (node->cmd)
+		(*i)++;
+		while (rl[*i] != 39)
 		{
-			ft_putstr_fd(node->cmd[0], 2);
-			ft_putendl_fd(": command not found", 2);
+			if (rl[*i] == ' ')
+				(*nbr)++;
+			(*i)++;
 		}
-		if (node != NULL)
-			free_nodes(&node);
-		return (exit(127), 2);
 	}
-	return (0);
+	if (rl[*i] == 34)
+	{
+		(*i)++;
+		while (rl[*i] != 34)
+		{
+			if (rl[*i] == ' ')
+				(*nbr)++;
+			(*i)++;
+		}
+	}
+}
+
+int	space_numbers(const char *rl)
+{
+	int	i;
+	int	nbr;
+
+	i = 0;
+	nbr = 0;
+	while (rl[i])
+	{
+		if (rl[i] == 39 || rl[i] == 34)
+			get_space_number(rl, &i, &nbr);
+		i++;
+	}
+	return (nbr);
 }
