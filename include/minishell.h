@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:24:24 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 19:51:38 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:00:02 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,8 +204,8 @@ void			pipe_parsing(t_pipe_chain **stack, int *tab, t_env **env);
 int				token_checker(char *rl);
 int				stack_len(t_pipe_chain *stack);
 char			*get_paths(t_pipe_chain *checker_node);
-int				cmd_check_commas(t_pipe_chain *checker_node,
-					int *i, int h, int	keycode);
+int				cmd_check_commas(t_pipe_chain *checker_node, int *i,
+					int h, int keycode);
 
 //file_parsing fonctions
 void			stock_file(t_pipe_chain *checker_node,
@@ -221,6 +221,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 //cmd_parsing fonctions
 int				cmd_check(t_pipe_chain *checker_node, int *i, int h);
 char			*get_name_cmd(t_pipe_chain *checker_node, int h, int j);
+int				cmd_lenght(t_pipe_chain *checker_node, int *i, int *checker);
 
 //execution
 int				cmd_loop2_bis(t_pipe_chain *exec_nodes);

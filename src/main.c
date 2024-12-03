@@ -6,11 +6,13 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 19:32:57 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 19:18:33 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:54:03 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_exitcode;
 
 int	first_check(char *rl, t_env *env)
 {

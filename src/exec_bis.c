@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:45:10 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 19:14:00 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:40:40 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	cmd_loop2_bis(t_pipe_chain *exec_nodes)
 		while_loop2_bis(exec_nodes, fd);
 		exec_nodes = exec_nodes->next;
 	}
-	if (ft_strncmp(exec_nodes->cmd[0], "echo", INT_MAX) == 0)
+	if (ft_strncmp(exec_nodes->cmd[0], "echo", INT_MAX) == 0
+		&& (exec_nodes->append == 0 && exec_nodes->outfile == 0))
 	{
 		return ((echo_built(exec_nodes->cmd), 0), exit(0), 0);
 	}
@@ -126,7 +127,7 @@ int	cmd_loop2_bis(t_pipe_chain *exec_nodes)
 	if (exec_nodes->cmd != NULL)
 	{
 		if (ft_isbuiltin(exec_nodes->cmd[0]) == 1)
-			exit(1);
+			exit(0);
 	}
 	if (exec_nodes->cmd_path == NULL)
 	{

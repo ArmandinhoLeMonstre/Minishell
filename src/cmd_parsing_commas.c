@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:13:12 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 21:36:44 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:38:36 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	stock_cmd_commas(t_pipe_chain *checker_node, int h, int j)
 	}
 	else
 	{
-		if (checker_node->cmd_string[h - 1] == 32)
+		if (checker_node->pipe_string[h - 2] == 32)
 			tmp = ft_strjoin(checker_node->cmd_string, " ");
 		else
 			tmp = ft_strdup(checker_node->cmd_string);
@@ -78,4 +78,27 @@ int	cmd_check_commas(t_pipe_chain *checker_node, int *i, int h, int keycode)
 	}
 	stock_cmd_commas(checker_node, h, j);
 	return (1);
+}
+
+int	cmd_lenght(t_pipe_chain *checker_node, int *i, int *checker)
+{
+	int	j;
+
+	j = 0;
+	while (checker_node->pipe_string[*i])
+	{
+		if (checker_node->pipe_string[*i] == 34
+			|| checker_node->pipe_string[*i] == 39)
+		{
+			(*checker)++;
+			break ;
+		}
+		j++;
+		(*i)++;
+		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
+			break ;
+		if (checker_node->pipe_string[*i] == ' ')
+			break ;
+	}
+	return (j);
 }

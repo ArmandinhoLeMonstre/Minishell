@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:15:01 by armitite          #+#    #+#             */
-/*   Updated: 2024/10/22 18:08:21 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:57:23 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,28 +95,28 @@ char	*get_next_line(int fd)
 	return (res);
 }
 
-int	main()
-{
-	int fd;
-	int i;
-	i = 0;
-	fd = open("txt.txt", O_RDONLY);
-	printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	//system("leaks a.out");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	// printf("la vraie : %s", get_next_line(fd));
-	// printf("-------------------------------------\n");
-	//system("leaks a.out");
-}
+// int	main()
+// {
+// 	int fd;
+// 	int i;
+// 	i = 0;
+// 	fd = open("txt.txt", O_RDONLY);
+// 	printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	//system("leaks a.out");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	// printf("la vraie : %s", get_next_line(fd));
+// 	// printf("-------------------------------------\n");
+// 	//system("leaks a.out");
+// }

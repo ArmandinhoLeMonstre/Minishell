@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:34:42 by armitite          #+#    #+#             */
-/*   Updated: 2024/11/23 20:18:39 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:58:34 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	return (dst);
 }
-

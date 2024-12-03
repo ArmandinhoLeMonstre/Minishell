@@ -6,7 +6,7 @@
 /*   By: armitite <armitite@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:12:41 by armitite          #+#    #+#             */
-/*   Updated: 2024/12/02 21:08:39 by armitite         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:51:42 by armitite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,28 +109,16 @@ int	cmd_check(t_pipe_chain *checker_node, int *i, int h)
 
 	j = 0;
 	checker = 0;
-	if (checker_node->pipe_string[*i - 1] == 34 || checker_node->pipe_string[*i - 1] == 39)
+	if ((checker_node->pipe_string[*i - 1] == 34
+			|| checker_node->pipe_string[*i - 1] == 39))
 		checker = 1;
-	while (checker_node->pipe_string[*i])
-	{
-		if (checker_node->pipe_string[*i] == 34 || checker_node->pipe_string[*i] == 39)
-		{
-			checker = 1;
-			break ;
-		}
-		j++;
-		(*i)++;
-		if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1)
-			break ;
-		if (checker_node->pipe_string[*i] == ' ')
-			break ;
-	}
+	j = cmd_lenght(checker_node, i, &checker);
 	if (ft_is_bash_char(checker_node->pipe_string[*i]) == 1
 		&& checker_node->pipe_string[*i - 1] == ' ')
 		j--;
-	if (checker_node->next == NULL
-		&& ft_is_bash_char(checker_node->pipe_string[*i]) != 1
-			&& checker_node->pipe_string[*i] != 34 && checker_node->pipe_string[*i] != 39)
+	if (ft_is_bash_char(checker_node->pipe_string[*i]) != 1
+		&& checker_node->pipe_string[*i] != 34
+		&& checker_node->pipe_string[*i] != 39)
 		j++;
 	(*i)--;
 	stock_cmd(checker_node, h, j, checker);
